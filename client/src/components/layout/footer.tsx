@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import HexagonLogo from "@/components/ui/hexagon-logo";
+import CompanyLogo from "@/components/ui/company-logo";
 
 const Footer = () => {
   return (
@@ -8,9 +8,8 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
-            <div className="flex items-center space-x-2 mb-4">
-              <HexagonLogo variant="white" />
-              <span className="text-white font-poppins font-bold text-xl">Haydeen</span>
+            <div className="mb-4">
+              <CompanyLogo size="md" />
             </div>
             <p className="text-gray-400 mb-4">
               Innovative software solutions for West Africa's critical industry gaps.

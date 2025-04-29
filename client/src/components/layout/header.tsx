@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
-import HexagonLogo from "@/components/ui/hexagon-logo";
+import CompanyLogo from "@/components/ui/company-logo";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -32,9 +32,8 @@ const Header = () => {
       <div className="container mx-auto">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <HexagonLogo />
-            <span className="text-[#0A3D62] font-poppins font-bold text-xl">Haydeen</span>
+          <Link href="/" className="flex items-center">
+            <CompanyLogo size="md" />
           </Link>
 
           {/* Desktop Navigation */}
