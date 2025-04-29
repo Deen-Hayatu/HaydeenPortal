@@ -1,0 +1,95 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 222.2 84% 4.9%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 222.2 84% 4.9%;
+  --card: 0 0% 100%;
+  --card-foreground: 222.2 84% 4.9%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 207 90% 21.6%;  /* Deep Blue #0A3D62 */
+  --primary-foreground: 210 40% 98%;
+  --secondary: 142 68% 42%;  /* Fresh Green #27AE60 */
+  --secondary-foreground: 222.2 47.4% 11.2%;
+  --accent: 23 95% 51%;  /* Orange #F39C12 */
+  --accent-foreground: 222.2 47.4% 11.2%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 222.2 84% 4.9%;
+  --radius: 0.5rem;
+  --deep-blue: 207 90% 21.6%; /* #0A3D62 */
+  --fresh-green: 142 68% 42%; /* #27AE60 */
+  --orange: 23 95% 51%; /* #F39C12 */
+  --teal: 168 83% 42%; /* #1ABC9C */
+  --soft-gray: 0 0% 95%; /* #F2F2F2 */
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 207 90% 21.6%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 142 68% 42%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 23 95% 51%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-open-sans;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-poppins font-bold;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-3 font-semibold rounded-lg transition duration-300 inline-block;
+  }
+
+  .btn-primary {
+    @apply bg-[#27AE60] text-white hover:bg-opacity-90;
+  }
+
+  .btn-secondary {
+    @apply bg-[#1ABC9C] text-white hover:bg-opacity-90;
+  }
+
+  .btn-outline {
+    @apply border-2 border-[#0A3D62] text-[#0A3D62] hover:bg-[#0A3D62] hover:text-white;
+  }
+
+  .hexagon-logo {
+    clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
+  }
+
+  .container {
+    @apply px-4 sm:px-6 lg:px-8 mx-auto;
+  }
+}
