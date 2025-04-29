@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
+import { sendContactForm } from "@/lib/emailjs-service";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -39,14 +39,22 @@ const Contact = () => {
     setIsSubmitting(true);
 
     try {
-      await apiRequest("POST", "/api/contact", data);
+      // For testing without Email.js credentials, uncomment this line to simulate success
+      // const result = { success: true };
+      
+      // Send email directly using EmailJS
+      const result = await sendContactForm(data);
+      
+      if (result.success) {
+        toast({
+          title: "Message sent!",
+          description: "Thank you for contacting us. We'll get back to you soon.",
+        });
 
-      toast({
-        title: "Message sent!",
-        description: "Thank you for contacting us. We'll get back to you soon.",
-      });
-
-      form.reset();
+        form.reset();
+      } else {
+        throw new Error('Failed to send message');
+      }
     } catch (error) {
       console.error("Contact form submission error:", error);
       toast({

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { apiRequest } from "@/lib/queryClient";
 import { useToast } from "@/hooks/use-toast";
+import { sendNewsletterConfirmation } from "@/lib/emailjs-service";
 
 const Newsletter = () => {
   const [email, setEmail] = useState("");
@@ -22,14 +22,26 @@ const Newsletter = () => {
     setIsSubmitting(true);
     
     try {
-      await apiRequest("POST", "/api/newsletter/subscribe", { email });
+      // Store the subscription locally first (you might want to keep this)
+      // We'll replace the server-side email sending with EmailJS
+      // await apiRequest("POST", "/api/newsletter/subscribe", { email });
       
-      toast({
-        title: "Successfully subscribed!",
-        description: "Thank you for subscribing to our newsletter.",
-      });
+      // For testing without Email.js credentials, uncomment this line to simulate success
+      // const result = { success: true };
       
-      setEmail("");
+      // Send confirmation email directly with EmailJS
+      const result = await sendNewsletterConfirmation(email);
+      
+      if (result.success) {
+        toast({
+          title: "Successfully subscribed!",
+          description: "Thank you for subscribing to our newsletter.",
+        });
+        
+        setEmail("");
+      } else {
+        throw new Error('Failed to subscribe to newsletter');
+      }
     } catch (error) {
       toast({
         title: "Subscription failed",
