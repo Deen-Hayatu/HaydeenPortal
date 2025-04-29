@@ -9,7 +9,7 @@ const Footer = () => {
           {/* Company Info */}
           <div>
             <div className="mb-4">
-              <CompanyLogo size="md" />
+              <CompanyLogo size="md" variant="light" />
             </div>
             <p className="text-gray-400 mb-4">
               Innovative software solutions for West Africa's critical industry gaps.
