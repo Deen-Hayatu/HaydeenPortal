@@ -1,5 +1,6 @@
 import { ArrowLeft, CheckCircle, ExternalLink, Laptop, Layout, Monitor } from "lucide-react";
 import { Link } from "wouter";
+import mpcScreenshot from "@/assets/mpcghana-screenshot.png";
 
 const WebsiteDesignPage = () => {
   return (
@@ -92,10 +93,12 @@ const WebsiteDesignPage = () => {
             
             <div className="md:flex gap-8">
               <div className="md:w-1/2 mb-6 md:mb-0">
-                <div 
-                  className="rounded-lg shadow-md w-full h-40 flex items-center justify-center bg-[#3498DB]/20 border border-[#3498DB]/30"
-                >
-                  <div className="text-[#0A3D62] text-xl font-bold">MPCGhana.org Screenshot</div>
+                <div className="rounded-lg shadow-md overflow-hidden border border-[#3498DB]/30">
+                  <img 
+                    src={mpcScreenshot} 
+                    alt="MPCGhana.org Website Screenshot" 
+                    className="w-full object-cover"
+                  />
                 </div>
               </div>
               <div className="md:w-1/2">

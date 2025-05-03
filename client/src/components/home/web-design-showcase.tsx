@@ -1,5 +1,6 @@
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink } from "lucide-react";
+import mpcScreenshot from "@/assets/mpcghana-screenshot.png";
 
 const WebDesignShowcase = () => {
   return (
@@ -20,6 +21,13 @@ const WebDesignShowcase = () => {
           <div className="md:flex">
             <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
               <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">MPCGhana.org</h3>
+              <div className="mb-4 rounded-lg shadow-md overflow-hidden border border-[#3498DB]/30">
+                <img 
+                  src={mpcScreenshot} 
+                  alt="MPCGhana.org Website Screenshot" 
+                  className="w-full object-cover"
+                />
+              </div>
               <p className="text-gray-700 mb-6">
                 We designed and developed the MPCGhana.org website, creating a modern digital presence
                 that effectively communicates their mission and provides valuable resources to their audience.
