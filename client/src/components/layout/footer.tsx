@@ -50,6 +50,7 @@ const Footer = () => {
             <h3 className="text-lg font-bold font-poppins mb-4">Solutions</h3>
             <ul className="space-y-2">
               <li><Link href="/solutions/agriconnect" className="text-gray-400 hover:text-white transition">AgriConnect</Link></li>
+              <li><Link href="/solutions/website-design" className="text-gray-400 hover:text-white transition">Website Design</Link></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition">EcoVend (Coming Soon)</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition">TransitPro (Coming Soon)</a></li>
               <li><a href="#" className="text-gray-400 hover:text-white transition">MarketMate (Coming Soon)</a></li>
@@ -84,7 +85,8 @@ const Footer = () => {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-400 text-sm">
-          <p>&copy; {new Date().getFullYear()} Haydeen Technologies. All rights reserved.</p>
+          <p className="mb-2">&copy; {new Date().getFullYear()} Haydeen Technologies. All rights reserved.</p>
+          <p>Proud designers of <a href="https://mpcghana.org" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">MPCGhana.org</a> and many other websites for companies and individuals.</p>
         </div>
       </div>
     </footer>
