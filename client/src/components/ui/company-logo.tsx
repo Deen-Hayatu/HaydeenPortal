@@ -1,5 +1,5 @@
 import React from "react";
-import logoImage from "@/assets/haydeen-logo.png";
+import logoImage from "@/assets/haydeen-new-logo.png";
 
 interface CompanyLogoProps {
   size?: "sm" | "md" | "lg";
@@ -14,8 +14,8 @@ const CompanyLogo: React.FC<CompanyLogoProps> = ({
 }) => {
   const sizeClasses = {
     sm: "h-10",
-    md: "h-12",
-    lg: "h-16",
+    md: "h-14",
+    lg: "h-18",
   };
 
   const textSizeClasses = {
@@ -25,21 +25,16 @@ const CompanyLogo: React.FC<CompanyLogoProps> = ({
   };
 
   return (
-    <div className="flex items-center space-x-3">
+    <div className="flex items-center space-x-2">
       <img
         src={logoImage}
         alt="Haydeen Technologies Logo"
         className={`${sizeClasses[size]}`}
       />
       {showText && (
-        <div className="flex flex-col justify-center">
-          <span className={`font-poppins font-bold leading-tight ${textSizeClasses[size]} ${variant === "dark" ? "text-[#0A3D62]" : "text-white"}`}>
-            Haydeen
-          </span>
-          <span className={`font-poppins font-semibold leading-tight ${size === "lg" ? "text-xl" : size === "md" ? "text-base" : "text-sm"} ${variant === "dark" ? "text-[#0A3D62]" : "text-white"}`}>
-            Technologies
-          </span>
-        </div>
+        <span className={`font-poppins font-semibold ${textSizeClasses[size]} ${variant === "dark" ? "text-[#0A3D62]" : "text-white"}`}>
+          Technologies
+        </span>
       )}
     </div>
   );
