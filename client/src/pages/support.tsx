@@ -113,7 +113,7 @@ const SupportPage = () => {
   });
   
   // Get user's tickets by email
-  const { data: tickets, isLoading: isLoadingTickets, refetch: refetchTickets } = useQuery({
+  const { data: tickets = [], isLoading: isLoadingTickets, refetch: refetchTickets } = useQuery({
     queryKey: ['/api/support/tickets', customerEmail],
     queryFn: async () => {
       if (!customerEmail) return [];
@@ -443,7 +443,7 @@ const SupportPage = () => {
                   <div>
                     {tickets && tickets.length > 0 ? (
                       <div className="space-y-4">
-                        {tickets.map((ticket) => (
+                        {tickets.map((ticket: any) => (
                           <div 
                             key={ticket.id} 
                             className={`p-4 border rounded-lg cursor-pointer transition-colors ${selectedTicket?.id === ticket.id ? 'border-[#3498DB] bg-[#3498DB]/5' : 'hover:border-[#3498DB]/70'}`}
@@ -530,9 +530,9 @@ const SupportPage = () => {
                   
                   <h3 className="text-lg font-medium mb-4">Conversation</h3>
                   
-                  {ticketDetail.messages && ticketDetail.messages.length > 0 ? (
+                  {ticketDetail?.messages && ticketDetail.messages.length > 0 ? (
                     <div className="space-y-4 mb-6">
-                      {ticketDetail.messages.map((message) => (
+                      {ticketDetail.messages.map((message: any) => (
                         <div 
                           key={message.id} 
                           className={`flex ${message.isFromStaff ? 'justify-start' : 'justify-end'}`}
