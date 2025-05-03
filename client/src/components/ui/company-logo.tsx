@@ -19,9 +19,9 @@ const CompanyLogo: React.FC<CompanyLogoProps> = ({
   };
 
   const textSizeClasses = {
-    sm: "text-lg",
-    md: "text-xl",
-    lg: "text-2xl",
+    sm: "text-sm",
+    md: "text-base",
+    lg: "text-lg",
   };
 
   return (
@@ -32,7 +32,7 @@ const CompanyLogo: React.FC<CompanyLogoProps> = ({
         className={`${sizeClasses[size]}`}
       />
       {showText && (
-        <span className={`font-poppins font-semibold ${textSizeClasses[size]} ${variant === "dark" ? "text-[#0A3D62]" : "text-white"}`}>
+        <span className={`font-poppins font-medium ${textSizeClasses[size]} ${variant === "dark" ? "text-[#0A3D62]" : "text-white"}`}>
           Technologies
         </span>
       )}
