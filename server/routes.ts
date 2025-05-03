@@ -4,7 +4,9 @@ import { storage } from "./storage";
 import { sendEmail } from "./services/email";
 import { 
   contactFormSchema, 
-  newsletterSubscriptionFormSchema 
+  newsletterSubscriptionFormSchema,
+  createTicketFormSchema,
+  addTicketMessageSchema
 } from "@shared/schema";
 import { ZodError } from "zod";
 
@@ -272,6 +274,303 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error processing newsletter unsubscription:", error);
       res.status(500).json({ message: "Failed to process newsletter unsubscription" });
+    }
+  });
+
+  // Support Ticket System API Routes
+  
+  // Create a new support ticket
+  app.post("/api/support/tickets", async (req, res) => {
+    try {
+      // Validate request body
+      const validatedData = createTicketFormSchema.parse(req.body);
+      
+      // Save to storage
+      const ticket = await storage.createSupportTicket(validatedData);
+      
+      // Format response
+      const response = {
+        id: ticket.id,
+        subject: ticket.subject,
+        description: ticket.description,
+        status: ticket.status,
+        priority: ticket.priority,
+        customerName: ticket.customerName,
+        customerEmail: ticket.customerEmail,
+        createdAt: ticket.createdAt.toISOString(),
+        updatedAt: ticket.updatedAt.toISOString(),
+      };
+      
+      // Send confirmation email to customer
+      const emailContent = `
+        Dear ${validatedData.customerName},
+        
+        Thank you for submitting a support ticket to Haydeen Technologies. Your ticket has been received with the following details:
+        
+        Ticket ID: ${ticket.id}
+        Subject: ${ticket.subject}
+        Priority: ${ticket.priority}
+        Status: ${ticket.status}
+        
+        We will review your ticket and respond as soon as possible. You can check the status of your ticket by visiting our support portal.
+        
+        Best regards,
+        The Haydeen Technologies Support Team
+      `;
+      
+      try {
+        await sendEmail(
+          process.env.SENDGRID_API_KEY || "",
+          {
+            to: validatedData.customerEmail,
+            from: process.env.EMAIL_FROM || "support@haydeentech.com",
+            subject: `Support Ticket #${ticket.id} - ${ticket.subject}`,
+            text: emailContent,
+          }
+        );
+      } catch (emailError) {
+        console.error("Error sending ticket confirmation email:", emailError);
+        // Continue with the ticket creation even if email fails
+      }
+      
+      res.status(201).json({
+        message: "Support ticket created successfully",
+        ticket: response
+      });
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(400).json({ 
+          message: "Validation error", 
+          errors: error.errors 
+        });
+      } else {
+        console.error("Error creating support ticket:", error);
+        res.status(500).json({ message: "Failed to create support ticket" });
+      }
+    }
+  });
+  
+  // Get all support tickets
+  app.get("/api/support/tickets", async (req, res) => {
+    try {
+      // Check for customer email filter
+      const { email } = req.query;
+      
+      let tickets;
+      if (email && typeof email === 'string') {
+        tickets = await storage.getSupportTicketsByEmail(email);
+      } else {
+        tickets = await storage.getSupportTickets();
+      }
+      
+      // Format response
+      const formattedTickets = tickets.map(ticket => ({
+        id: ticket.id,
+        subject: ticket.subject,
+        description: ticket.description,
+        status: ticket.status,
+        priority: ticket.priority,
+        customerName: ticket.customerName,
+        customerEmail: ticket.customerEmail,
+        createdAt: ticket.createdAt.toISOString(),
+        updatedAt: ticket.updatedAt.toISOString(),
+      }));
+      
+      res.json(formattedTickets);
+    } catch (error) {
+      console.error("Error fetching support tickets:", error);
+      res.status(500).json({ message: "Failed to fetch support tickets" });
+    }
+  });
+  
+  // Get a single support ticket by ID
+  app.get("/api/support/tickets/:id", async (req, res) => {
+    try {
+      const ticketId = parseInt(req.params.id);
+      
+      if (isNaN(ticketId)) {
+        return res.status(400).json({ message: "Invalid ticket ID" });
+      }
+      
+      const ticket = await storage.getSupportTicketById(ticketId);
+      
+      if (!ticket) {
+        return res.status(404).json({ message: "Support ticket not found" });
+      }
+      
+      // Get messages for this ticket
+      const messages = await storage.getTicketMessages(ticket.id);
+      
+      // Format response
+      const formattedTicket = {
+        id: ticket.id,
+        subject: ticket.subject,
+        description: ticket.description,
+        status: ticket.status,
+        priority: ticket.priority,
+        customerName: ticket.customerName,
+        customerEmail: ticket.customerEmail,
+        createdAt: ticket.createdAt.toISOString(),
+        updatedAt: ticket.updatedAt.toISOString(),
+        messages: messages.map(msg => ({
+          id: msg.id,
+          message: msg.message,
+          isFromStaff: msg.isFromStaff,
+          senderName: msg.senderName,
+          createdAt: msg.createdAt.toISOString(),
+        }))
+      };
+      
+      res.json(formattedTicket);
+    } catch (error) {
+      console.error("Error fetching support ticket:", error);
+      res.status(500).json({ message: "Failed to fetch support ticket" });
+    }
+  });
+  
+  // Update a ticket's status
+  app.patch("/api/support/tickets/:id/status", async (req, res) => {
+    try {
+      const ticketId = parseInt(req.params.id);
+      const { status } = req.body;
+      
+      if (isNaN(ticketId)) {
+        return res.status(400).json({ message: "Invalid ticket ID" });
+      }
+      
+      // Validate status
+      if (!['open', 'in_progress', 'resolved', 'closed'].includes(status)) {
+        return res.status(400).json({ message: "Invalid status value" });
+      }
+      
+      const ticket = await storage.getSupportTicketById(ticketId);
+      
+      if (!ticket) {
+        return res.status(404).json({ message: "Support ticket not found" });
+      }
+      
+      await storage.updateSupportTicketStatus(ticketId, status);
+      
+      res.json({ message: "Ticket status updated successfully" });
+    } catch (error) {
+      console.error("Error updating ticket status:", error);
+      res.status(500).json({ message: "Failed to update ticket status" });
+    }
+  });
+  
+  // Add a message to a ticket
+  app.post("/api/support/tickets/:id/messages", async (req, res) => {
+    try {
+      const ticketId = parseInt(req.params.id);
+      
+      if (isNaN(ticketId)) {
+        return res.status(400).json({ message: "Invalid ticket ID" });
+      }
+      
+      // Validate request body
+      const validatedData = addTicketMessageSchema.parse({
+        ...req.body,
+        ticketId: ticketId
+      });
+      
+      const ticket = await storage.getSupportTicketById(ticketId);
+      
+      if (!ticket) {
+        return res.status(404).json({ message: "Support ticket not found" });
+      }
+      
+      // Save the message
+      const message = await storage.createTicketMessage(validatedData);
+      
+      // Format response
+      const formattedMessage = {
+        id: message.id,
+        ticketId: message.ticketId,
+        message: message.message,
+        isFromStaff: message.isFromStaff,
+        senderName: message.senderName,
+        createdAt: message.createdAt.toISOString(),
+      };
+      
+      // Send email notification
+      const emailRecipient = message.isFromStaff ? ticket.customerEmail : process.env.SUPPORT_EMAIL || "support@haydeentech.com";
+      const emailSubject = message.isFromStaff
+        ? `Support Ticket #${ticket.id} - Response from Support`
+        : `Support Ticket #${ticket.id} - New Customer Message`;
+      
+      const emailContent = `
+        ${message.isFromStaff ? 'The support team has responded to your ticket:' : 'A new message has been added to the support ticket:'}
+        
+        Ticket: #${ticket.id} - ${ticket.subject}
+        From: ${message.senderName}
+        Message: ${message.message}
+        
+        ${message.isFromStaff ? 'You can reply to this message by logging into our support portal.' : 'Please review and respond to this ticket at your earliest convenience.'}
+      `;
+      
+      try {
+        await sendEmail(
+          process.env.SENDGRID_API_KEY || "",
+          {
+            to: emailRecipient,
+            from: process.env.EMAIL_FROM || "support@haydeentech.com",
+            subject: emailSubject,
+            text: emailContent,
+          }
+        );
+      } catch (emailError) {
+        console.error("Error sending message notification email:", emailError);
+        // Continue with the message creation even if email fails
+      }
+      
+      res.status(201).json({
+        message: "Message added successfully",
+        ticketMessage: formattedMessage
+      });
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(400).json({ 
+          message: "Validation error", 
+          errors: error.errors 
+        });
+      } else {
+        console.error("Error adding message to ticket:", error);
+        res.status(500).json({ message: "Failed to add message to ticket" });
+      }
+    }
+  });
+  
+  // Get messages for a ticket
+  app.get("/api/support/tickets/:id/messages", async (req, res) => {
+    try {
+      const ticketId = parseInt(req.params.id);
+      
+      if (isNaN(ticketId)) {
+        return res.status(400).json({ message: "Invalid ticket ID" });
+      }
+      
+      const ticket = await storage.getSupportTicketById(ticketId);
+      
+      if (!ticket) {
+        return res.status(404).json({ message: "Support ticket not found" });
+      }
+      
+      const messages = await storage.getTicketMessages(ticketId);
+      
+      // Format response
+      const formattedMessages = messages.map(msg => ({
+        id: msg.id,
+        ticketId: msg.ticketId,
+        message: msg.message,
+        isFromStaff: msg.isFromStaff,
+        senderName: msg.senderName,
+        createdAt: msg.createdAt.toISOString(),
+      }));
+      
+      res.json(formattedMessages);
+    } catch (error) {
+      console.error("Error fetching ticket messages:", error);
+      res.status(500).json({ message: "Failed to fetch ticket messages" });
     }
   });
 
