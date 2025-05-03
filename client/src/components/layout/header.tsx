@@ -22,6 +22,7 @@ const Header = () => {
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
     { label: "Solutions", path: "/solutions" },
+    { label: "Agriconnect", path: "/solutions/agriconnect" },
     { label: "Blog", path: "/blog" },
     { label: "Contact", path: "/contact" },
     { label: "Support", path: "/support" },
@@ -29,7 +30,7 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="container mx-auto">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
           <Link href="/" className="flex items-center">
@@ -37,7 +38,7 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-10">
+          <nav className="hidden md:flex space-x-8">
             {navItems.map((item) => (
               <Link
                 key={item.path}
