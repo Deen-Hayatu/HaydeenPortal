@@ -117,10 +117,11 @@ const SupportPage = () => {
     queryKey: ['/api/support/tickets', customerEmail],
     queryFn: async () => {
       if (!customerEmail) return [];
-      const response = await apiRequest(`/api/support/tickets?email=${encodeURIComponent(customerEmail)}`, {
-        method: 'GET',
-      });
-      return response as Ticket[];
+      const response = await fetch(`/api/support/tickets?email=${encodeURIComponent(customerEmail)}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch tickets');
+      }
+      return response.json();
     },
     enabled: !!customerEmail,
   });
@@ -128,12 +129,8 @@ const SupportPage = () => {
   // Create a new ticket mutation
   const createTicketMutation = useMutation({
     mutationFn: async (values: TicketFormValues) => {
-      const response = await apiRequest('/api/support/tickets', {
-        method: 'POST',
-        body: JSON.stringify(values),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      return response;
+      const response = await apiRequest('POST', '/api/support/tickets', values);
+      return response.json();
     },
     onSuccess: () => {
       toast({
@@ -160,12 +157,8 @@ const SupportPage = () => {
   const addMessageMutation = useMutation({
     mutationFn: async (values: MessageFormValues & { ticketId: number }) => {
       const { ticketId, ...messageData } = values;
-      const response = await apiRequest(`/api/support/tickets/${ticketId}/messages`, {
-        method: 'POST',
-        body: JSON.stringify(messageData),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      return response;
+      const response = await apiRequest('POST', `/api/support/tickets/${ticketId}/messages`, messageData);
+      return response.json();
     },
     onSuccess: () => {
       toast({
@@ -193,10 +186,11 @@ const SupportPage = () => {
     queryKey: ['/api/support/tickets', selectedTicket?.id],
     queryFn: async () => {
       if (!selectedTicket) return null;
-      const response = await apiRequest(`/api/support/tickets/${selectedTicket.id}`, {
-        method: 'GET',
-      });
-      return response as Ticket;
+      const response = await fetch(`/api/support/tickets/${selectedTicket.id}`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch ticket details');
+      }
+      return response.json();
     },
     enabled: !!selectedTicket,
   });

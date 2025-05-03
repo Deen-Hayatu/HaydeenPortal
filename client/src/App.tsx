@@ -13,6 +13,7 @@ import Agriconnect from "@/pages/solutions/agriconnect";
 import WebsiteDesign from "@/pages/solutions/website-design";
 import Blog from "@/pages/blog/index";
 import Contact from "@/pages/contact";
+import Support from "@/pages/support";
 
 function Router() {
   return (
@@ -27,6 +28,7 @@ function Router() {
           <Route path="/solutions/website-design" component={WebsiteDesign} />
           <Route path="/blog" component={Blog} />
           <Route path="/contact" component={Contact} />
+          <Route path="/support" component={Support} />
           <Route component={NotFound} />
         </Switch>
       </main>
