@@ -34,7 +34,7 @@ const About = () => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img 
-                src="https://images.unsplash.com/photo-1577412647305-991150c7d163?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+                src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
                 alt="Haydeen Technologies team meeting" 
                 className="w-full h-full object-cover"
               />
@@ -111,7 +111,7 @@ const About = () => {
             <div className="text-center">
               <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
+                  src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
                   alt="Kofi Mensah" 
                   className="w-full h-full object-cover"
                 />
@@ -127,7 +127,7 @@ const About = () => {
             <div className="text-center">
               <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
+                  src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
                   alt="Ama Dankwa" 
                   className="w-full h-full object-cover"
                 />
@@ -143,7 +143,7 @@ const About = () => {
             <div className="text-center">
               <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
                 <img 
-                  src="https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
+                  src="https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
                   alt="David Osei" 
                   className="w-full h-full object-cover"
                 />

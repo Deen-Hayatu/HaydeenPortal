@@ -16,7 +16,7 @@ const BlogPreview = () => {
       slug: "agritech-west-africa",
       publishedAt: "2023-05-15",
       readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1517816428104-797678c7cf0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      coverImage: "https://images.unsplash.com/photo-1604328698692-f76ea9498e76?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     },
     {
       id: 2,
@@ -25,7 +25,7 @@ const BlogPreview = () => {
       slug: "mobile-money-revolution",
       publishedAt: "2023-04-22",
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      coverImage: "https://images.unsplash.com/photo-1581126336747-14d0a5ae0a9d?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     },
     {
       id: 3,
@@ -34,7 +34,7 @@ const BlogPreview = () => {
       slug: "tech-talent-ghana",
       publishedAt: "2023-03-10",
       readTime: "6 min read",
-      coverImage: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      coverImage: "https://images.unsplash.com/photo-1573497620053-ea5300f94f21?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
     },
   ];
 
