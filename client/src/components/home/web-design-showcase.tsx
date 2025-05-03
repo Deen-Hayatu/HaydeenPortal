@@ -12,26 +12,26 @@ const WebDesignShowcase = () => {
           </h2>
           <p className="max-w-2xl mx-auto text-gray-600">
             We design beautiful, functional websites for companies and individuals.
-            Our portfolio includes prominent organizations like MPC.org.
+            Our portfolio includes prominent organizations like MPCGhana.org.
           </p>
         </div>
 
         <div className="max-w-5xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden">
           <div className="md:flex">
             <div className="md:w-1/2 p-6 md:p-8 flex flex-col justify-center">
-              <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">MPC.org</h3>
+              <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">MPCGhana.org</h3>
               <p className="text-gray-700 mb-6">
-                We designed and developed the MPC.org website, creating a modern digital presence
+                We designed and developed the MPCGhana.org website, creating a modern digital presence
                 that effectively communicates their mission and provides valuable resources to their audience.
               </p>
               <div className="flex items-center">
                 <a 
-                  href="https://www.mpc.org" 
+                  href="https://www.mpcghana.org" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#3498DB] font-medium flex items-center hover:underline"
                 >
-                  Visit MPC.org
+                  Visit MPCGhana.org
                   <ExternalLink className="ml-1 h-4 w-4" />
                 </a>
               </div>

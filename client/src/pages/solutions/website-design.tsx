@@ -21,16 +21,17 @@ const WebsiteDesignPage = () => {
             <p className="text-lg text-gray-700 mb-6">
               At Haydeen Technologies, we create stunning, functional websites for companies and individuals.
               Our web design services combine beautiful aesthetics with powerful functionality to deliver
-              digital experiences that engage visitors and achieve business goals.
+              digital experiences that engage visitors and achieve business goals. We're proud to have designed
+              websites like MPCGhana.org.
             </p>
             <div className="flex items-center gap-4">
               <a 
-                href="https://www.mpc.org" 
+                href="https://www.mpcghana.org" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn-primary flex items-center gap-2"
               >
-                View MPC.org <ExternalLink className="h-4 w-4" />
+                View MPCGhana.org <ExternalLink className="h-4 w-4" />
               </a>
               <Link href="/contact" className="btn-outline">
                 Contact Us
@@ -43,13 +44,11 @@ const WebsiteDesignPage = () => {
                 <Laptop className="h-8 w-8" />
               </div>
               <h3 className="text-xl font-bold text-[#0A3D62] mb-2">Featured Client</h3>
-              <p className="mb-4">We designed and developed the website for MPC.org</p>
+              <p className="mb-4">We designed and developed the website for MPCGhana.org</p>
               <div className="p-3 bg-white rounded-lg border border-[#3498DB]/30">
-                <img 
-                  src="https://www.mpc.org/wp-content/uploads/2017/11/MPClogofinal.png" 
-                  alt="MPC Logo" 
-                  className="h-8 mx-auto"
-                />
+                <div className="h-8 mx-auto text-center font-bold text-[#3498DB]">
+                  MPCGhana.org
+                </div>
               </div>
             </div>
           </div>
@@ -86,23 +85,23 @@ const WebsiteDesignPage = () => {
           </div>
         </div>
 
-        {/* MPC.org Case Study */}
+        {/* MPCGhana.org Case Study */}
         <div className="bg-white rounded-xl shadow-lg overflow-hidden mb-16">
           <div className="p-6 md:p-8">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#0A3D62] mb-6 font-poppins">Case Study: MPC.org</h2>
+            <h2 className="text-2xl md:text-3xl font-bold text-[#0A3D62] mb-6 font-poppins">Case Study: MPCGhana.org</h2>
             
             <div className="md:flex gap-8">
               <div className="md:w-1/2 mb-6 md:mb-0">
-                <img 
-                  src="https://www.mpc.org/wp-content/uploads/2020/04/policy-research.png" 
-                  alt="MPC.org Website Screenshot" 
-                  className="rounded-lg shadow-md w-full"
-                />
+                <div 
+                  className="rounded-lg shadow-md w-full h-40 flex items-center justify-center bg-[#3498DB]/20 border border-[#3498DB]/30"
+                >
+                  <div className="text-[#0A3D62] text-xl font-bold">MPCGhana.org Screenshot</div>
+                </div>
               </div>
               <div className="md:w-1/2">
                 <h3 className="text-xl font-bold text-[#0A3D62] mb-3">Project Overview</h3>
                 <p className="text-gray-700 mb-4">
-                  We designed and developed the official website for MPC.org, creating a modern digital presence
+                  We designed and developed the official website for MPCGhana.org, creating a modern digital presence
                   that effectively communicates their mission and provides valuable resources to their audience.
                 </p>
                 
@@ -127,12 +126,12 @@ const WebsiteDesignPage = () => {
                 </ul>
                 
                 <a 
-                  href="https://www.mpc.org" 
+                  href="https://www.mpcghana.org" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#3498DB] font-medium flex items-center hover:underline"
                 >
-                  Visit MPC.org
+                  Visit MPCGhana.org
                   <ExternalLink className="ml-1 h-4 w-4" />
                 </a>
               </div>
