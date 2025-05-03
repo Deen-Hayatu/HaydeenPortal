@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Globe, ShoppingBag, Map } from "lucide-react";
+import { Globe, ShoppingBag, Map, Laptop } from "lucide-react";
 
 const solutions = [
   {
@@ -28,6 +28,15 @@ const solutions = [
     color: "bg-[#F39C12]",
     path: "#",
     isAvailable: false,
+  },
+  {
+    id: 4,
+    title: "Website Design",
+    description: "Custom website design and development for companies and individuals, creating modern, responsive digital experiences.",
+    icon: <Laptop className="h-8 w-8 text-[#3498DB]" />,
+    color: "bg-[#3498DB]",
+    path: "/solutions/website-design",
+    isAvailable: true,
   },
 ];
 

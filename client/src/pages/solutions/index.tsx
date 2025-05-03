@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Solution } from "@/lib/types";
-import { Globe, ShoppingBag, Map, BarChart } from "lucide-react";
+import { Globe, ShoppingBag, Map, BarChart, Laptop } from "lucide-react";
 
 const Solutions = () => {
   const { data: solutions, isLoading } = useQuery<Solution[]>({
@@ -81,6 +81,24 @@ const Solutions = () => {
       colorClass: "text-[#0A3D62]",
       slug: "marketmate",
       isAvailable: false,
+    },
+    {
+      id: 5,
+      title: "Website Design",
+      description: "Custom website design and development for companies and individuals, creating modern, responsive digital experiences.",
+      longDescription: "Our Website Design service provides custom, responsive websites for companies and individuals. We've designed sites for notable organizations like MPC.org, delivering visually appealing, user-friendly websites that effectively communicate brand messages and engage visitors.",
+      features: [
+        "Custom responsive design for all devices",
+        "Content management system implementation",
+        "E-commerce integration",
+        "SEO optimization",
+        "Performance tuning and analytics"
+      ],
+      icon: <Laptop className="h-10 w-10 text-[#3498DB]" />,
+      color: "bg-[#3498DB]",
+      colorClass: "text-[#3498DB]",
+      slug: "website-design",
+      isAvailable: true,
     }
   ];
 
