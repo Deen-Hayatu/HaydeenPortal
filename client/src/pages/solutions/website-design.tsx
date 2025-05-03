@@ -26,7 +26,7 @@ const WebsiteDesignPage = () => {
             </p>
             <div className="flex items-center gap-4">
               <a 
-                href="https://www.mpcghana.org" 
+                href="https://mpcghana.org" 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="btn-primary flex items-center gap-2"
@@ -126,7 +126,7 @@ const WebsiteDesignPage = () => {
                 </ul>
                 
                 <a 
-                  href="https://www.mpcghana.org" 
+                  href="https://mpcghana.org" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#3498DB] font-medium flex items-center hover:underline"

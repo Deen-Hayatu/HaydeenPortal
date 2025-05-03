@@ -26,7 +26,7 @@ const WebDesignShowcase = () => {
               </p>
               <div className="flex items-center">
                 <a 
-                  href="https://www.mpcghana.org" 
+                  href="https://mpcghana.org" 
                   target="_blank" 
                   rel="noopener noreferrer"
                   className="text-[#3498DB] font-medium flex items-center hover:underline"
