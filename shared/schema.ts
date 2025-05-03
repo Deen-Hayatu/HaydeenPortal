@@ -1,4 +1,4 @@
-import { pgTable, text, serial, integer, boolean, timestamp, pgEnum } from "drizzle-orm/pg-core";
+import { pgTable, text, serial, integer, boolean, timestamp } from "drizzle-orm/pg-core";
 import { createInsertSchema } from "drizzle-zod";
 import { z } from "zod";
 
@@ -123,66 +123,4 @@ export const contactFormSchema = z.object({
 
 export const newsletterSubscriptionFormSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
-});
-
-// Support Tickets System
-export const ticketStatusEnum = pgEnum('ticket_status', ['open', 'in_progress', 'resolved', 'closed']);
-export const ticketPriorityEnum = pgEnum('ticket_priority', ['low', 'medium', 'high', 'urgent']);
-
-// Support Tickets Table
-export const supportTickets = pgTable("support_tickets", {
-  id: serial("id").primaryKey(),
-  subject: text("subject").notNull(),
-  description: text("description").notNull(),
-  status: ticketStatusEnum("status").notNull().default('open'),
-  priority: ticketPriorityEnum("priority").notNull().default('medium'),
-  customerName: text("customer_name").notNull(),
-  customerEmail: text("customer_email").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-  updatedAt: timestamp("updated_at").defaultNow().notNull(),
-});
-
-export const insertSupportTicketSchema = createInsertSchema(supportTickets).omit({
-  id: true,
-  status: true,
-  createdAt: true,
-  updatedAt: true,
-});
-
-// Ticket Messages Table
-export const ticketMessages = pgTable("ticket_messages", {
-  id: serial("id").primaryKey(),
-  ticketId: integer("ticket_id").notNull().references(() => supportTickets.id),
-  message: text("message").notNull(),
-  isFromStaff: boolean("is_from_staff").notNull().default(false),
-  senderName: text("sender_name").notNull(),
-  createdAt: timestamp("created_at").defaultNow().notNull(),
-});
-
-export const insertTicketMessageSchema = createInsertSchema(ticketMessages).omit({
-  id: true,
-  createdAt: true,
-});
-
-// Types
-export type SupportTicket = typeof supportTickets.$inferSelect;
-export type InsertSupportTicket = z.infer<typeof insertSupportTicketSchema>;
-
-export type TicketMessage = typeof ticketMessages.$inferSelect;
-export type InsertTicketMessage = z.infer<typeof insertTicketMessageSchema>;
-
-// Validation schemas for API
-export const createTicketFormSchema = z.object({
-  subject: z.string().min(5, { message: "Subject must be at least 5 characters" }),
-  description: z.string().min(10, { message: "Description must be at least 10 characters" }),
-  priority: z.enum(['low', 'medium', 'high', 'urgent']).default('medium'),
-  customerName: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  customerEmail: z.string().email({ message: "Please enter a valid email address" }),
-});
-
-export const addTicketMessageSchema = z.object({
-  ticketId: z.number(),
-  message: z.string().min(1, { message: "Message cannot be empty" }),
-  isFromStaff: z.boolean().default(false),
-  senderName: z.string().min(2, { message: "Name must be at least 2 characters" }),
 });

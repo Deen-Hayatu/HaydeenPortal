@@ -25,7 +25,6 @@ const Header = () => {
     { label: "Agriconnect", path: "/solutions/agriconnect" },
     { label: "Blog", path: "/blog" },
     { label: "Contact", path: "/contact" },
-    { label: "Support", path: "/support" },
   ];
 
   return (

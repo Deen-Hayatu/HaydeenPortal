@@ -4,9 +4,7 @@ import {
   solutions, type Solution, type InsertSolution,
   solutionFeatures, type SolutionFeature, type InsertSolutionFeature,
   contactSubmissions, type ContactSubmission, type InsertContactSubmission,
-  newsletterSubscriptions, type NewsletterSubscription, type InsertNewsletterSubscription,
-  supportTickets, type SupportTicket, type InsertSupportTicket,
-  ticketMessages, type TicketMessage, type InsertTicketMessage
+  newsletterSubscriptions, type NewsletterSubscription, type InsertNewsletterSubscription
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
@@ -38,17 +36,6 @@ export interface IStorage {
   subscribeToNewsletter(subscription: InsertNewsletterSubscription): Promise<NewsletterSubscription>;
   unsubscribeFromNewsletter(email: string): Promise<void>;
   isEmailSubscribed(email: string): Promise<boolean>;
-  
-  // Support Ticket operations
-  createSupportTicket(ticket: InsertSupportTicket): Promise<SupportTicket>;
-  getSupportTickets(): Promise<SupportTicket[]>;
-  getSupportTicketById(id: number): Promise<SupportTicket | undefined>;
-  getSupportTicketsByEmail(email: string): Promise<SupportTicket[]>;
-  updateSupportTicketStatus(id: number, status: 'open' | 'in_progress' | 'resolved' | 'closed'): Promise<void>;
-  
-  // Ticket Message operations
-  createTicketMessage(message: InsertTicketMessage): Promise<TicketMessage>;
-  getTicketMessages(ticketId: number): Promise<TicketMessage[]>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -179,66 +166,6 @@ export class DatabaseStorage implements IStorage {
       .where(eq(newsletterSubscriptions.email, email));
     
     return subscription || undefined;
-  }
-  
-  // Support Ticket operations
-  async createSupportTicket(ticket: InsertSupportTicket): Promise<SupportTicket> {
-    const [newTicket] = await db
-      .insert(supportTickets)
-      .values(ticket)
-      .returning();
-    return newTicket;
-  }
-  
-  async getSupportTickets(): Promise<SupportTicket[]> {
-    return db.select().from(supportTickets).orderBy(desc(supportTickets.createdAt));
-  }
-  
-  async getSupportTicketById(id: number): Promise<SupportTicket | undefined> {
-    const [ticket] = await db.select().from(supportTickets).where(eq(supportTickets.id, id));
-    return ticket || undefined;
-  }
-  
-  async getSupportTicketsByEmail(email: string): Promise<SupportTicket[]> {
-    return db
-      .select()
-      .from(supportTickets)
-      .where(eq(supportTickets.customerEmail, email))
-      .orderBy(desc(supportTickets.createdAt));
-  }
-  
-  async updateSupportTicketStatus(id: number, status: 'open' | 'in_progress' | 'resolved' | 'closed'): Promise<void> {
-    await db
-      .update(supportTickets)
-      .set({
-        status: status,
-        updatedAt: new Date()
-      })
-      .where(eq(supportTickets.id, id));
-  }
-  
-  // Ticket Message operations
-  async createTicketMessage(message: InsertTicketMessage): Promise<TicketMessage> {
-    const [newMessage] = await db
-      .insert(ticketMessages)
-      .values(message)
-      .returning();
-    
-    // Update the ticket's updatedAt timestamp
-    await db
-      .update(supportTickets)
-      .set({ updatedAt: new Date() })
-      .where(eq(supportTickets.id, message.ticketId));
-    
-    return newMessage;
-  }
-  
-  async getTicketMessages(ticketId: number): Promise<TicketMessage[]> {
-    return db
-      .select()
-      .from(ticketMessages)
-      .where(eq(ticketMessages.ticketId, ticketId))
-      .orderBy(desc(ticketMessages.createdAt));
   }
 }
 
