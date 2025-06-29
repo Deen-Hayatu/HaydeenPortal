@@ -34,10 +34,10 @@ async function seed() {
       content: "Sample content for this blog post.",
       publishedAt: new Date(2023, 4, 15),
       readTime: "5 min read",
-      coverImage: "https://images.unsplash.com/photo-1517816428104-797678c7cf0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      coverImage: "https://images.unsplash.com/photo-1544198365-f5d60b6d8190?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       authorName: "Kofi Mensah",
       authorRole: "Founder & CEO",
-      authorAvatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
+      authorAvatar: "https://images.unsplash.com/photo-1582750433449-648ed127bb54?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80",
       category: "Technology"
     },
     {
@@ -47,10 +47,10 @@ async function seed() {
       content: "Sample content for this blog post.",
       publishedAt: new Date(2023, 3, 22),
       readTime: "4 min read",
-      coverImage: "https://images.unsplash.com/photo-1573164713988-8665fc963095?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      coverImage: "https://images.unsplash.com/photo-1529258283598-8d6fe60b27f4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       authorName: "Ama Dankwa",
       authorRole: "Chief Strategy Officer",
-      authorAvatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
+      authorAvatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80",
       category: "Finance"
     },
     {
