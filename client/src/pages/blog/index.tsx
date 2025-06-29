@@ -55,7 +55,7 @@ const Blog = () => {
       slug: "tech-talent-ghana",
       publishedAt: "2023-03-10",
       readTime: "6 min read",
-      coverImage: "https://images.unsplash.com/photo-1556103255-4443dbae8e5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+      coverImage: "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       author: {
         name: "David Osei",
         role: "CTO",

@@ -37,6 +37,12 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
 - **Responsive Design**: Mobile-first approach
 
 ## Recent Changes
+- **2025-01-29**: Replaced all stock images with West African representation
+  - Updated all blog post cover images and author avatars
+  - Changed hero section background image
+  - Modified AgriConnect solution page farmer images  
+  - Updated featured case study images
+  - Replaced seed data images with appropriate representation
 - **2025-01-29**: Updated contact information with correct address
   - Changed address from placeholder to actual location: Bw 14 Benz road, Effiduasi Ashanti
   - Updated footer, contact page, and map to reflect correct location
