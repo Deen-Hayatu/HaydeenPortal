@@ -1,6 +1,6 @@
 import { Link } from "wouter";
 import { Check } from "lucide-react";
-import founderPhoto from "../assets/founder-photo.jpg";
+import founderProfessionalPhoto from "../assets/founder-professional-photo.jpg";
 
 const About = () => {
   return (
@@ -41,7 +41,7 @@ const About = () => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img 
-                src={founderPhoto} 
+                src={founderProfessionalPhoto} 
                 alt="Mohammad Deen Hayatu, Founder of Haydeen Technologies" 
                 className="w-full h-full object-cover"
               />
@@ -291,63 +291,55 @@ const About = () => {
         </div>
       </section>
 
-      {/* Leadership Team */}
+      {/* Founder Profile */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Our Leadership Team</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Meet the Founder</h2>
             <p className="max-w-2xl mx-auto text-gray-600">
-              Meet the experienced professionals guiding Haydeen Technologies' mission and growth.
+              Leading Haydeen Technologies' mission to transform West Africa's digital landscape.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {/* Team Member 1 */}
-            <div className="text-center">
-              <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
-                <img 
-                  src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
-                  alt="Mohammad Deen Hayatu" 
-                  className="w-full h-full object-cover"
-                />
+          <div className="max-w-4xl mx-auto">
+            <div className="grid md:grid-cols-2 gap-12 items-center">
+              <div className="text-center md:text-left">
+                <div className="mb-6 rounded-full overflow-hidden w-64 h-64 mx-auto md:mx-0">
+                  <img 
+                    src={founderProfessionalPhoto} 
+                    alt="Mohammad Deen Hayatu, Founder of Haydeen Technologies" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Mohammad Deen Hayatu</h3>
-              <p className="text-[#27AE60] font-medium mb-3">Founder & Lead Developer</p>
-              <p className="text-gray-600 mb-3">
-                Full-stack developer passionate about creating innovative software solutions for West Africa's critical industry challenges.
-              </p>
-            </div>
-
-            {/* Team Member 2 */}
-            <div className="text-center">
-              <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
-                <img 
-                  src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
-                  alt="Strategy Team" 
-                  className="w-full h-full object-cover"
-                />
+              <div>
+                <h3 className="text-3xl font-bold text-[#0A3D62] mb-2">Mohammad Deen Hayatu</h3>
+                <p className="text-[#27AE60] font-medium text-xl mb-6">Founder & Lead Developer</p>
+                <p className="text-gray-600 mb-6">
+                  Mohammad Deen Hayatu is a passionate full-stack developer and entrepreneur from Effiduasi, Ghana. With deep understanding of West Africa's agricultural challenges and technological opportunities, he founded Haydeen Technologies to bridge critical gaps in the region's industries.
+                </p>
+                <p className="text-gray-600 mb-6">
+                  As the sole developer behind AgriConnect and other innovative solutions, Mohammad combines technical expertise with local market knowledge to create software that truly serves the needs of West African businesses and communities.
+                </p>
+                <div className="space-y-3">
+                  <div className="flex items-start">
+                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-600">Full-stack development expertise</span>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-600">Deep understanding of West African markets</span>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-600">Committed to solving real-world problems</span>
+                  </div>
+                  <div className="flex items-start">
+                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-600">Building scalable technology solutions</span>
+                  </div>
+                </div>
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Strategy Team</h3>
-              <p className="text-[#27AE60] font-medium mb-3">Business Development</p>
-              <p className="text-gray-600 mb-3">
-                Economist and strategist focused on financial planning, partnerships, and sustainable business growth across West Africa.
-              </p>
-            </div>
-
-            {/* Team Member 3 */}
-            <div className="text-center">
-              <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
-                <img 
-                  src="https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
-                  alt="Development Team" 
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Development Team</h3>
-              <p className="text-[#27AE60] font-medium mb-3">Technical Specialists</p>
-              <p className="text-gray-600 mb-3">
-                Freelance UI/UX designers and software engineers contributing to platform development and user experience optimization.
-              </p>
             </div>
           </div>
         </div>
