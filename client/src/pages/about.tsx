@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Check } from "lucide-react";
+import founderPhoto from "../assets/founder-photo.jpg";
 
 const About = () => {
   return (
@@ -40,8 +41,8 @@ const About = () => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
               <img 
-                src="https://images.unsplash.com/photo-1520785643438-5bf77931f493?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Haydeen Technologies team meeting" 
+                src={founderPhoto} 
+                alt="Mohammad Deen Hayatu, Founder of Haydeen Technologies" 
                 className="w-full h-full object-cover"
               />
             </div>
