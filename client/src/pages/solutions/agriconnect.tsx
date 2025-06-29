@@ -13,7 +13,7 @@ const Agriconnect = () => {
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">AgriConnect</h1>
               <p className="text-xl mb-8 opacity-90">
-                Connecting farmers with agricultural data, markets, and resources to improve productivity and profitability in West Africa.
+                A digital platform connecting farmers, buyers, suppliers, and logistics service providers to streamline agricultural trade and logistics across West Africa.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link href="/contact" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
@@ -48,20 +48,20 @@ const Agriconnect = () => {
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             {/* Stat 1 */}
             <div className="bg-[#F2F2F2] rounded-lg p-6 text-center">
-              <div className="text-4xl font-bold text-[#27AE60] mb-2">2,500+</div>
-              <p className="text-gray-600">Farmers using AgriConnect</p>
+              <div className="text-4xl font-bold text-[#27AE60] mb-2">1,000+</div>
+              <p className="text-gray-600">Target active users by Year 1</p>
             </div>
             
             {/* Stat 2 */}
             <div className="bg-[#F2F2F2] rounded-lg p-6 text-center">
-              <div className="text-4xl font-bold text-[#27AE60] mb-2">35%</div>
-              <p className="text-gray-600">Average yield improvement</p>
+              <div className="text-4xl font-bold text-[#27AE60] mb-2">20%</div>
+              <p className="text-gray-600">Agriculture's contribution to Ghana's GDP</p>
             </div>
             
             {/* Stat 3 */}
             <div className="bg-[#F2F2F2] rounded-lg p-6 text-center">
-              <div className="text-4xl font-bold text-[#27AE60] mb-2">5</div>
-              <p className="text-gray-600">West African countries served</p>
+              <div className="text-4xl font-bold text-[#27AE60] mb-2">45%</div>
+              <p className="text-gray-600">Workforce employed in agriculture</p>
             </div>
           </div>
         </div>
@@ -364,6 +364,210 @@ const Agriconnect = () => {
               "AgriConnect has transformed how I farm. I now know when to plant, have better information about my soil, and can sell my crops at fair prices. My income has increased significantly, and I can provide better for my family."
               <footer className="text-right mt-2 font-semibold">- Abena K., Farmer in Tamale</footer>
             </blockquote>
+          </div>
+        </div>
+      </section>
+
+      {/* Platform Features & Access */}
+      <section className="py-16 md:py-24 bg-[#F2F2F2]">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Multiple Ways to Access AgriConnect</h2>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              Access AgriConnect through multiple channels designed for different technology levels and connectivity situations.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 mb-16">
+            {/* Mobile App */}
+            <div className="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div className="w-16 h-16 bg-[#27AE60] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#27AE60]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3">Mobile Apps</h3>
+              <p className="text-gray-600 mb-4">Android & iOS apps with full functionality for smartphones.</p>
+              <div className="text-sm text-gray-500">
+                • Offline capability<br/>
+                • Push notifications<br/>
+                • Camera integration
+              </div>
+            </div>
+
+            {/* Web Platform */}
+            <div className="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div className="w-16 h-16 bg-[#1ABC9C] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#1ABC9C]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3">Web Platform</h3>
+              <p className="text-gray-600 mb-4">Full-featured web application accessible from any browser.</p>
+              <div className="text-sm text-gray-500">
+                • Desktop experience<br/>
+                • Advanced analytics<br/>
+                • Bulk operations
+              </div>
+            </div>
+
+            {/* USSD */}
+            <div className="bg-white rounded-xl p-8 shadow-lg text-center">
+              <div className="w-16 h-16 bg-[#F39C12] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg className="w-8 h-8 text-[#F39C12]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948-.684l1.498.75a1 1 0 01.684.948V7a1 1 0 01-1 1H4a1 1 0 01-1-1V5zM8 15a5 5 0 0110 0v1h-2v-1a3 3 0 00-6 0v1H8v-1z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3">USSD Code</h3>
+              <p className="text-gray-600 mb-4">Basic services accessible without internet on any phone.</p>
+              <div className="text-sm text-gray-500">
+                • No internet required<br/>
+                • Works on any phone<br/>
+                • Price checking & SMS alerts
+              </div>
+            </div>
+          </div>
+
+          {/* Payment Integration */}
+          <div className="bg-white rounded-xl p-8 shadow-lg">
+            <h3 className="text-2xl font-bold text-[#0A3D62] mb-6 text-center">Integrated Payment Solutions</h3>
+            <div className="grid md:grid-cols-4 gap-6 text-center">
+              <div className="p-4">
+                <div className="text-lg font-semibold text-[#27AE60] mb-2">MTN Mobile Money</div>
+                <p className="text-gray-600 text-sm">Secure payments and transfers</p>
+              </div>
+              <div className="p-4">
+                <div className="text-lg font-semibold text-[#1ABC9C] mb-2">Telecel Money</div>
+                <p className="text-gray-600 text-sm">Quick mobile transactions</p>
+              </div>
+              <div className="p-4">
+                <div className="text-lg font-semibold text-[#F39C12] mb-2">Kudipay</div>
+                <p className="text-gray-600 text-sm">Digital wallet integration</p>
+              </div>
+              <div className="p-4">
+                <div className="text-lg font-semibold text-[#E74C3C] mb-2">Bank Transfers</div>
+                <p className="text-gray-600 text-sm">Traditional banking options</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Plans */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Choose Your Plan</h2>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              Flexible subscription options designed to grow with your agricultural business.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+            {/* Basic Plan */}
+            <div className="bg-[#F2F2F2] rounded-xl p-8">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-[#0A3D62] mb-2">Basic</h3>
+                <div className="text-4xl font-bold text-[#27AE60] mb-2">Free</div>
+                <p className="text-gray-600">Perfect for getting started</p>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Weather forecasts</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Basic marketplace access</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Community forums</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">USSD access</span>
+                </li>
+              </ul>
+              <button className="w-full btn bg-[#27AE60] text-white hover:bg-opacity-90">
+                Get Started Free
+              </button>
+            </div>
+
+            {/* Pro Plan */}
+            <div className="bg-white rounded-xl p-8 shadow-lg border-2 border-[#27AE60] relative">
+              <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
+                <span className="bg-[#27AE60] text-white px-4 py-1 rounded-full text-sm font-medium">Popular</span>
+              </div>
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-[#0A3D62] mb-2">Pro</h3>
+                <div className="text-4xl font-bold text-[#27AE60] mb-2">GHS 10<span className="text-lg">/month</span></div>
+                <p className="text-gray-600">For growing farms</p>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Everything in Basic</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Advanced analytics</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Premium buyer access</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Price trend alerts</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Priority support</span>
+                </li>
+              </ul>
+              <button className="w-full btn bg-[#27AE60] text-white hover:bg-opacity-90">
+                Start Pro Trial
+              </button>
+            </div>
+
+            {/* Enterprise Plan */}
+            <div className="bg-[#F2F2F2] rounded-xl p-8">
+              <div className="text-center mb-6">
+                <h3 className="text-2xl font-bold text-[#0A3D62] mb-2">Enterprise</h3>
+                <div className="text-4xl font-bold text-[#27AE60] mb-2">GHS 50<span className="text-lg">/month</span></div>
+                <p className="text-gray-600">For large operations</p>
+              </div>
+              <ul className="space-y-3 mb-8">
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Everything in Pro</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Full logistics integration</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Bulk order management</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Custom reporting</span>
+                </li>
+                <li className="flex items-start">
+                  <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                  <span className="text-gray-600">Dedicated account manager</span>
+                </li>
+              </ul>
+              <button className="w-full btn bg-[#27AE60] text-white hover:bg-opacity-90">
+                Contact Sales
+              </button>
+            </div>
+          </div>
+
+          <div className="text-center mt-8 text-gray-600">
+            <p>All plans include 1.5% - 2.5% transaction fees on marketplace purchases.</p>
           </div>
         </div>
       </section>

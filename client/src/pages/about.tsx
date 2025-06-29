@@ -7,10 +7,13 @@ const About = () => {
       {/* Hero Section */}
       <section className="relative bg-[#0A3D62] text-white py-20">
         <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About Haydeen Technologies</h1>
-            <p className="text-xl opacity-90">
-              Developing innovative software solutions for West Africa's most pressing challenges.
+            <p className="text-xl opacity-90 mb-4">
+              Bridging critical gaps in Ghana's and West Africa's industries through innovative software solutions.
+            </p>
+            <p className="text-lg opacity-80">
+              Our mission: Transform agriculture and STEM fields with technology that enhances efficiency and drives sustainable growth across key sectors.
             </p>
           </div>
         </div>
@@ -23,13 +26,16 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-[#0A3D62] mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Haydeen Technologies was founded in 2020 with a clear mission: to develop innovative software solutions that address critical gaps in Ghana's and West Africa's industries.
+                Founded by Mohammad Deen Hayatu in Effiduasi, Ghana, Haydeen Technologies emerged with a clear mission: to develop innovative software solutions that bridge critical gaps in Ghana's and West Africa's industries, starting with agriculture and STEM fields.
               </p>
               <p className="text-gray-600 mb-4">
-                Our journey began in the agricultural sector, where we saw an opportunity to connect farmers with vital resources, data, and markets through technology. This led to the development of our flagship product, AgriConnect.
+                Our journey began with recognizing the challenges facing Ghana's agricultural sector, which contributes ~20% to GDP and employs ~45% of the workforce. We saw inefficient supply chains, limited market access, and low technology adoption as key problems to solve.
+              </p>
+              <p className="text-gray-600 mb-4">
+                This insight led to the development of our flagship product, AgriConnect—a comprehensive digital platform connecting farmers, buyers, suppliers, and logistics service providers to streamline agricultural trade and logistics across West Africa.
               </p>
               <p className="text-gray-600">
-                Today, we're expanding our impact into commerce, logistics, marketing, and scientific research—always with a focus on creating solutions tailored to the unique needs and challenges of the West African context.
+                Today, we're positioning ourselves to become the leading provider of industry-specific software solutions in West Africa, with plans to expand into e-commerce, logistics, and STEM research—always enhancing efficiency and growth across key sectors.
               </p>
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
@@ -43,8 +49,83 @@ const About = () => {
         </div>
       </section>
 
-      {/* Our Mission & Values */}
+      {/* Business Objectives */}
       <section className="py-16 md:py-24 bg-[#F2F2F2]">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Our Growth Vision</h2>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              We have ambitious but achievable goals for transforming West Africa's digital landscape.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {/* Objective 1 */}
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-3xl font-bold text-[#27AE60] mb-2">6 Months</div>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Launch AgriConnect</h3>
+              <p className="text-gray-600 text-sm">
+                Complete MVP development and official platform launch
+              </p>
+            </div>
+
+            {/* Objective 2 */}
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-3xl font-bold text-[#1ABC9C] mb-2">1,000+</div>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Active Users</h3>
+              <p className="text-gray-600 text-sm">
+                Farmers, buyers, and suppliers using our platform by Year 1
+              </p>
+            </div>
+
+            {/* Objective 3 */}
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-3xl font-bold text-[#F39C12] mb-2">GHS200K</div>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Revenue Target</h3>
+              <p className="text-gray-600 text-sm">
+                Projected revenue generation by end of Year 1
+              </p>
+            </div>
+
+            {/* Objective 4 */}
+            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+              <div className="text-3xl font-bold text-[#E74C3C] mb-2">3 Countries</div>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Regional Expansion</h3>
+              <p className="text-gray-600 text-sm">
+                Ghana, Nigeria, and Côte d'Ivoire by Year 4-5
+              </p>
+            </div>
+          </div>
+
+          {/* Market Context */}
+          <div className="bg-white rounded-xl p-8 mb-16">
+            <h3 className="text-2xl font-bold text-[#0A3D62] mb-6 text-center">Market Opportunity</h3>
+            <div className="grid md:grid-cols-3 gap-8">
+              <div className="text-center">
+                <div className="text-4xl font-bold text-[#27AE60] mb-2">20%</div>
+                <p className="text-gray-600">
+                  Agriculture's contribution to Ghana's GDP
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-[#1ABC9C] mb-2">45%</div>
+                <p className="text-gray-600">
+                  Workforce employed in agriculture sector
+                </p>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold text-[#F39C12] mb-2">75%</div>
+                <p className="text-gray-600">
+                  Projected mobile penetration by 2025
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Our Mission & Values */}
+      <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Our Mission & Values</h2>
@@ -96,6 +177,119 @@ const About = () => {
         </div>
       </section>
 
+      {/* Technology Roadmap */}
+      <section className="py-16 md:py-24 bg-[#F2F2F2]">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Our Technology Roadmap</h2>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              From AgriConnect to comprehensive digital transformation across multiple sectors.
+            </p>
+          </div>
+
+          <div className="space-y-8">
+            {/* Phase 1: AgriConnect */}
+            <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#27AE60]">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="md:w-1/4">
+                  <span className="inline-block bg-[#27AE60] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 1 - Current</span>
+                  <h3 className="text-2xl font-bold text-[#0A3D62]">AgriConnect Platform</h3>
+                </div>
+                <div className="md:w-3/4">
+                  <p className="text-gray-600 mb-4">
+                    Our flagship MVP connecting farmers, buyers, suppliers, and logistics providers across Ghana's agricultural value chain.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2">
+                      <Check className="w-5 h-5 text-[#27AE60]" />
+                      <span className="text-sm">Digital Marketplace</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Check className="w-5 h-5 text-[#27AE60]" />
+                      <span className="text-sm">Logistics Integration</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Check className="w-5 h-5 text-[#27AE60]" />
+                      <span className="text-sm">Mobile Payment Systems</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <Check className="w-5 h-5 text-[#27AE60]" />
+                      <span className="text-sm">USSD Support</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Phase 2: Expansion */}
+            <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#1ABC9C]">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="md:w-1/4">
+                  <span className="inline-block bg-[#1ABC9C] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 2 - Year 3</span>
+                  <h3 className="text-2xl font-bold text-[#0A3D62]">Multi-Sector Solutions</h3>
+                </div>
+                <div className="md:w-3/4">
+                  <p className="text-gray-600 mb-4">
+                    Expanding into e-commerce, logistics optimization, and STEM research platforms across Ghana.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#1ABC9C]"></div>
+                      <span className="text-sm">EcoVend Platform</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#1ABC9C]"></div>
+                      <span className="text-sm">MarketMate Solutions</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#1ABC9C]"></div>
+                      <span className="text-sm">TransitPro Logistics</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#1ABC9C]"></div>
+                      <span className="text-sm">STEM Research Tools</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Phase 3: Regional Expansion */}
+            <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#F39C12]">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="md:w-1/4">
+                  <span className="inline-block bg-[#F39C12] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 3 - Year 4-5</span>
+                  <h3 className="text-2xl font-bold text-[#0A3D62]">West Africa Expansion</h3>
+                </div>
+                <div className="md:w-3/4">
+                  <p className="text-gray-600 mb-4">
+                    Scaling successful solutions across Nigeria and Côte d'Ivoire markets with localized adaptations.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#F39C12]"></div>
+                      <span className="text-sm">Nigeria Market Entry</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#F39C12]"></div>
+                      <span className="text-sm">Côte d'Ivoire Expansion</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#F39C12]"></div>
+                      <span className="text-sm">Multi-Language Support</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#F39C12]"></div>
+                      <span className="text-sm">Regional Partnerships</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Leadership Team */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
@@ -112,14 +306,14 @@ const About = () => {
               <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
                 <img 
                   src="https://images.unsplash.com/photo-1506277886164-e25aa3f4ef7f?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
-                  alt="Kofi Mensah" 
+                  alt="Mohammad Deen Hayatu" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Kofi Mensah</h3>
-              <p className="text-[#27AE60] font-medium mb-3">Founder & CEO</p>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Mohammad Deen Hayatu</h3>
+              <p className="text-[#27AE60] font-medium mb-3">Founder & Lead Developer</p>
               <p className="text-gray-600 mb-3">
-                Software engineer with 12+ years of experience in building solutions for emerging markets.
+                Full-stack developer passionate about creating innovative software solutions for West Africa's critical industry challenges.
               </p>
             </div>
 
@@ -128,14 +322,14 @@ const About = () => {
               <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
                 <img 
                   src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
-                  alt="Ama Dankwa" 
+                  alt="Strategy Team" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Ama Dankwa</h3>
-              <p className="text-[#27AE60] font-medium mb-3">Chief Strategy Officer</p>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Strategy Team</h3>
+              <p className="text-[#27AE60] font-medium mb-3">Business Development</p>
               <p className="text-gray-600 mb-3">
-                Economist and strategist focused on digital transformation across key West African industries.
+                Economist and strategist focused on financial planning, partnerships, and sustainable business growth across West Africa.
               </p>
             </div>
 
@@ -144,14 +338,14 @@ const About = () => {
               <div className="mb-4 rounded-full overflow-hidden w-40 h-40 mx-auto">
                 <img 
                   src="https://images.unsplash.com/photo-1539701938214-0d9736e1c16b?ixlib=rb-1.2.1&auto=format&fit=crop&w=300&h=300&q=80" 
-                  alt="David Osei" 
+                  alt="Development Team" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">David Osei</h3>
-              <p className="text-[#27AE60] font-medium mb-3">CTO</p>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-1">Development Team</h3>
+              <p className="text-[#27AE60] font-medium mb-3">Technical Specialists</p>
               <p className="text-gray-600 mb-3">
-                Tech leader with expertise in building scalable platforms and mobile-first solutions.
+                Freelance UI/UX designers and software engineers contributing to platform development and user experience optimization.
               </p>
             </div>
           </div>
