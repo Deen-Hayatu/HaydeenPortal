@@ -37,6 +37,11 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
 - **Responsive Design**: Mobile-first approach
 
 ## Recent Changes
+- **2025-01-29**: Updated contact information with correct address
+  - Changed address from placeholder to actual location: Bw 14 Benz road, Effiduasi Ashanti
+  - Updated footer, contact page, and map to reflect correct location
+  - Updated founder photos with professional images
+  - Simplified leadership team to reflect sole developer structure
 - **2025-01-29**: Updated About page with authentic business information from business plan
   - Added Mohammad Deen Hayatu as founder
   - Updated company story with actual location (Effiduasi, Ghana)
