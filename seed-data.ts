@@ -60,10 +60,10 @@ async function seed() {
       content: "Sample content for this blog post.",
       publishedAt: new Date(2023, 2, 10),
       readTime: "6 min read",
-      coverImage: "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80",
+      coverImage: "https://images.unsplash.com/photo-1556103255-4443dbae8e5a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
       authorName: "David Osei",
       authorRole: "CTO",
-      authorAvatar: "https://images.unsplash.com/photo-1531384441138-2736e62e0919?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&h=100&q=80",
+      authorAvatar: "https://images.unsplash.com/photo-1522556189639-b150ed9c4330?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&h=100&q=80",
       category: "Education"
     }
   ]);

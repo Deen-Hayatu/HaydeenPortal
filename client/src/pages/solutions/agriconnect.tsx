@@ -26,8 +26,8 @@ const Agriconnect = () => {
             </div>
             <div className="relative">
               <img 
-                src="https://images.unsplash.com/photo-1591339093167-ea5ad9a36ce4?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                alt="Farmer using AgriConnect mobile app" 
+                src="https://images.unsplash.com/photo-1544698310-e5848922d1f0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                alt="West African farmer using AgriConnect mobile app" 
                 className="rounded-lg shadow-xl"
               />
             </div>
@@ -134,8 +134,8 @@ const Agriconnect = () => {
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <img 
-                    src="https://images.unsplash.com/photo-1581093458791-9d62fa3333e0?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt="Farmer checking crop data on mobile app" 
+                    src="https://images.unsplash.com/photo-1580281820385-d04e2e4e9b36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="West African farmer checking crop data on mobile app" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -146,8 +146,8 @@ const Agriconnect = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="rounded-lg overflow-hidden shadow-lg md:order-first order-last">
                   <img 
-                    src="https://images.unsplash.com/photo-1518735869015-566a18eae4be?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt="Digital marketplace for farmers" 
+                    src="https://images.unsplash.com/photo-1581515145842-d1a55f6f77be?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="Digital marketplace for West African farmers" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -206,8 +206,8 @@ const Agriconnect = () => {
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-lg">
                   <img 
-                    src="https://images.unsplash.com/photo-1531973486364-5fa64260d75b?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt="Farmers learning through mobile educational content" 
+                    src="https://images.unsplash.com/photo-1565464027194-61c0d6d8c0b9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="West African farmers learning through mobile educational content" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -218,8 +218,8 @@ const Agriconnect = () => {
               <div className="grid md:grid-cols-2 gap-8 items-center">
                 <div className="rounded-lg overflow-hidden shadow-lg md:order-first order-last">
                   <img 
-                    src="https://images.unsplash.com/photo-1609234656388-0ff363383899?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
-                    alt="Farmer community meeting" 
+                    src="https://images.unsplash.com/photo-1572276596237-5db2c3e16c5d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                    alt="West African farmer community meeting" 
                     className="w-full h-full object-cover"
                   />
                 </div>

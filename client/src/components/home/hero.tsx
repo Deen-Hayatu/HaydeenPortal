@@ -6,7 +6,7 @@ const Hero = () => {
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-r from-[#0A3D62] to-[#1ABC9C] opacity-90"></div>
         <img 
-          src="https://images.unsplash.com/photo-1589923188900-85dae523342b?ixlib=rb-1.2.1&auto=format&fit=crop&w=1920&q=80" 
+          src="https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80" 
           alt="West African landscape" 
           className="w-full h-full object-cover"
         />

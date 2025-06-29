@@ -38,7 +38,7 @@ const FeaturedCaseStudy = () => {
           
           <div className="rounded-xl overflow-hidden shadow-xl">
             <img 
-              src="https://images.unsplash.com/photo-1505471768190-275e2ad7b3f9?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" 
+              src="https://images.unsplash.com/photo-1580281820385-d04e2e4e9b36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
               alt="Farmers in Ghana using the AgriConnect platform" 
               className="w-full h-full object-cover"
             />
