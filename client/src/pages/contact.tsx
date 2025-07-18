@@ -130,7 +130,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h3 className="text-lg font-semibold text-[#0A3D62] mb-1">Call Us</h3>
-                    <p className="text-gray-600">+233 123 456 7890</p>
+                    <p className="text-gray-600">+233 207 884 182</p>
                   </div>
                 </div>
               </div>
@@ -209,7 +209,7 @@ const Contact = () => {
                           <FormLabel>Phone Number (Optional)</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="+233 123 456 7890" 
+                              placeholder="+233 207 884 182" 
                               type="tel" 
                               {...field} 
                               className="bg-white"
