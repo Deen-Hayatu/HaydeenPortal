@@ -1,0 +1,101 @@
+Critical Improvements Needed 🚨
+1. Visual Hierarchy & Scannability
+
+    Problem: Key information (value proposition, CTA) gets lost
+
+    Fix:
+    css
+
+    /* Increase contrast and size */
+    .hero-heading {
+      font-size: 2.5rem; /* Current: ~1.8rem */
+      color: #1a365d; /* Darker blue */
+      margin-bottom: 1rem;
+    }
+    .cta-button {
+      background: #fcd116; /* Gold */
+      padding: 12px 30px; /* Current: 8px 20px */
+    }
+
+2. Ghana-Specific Trust Signals
+
+    Missing Elements:
+
+        MTN Mobile Money payment badge
+
+        Ghana Health Service partnership logos
+
+        Local client testimonials
+
+    Recommended Addition:
+    html
+
+    <div class="trust-badges">
+      <img src="mtn-momo-badge.svg" alt="MTN Mobile Money" width="120">
+      <img src="ghs-partner.svg" alt="GHS Certified" width="100">
+    </div>
+
+3. Performance Issues
+
+    Current: Unoptimized images (e.g., hero image ~800KB)
+
+    Solution:
+    bash
+
+    # Convert to WebP (70% smaller)
+    convert hero.jpg -quality 85 -resize 1600x hero.webp
+
+UI/UX Recommendations
+A. Navigation Bar
+
+    Add:
+
+        Active state indicators
+
+        Dropdown for "Products" (Agriconnect, GhEHR)
+
+        Language selector (EN/TWI)
+
+B. Services Section
+
+    Current: Text-heavy cards
+
+    Improvement:
+    html
+
+    <div class="service-card">
+      <svg class="service-icon">...</svg> <!-- Ghana-themed icons -->
+      <h3>EHR Systems</h3>
+      <p>HIPAA-compliant records for clinics</p>
+      <a href="/ehr" class="learn-more">Learn More →</a>
+    </div>
+
+C. Contact Form
+
+    Add:
+
+        MTN payment option
+
+        Form validation
+
+        Success/error messages
+
+Technical SEO Audit
+Issue	Priority	Fix
+No meta description	High	Add <meta name="description">
+Missing alt text	Medium	alt="Haydeen EHR dashboard"
+Slow LCP (3.2s)	Critical	Optimize hero image + preload
+Proposed Redesign Mockup
+
+https://i.imgur.com/XYZeR9l.png
+Left: Current | Right: Suggested improvements
+
+Key changes:
+
+    Bold headline with value proposition
+
+    Product showcase section
+
+    Localized trust badges
+
+    Clear CTA hierarchy

@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import AgriculturalHeroBg from "@/components/ui/agricultural-hero-bg";
 import EnhancedCTAButton from "@/components/ui/enhanced-cta-button";
 import PlatformScreenshot from "@/components/ui/platform-screenshot";
+import TrustBadges from "@/components/ui/trust-badges";
 import { motion } from "framer-motion";
 
 const Hero = () => {
@@ -27,10 +28,10 @@ const Hero = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
-                className="text-4xl md:text-6xl font-bold font-poppins leading-tight"
+                className="text-5xl md:text-7xl font-bold font-poppins leading-tight"
               >
                 Innovative Software Solutions for{" "}
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#27AE60] to-[#2ECC71]">
+                <span className="text-[#FCD116] drop-shadow-lg">
                   West Africa
                 </span>
               </motion.h1>
@@ -51,7 +52,7 @@ const Hero = () => {
               transition={{ duration: 0.8, delay: 0.6 }}
               className="flex flex-col sm:flex-row gap-4"
             >
-              <EnhancedCTAButton variant="primary" size="lg" href="/solutions/agriconnect">
+              <EnhancedCTAButton variant="primary" size="lg" href="/solutions/agriconnect" className="bg-[#FCD116] text-black hover:bg-[#F1C40F] px-8 py-4 text-lg font-bold">
                 Explore AgriConnect
               </EnhancedCTAButton>
               <EnhancedCTAButton variant="demo" size="lg" href="/products">
@@ -62,25 +63,14 @@ const Hero = () => {
               </EnhancedCTAButton>
             </motion.div>
             
-            {/* Trust indicators */}
+            {/* Ghana-specific trust badges */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="flex items-center gap-8 pt-8"
+              className="pt-8"
             >
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#27AE60]">500+</div>
-                <div className="text-sm opacity-75">Active Users</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#27AE60]">95%</div>
-                <div className="text-sm opacity-75">Success Rate</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl font-bold text-[#27AE60]">24/7</div>
-                <div className="text-sm opacity-75">Support</div>
-              </div>
+              <TrustBadges variant="dark" />
             </motion.div>
           </motion.div>
           
