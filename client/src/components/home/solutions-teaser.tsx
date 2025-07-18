@@ -1,5 +1,8 @@
 import { Link } from "wouter";
 import { Globe, ShoppingBag, Map, Laptop, Heart } from "lucide-react";
+import AnimatedCard from "@/components/ui/animated-card";
+import EnhancedCTAButton from "@/components/ui/enhanced-cta-button";
+import { motion } from "framer-motion";
 
 const solutions = [
   {
@@ -61,44 +64,65 @@ const SolutionsTeaser = () => {
         </div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {solutions.map((solution) => (
-            <div 
+          {solutions.map((solution, index) => (
+            <AnimatedCard 
               key={solution.id}
-              className="bg-white rounded-xl shadow-lg overflow-hidden transform transition duration-300 hover:-translate-y-2 hover:shadow-xl"
+              delay={index * 0.1}
+              className="bg-white rounded-xl shadow-lg overflow-hidden group"
             >
-              <div className={`${solution.color} h-2`}></div>
+              <div className={`${solution.color} h-2 transition-all duration-300 group-hover:h-3`}></div>
               <div className="p-6">
-                <div className="w-14 h-14 bg-[#F2F2F2] rounded-full flex items-center justify-center mb-4">
+                <div className="w-14 h-14 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
                   {solution.icon}
                 </div>
-                <h3 className="text-xl font-bold text-[#0A3D62] font-poppins mb-2">{solution.title}</h3>
-                <p className="text-gray-600 mb-4">{solution.description}</p>
+                <h3 className="text-xl font-bold text-[#0A3D62] font-poppins mb-2 group-hover:text-[#27AE60] transition-colors duration-300">
+                  {solution.title}
+                </h3>
+                <p className="text-gray-600 mb-6 leading-relaxed">{solution.description}</p>
                 
                 {solution.isAvailable ? (
-                  <Link href={solution.path} className="text-[#27AE60] font-semibold inline-flex items-center">
-                    Learn more
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                    </svg>
-                  </Link>
+                  <EnhancedCTAButton
+                    variant="primary"
+                    size="sm"
+                    href={solution.path}
+                    className="w-full justify-center"
+                  >
+                    Learn More
+                  </EnhancedCTAButton>
                 ) : (
-                  <span className="text-gray-400 inline-flex items-center">
-                    Coming soon
-                    <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                      <path fillRule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clipRule="evenodd" />
-                    </svg>
-                  </span>
+                  <div className="flex items-center justify-center gap-2 text-gray-400 py-2">
+                    <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
+                    <span className="text-sm font-medium">Coming Soon</span>
+                  </div>
                 )}
               </div>
-            </div>
+            </AnimatedCard>
           ))}
         </div>
-
-        <div className="text-center mt-12">
-          <Link href="/solutions" className="btn btn-outline">
-            View All Solutions
-          </Link>
-        </div>
+        
+        {/* Additional CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">
+            Ready to Transform Your Business?
+          </h3>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Join hundreds of businesses across Ghana and West Africa who have modernized their operations with our innovative solutions.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <EnhancedCTAButton variant="primary" size="lg" href="/contact">
+              Get Started Today
+            </EnhancedCTAButton>
+            <EnhancedCTAButton variant="demo" size="lg" href="/products">
+              Book a Demo
+            </EnhancedCTAButton>
+          </div>
+        </motion.div>
       </div>
     </section>
   );

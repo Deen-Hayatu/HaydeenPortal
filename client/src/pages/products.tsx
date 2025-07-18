@@ -5,6 +5,11 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import HeadTags from "@/components/seo/head-tags";
 import ghehrLogo from "@assets/GhEHR logo_1752832735160.png";
+import PlatformScreenshot from "@/components/ui/platform-screenshot";
+import EnhancedCTAButton from "@/components/ui/enhanced-cta-button";
+import TestimonialCard from "@/components/ui/testimonial-card";
+import AnimatedCard from "@/components/ui/animated-card";
+import { motion } from "framer-motion";
 
 const Products = () => {
   const products = [
@@ -90,12 +95,12 @@ const Products = () => {
               Innovative software solutions designed specifically for Ghana and West Africa
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-[#27AE60] hover:bg-[#229954] text-white">
-                <Link href="#products">View Products</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#0A3D62]">
-                <Link href="/contact">Request Demo</Link>
-              </Button>
+              <EnhancedCTAButton variant="primary" size="lg" href="#products">
+                View Products
+              </EnhancedCTAButton>
+              <EnhancedCTAButton variant="demo" size="lg" href="/contact">
+                Request Demo
+              </EnhancedCTAButton>
             </div>
           </div>
         </div>
@@ -113,21 +118,31 @@ const Products = () => {
 
           <div className="grid gap-8">
             {products.map((product, index) => (
-              <Card key={product.id} className="overflow-hidden">
-                <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
-                  {/* Product Image/Logo */}
+              <AnimatedCard key={product.id} delay={index * 0.2} className="overflow-hidden">
+                <Card className="h-full">
+                  <div className={`grid md:grid-cols-2 gap-0 ${index % 2 === 1 ? 'md:grid-flow-col-dense' : ''}`}>
+                  {/* Product Screenshot */}
                   <div className={`relative bg-gradient-to-br from-gray-50 to-gray-100 flex items-center justify-center p-8 ${index % 2 === 1 ? 'md:col-start-2' : ''}`}>
-                    {product.logo ? (
+                    {product.id === 'agriconnect' ? (
+                      <PlatformScreenshot 
+                        platform="agriconnect" 
+                        className="w-full max-w-md"
+                      />
+                    ) : product.id === 'ghehr' ? (
+                      <PlatformScreenshot 
+                        platform="ghehr" 
+                        className="w-full max-w-md"
+                      />
+                    ) : product.id === 'ecovendghana' ? (
+                      <PlatformScreenshot 
+                        platform="ecovendghana" 
+                        className="w-full max-w-md"
+                      />
+                    ) : product.logo ? (
                       <img 
                         src={product.logo} 
                         alt={`${product.name} logo`}
                         className="max-h-32 w-auto object-contain"
-                      />
-                    ) : product.image ? (
-                      <img 
-                        src={product.image} 
-                        alt={product.name}
-                        className="w-full h-64 object-cover rounded-lg"
                       />
                     ) : (
                       <div className="w-full h-64 bg-gradient-to-br from-[#0A3D62] to-[#3C6382] rounded-lg flex items-center justify-center">
@@ -180,25 +195,34 @@ const Products = () => {
 
                     {/* Action Buttons */}
                     <div className="flex flex-wrap gap-3">
-                      <Button asChild className="bg-[#0A3D62] hover:bg-[#082E4A]">
-                        <Link href={product.liveDemo}>
-                          <ExternalLink className="h-4 w-4 mr-2" />
-                          View Details
-                        </Link>
-                      </Button>
+                      <EnhancedCTAButton 
+                        variant="primary" 
+                        size="md" 
+                        href={product.liveDemo}
+                      >
+                        View Details
+                      </EnhancedCTAButton>
                       
-                      <Button variant="outline" className="border-[#27AE60] text-[#27AE60] hover:bg-[#27AE60] hover:text-white">
-                        <Play className="h-4 w-4 mr-2" />
+                      <EnhancedCTAButton 
+                        variant="demo" 
+                        size="md" 
+                        href="/contact"
+                      >
                         Watch Demo
-                      </Button>
+                      </EnhancedCTAButton>
                       
-                      <Button asChild variant="ghost">
-                        <Link href="/contact">Request Access</Link>
-                      </Button>
+                      <EnhancedCTAButton 
+                        variant="contact" 
+                        size="md" 
+                        href="/contact"
+                      >
+                        Talk to Expert
+                      </EnhancedCTAButton>
                     </div>
                   </CardContent>
-                </div>
-              </Card>
+                  </div>
+                </Card>
+              </AnimatedCard>
             ))}
           </div>
         </div>
@@ -213,12 +237,12 @@ const Products = () => {
               Schedule a personalized demo to see how our solutions can transform your business operations in Ghana.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-[#27AE60] hover:bg-[#229954]">
-                <Link href="/contact">Schedule Demo</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg">
-                <Link href="/solutions">Explore All Solutions</Link>
-              </Button>
+              <EnhancedCTAButton variant="primary" size="lg" href="/contact">
+                Schedule Demo
+              </EnhancedCTAButton>
+              <EnhancedCTAButton variant="secondary" size="lg" href="/solutions">
+                Explore All Solutions
+              </EnhancedCTAButton>
             </div>
           </div>
         </div>
