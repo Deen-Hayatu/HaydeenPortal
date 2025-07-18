@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Link, useLocation } from "wouter";
+import { Menu, X } from "lucide-react";
 import CompanyLogo from "@/components/ui/company-logo";
+import LanguageToggle from "@/components/layout/language-toggle";
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -22,8 +24,9 @@ const Header = () => {
     { label: "Home", path: "/" },
     { label: "About", path: "/about" },
     { label: "Solutions", path: "/solutions" },
-    { label: "Agriconnect", path: "/solutions/agriconnect" },
+    { label: "Products", path: "/products" },
     { label: "Blog", path: "/blog" },
+    { label: "Careers", path: "/careers" },
     { label: "Contact", path: "/contact" },
   ];
 
@@ -37,43 +40,40 @@ const Header = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.path}
-                href={item.path}
-                className={`font-medium ${
-                  isActive(item.path) 
-                    ? "text-[#27AE60]" 
-                    : "text-[#0A3D62] hover:text-[#27AE60]"
-                } transition`}
-              >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
+          <div className="hidden md:flex items-center space-x-8">
+            <nav className="flex space-x-8">
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  href={item.path}
+                  className={`font-medium ${
+                    isActive(item.path) 
+                      ? "text-[#27AE60]" 
+                      : "text-[#0A3D62] hover:text-[#27AE60]"
+                  } transition`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+            <LanguageToggle />
+          </div>
 
-          {/* Mobile Menu Button */}
-          <button
-            className="md:hidden text-[#0A3D62]"
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Mobile Menu Button & Language Toggle */}
+          <div className="md:hidden flex items-center space-x-2">
+            <LanguageToggle />
+            <button
+              className="text-[#0A3D62]"
+              onClick={toggleMobileMenu}
+              aria-label="Toggle mobile menu"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            </svg>
-          </button>
+              {isMobileMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
+            </button>
+          </div>
         </div>
 
         {/* Mobile Menu */}

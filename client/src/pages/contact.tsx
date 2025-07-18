@@ -9,6 +9,9 @@ import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, MapPin, Send } from "lucide-react";
 import { sendContactForm } from "@/lib/emailjs-service";
+import MobileMoney from "@/components/payment/mobile-money";
+import ContactFormProtectionProvider from "@/components/security/contact-form-protection";
+import HeadTags from "@/components/seo/head-tags";
 
 const formSchema = z.object({
   name: z.string().min(2, { message: "Name must be at least 2 characters" }),
@@ -68,7 +71,15 @@ const Contact = () => {
   };
 
   return (
-    <>
+    <ContactFormProtectionProvider>
+      {({ canSubmit, remainingCooldown, recordAttempt }) => (
+        <>
+          <HeadTags
+            title="Contact Us | Haydeen Technologies Ghana - Get in Touch"
+            description="Contact Haydeen Technologies for innovative software solutions in Ghana. Located in Effiduasi, Ashanti. We offer AgriConnect, GhEHR, and custom website design services."
+            keywords="contact Haydeen Technologies, software company Ghana, Effiduasi Ashanti, AgriConnect support, GhEHR contact, website design Ghana"
+            canonical="https://haydeentechnologies.com/contact"
+          />
       {/* Hero Section */}
       <section className="relative bg-[#0A3D62] text-white py-20">
         <div className="container">
@@ -249,7 +260,7 @@ const Contact = () => {
                   <Button 
                     type="submit" 
                     className="w-full bg-[#27AE60] hover:bg-opacity-90"
-                    disabled={isSubmitting}
+                    disabled={isSubmitting || !canSubmit}
                   >
                     {isSubmitting ? (
                       <div className="flex items-center">
@@ -266,6 +277,38 @@ const Contact = () => {
                       </div>
                     )}
                   </Button>
+                  
+                  {!canSubmit && remainingCooldown > 0 && (
+                    <p className="text-sm text-red-600 mt-2">
+                      Please wait {Math.ceil(remainingCooldown / 1000)} seconds before sending another message.
+                    </p>
+                  )}
+                  
+                  {/* Mobile Money Payment Option */}
+                  <div className="mt-8 pt-8 border-t">
+                    <h3 className="text-lg font-semibold text-[#0A3D62] mb-4">Quick Payment Options</h3>
+                    <p className="text-gray-600 mb-4">
+                      Need to make a quick payment? Use Mobile Money for instant transactions.
+                    </p>
+                    <MobileMoney
+                      amount={100}
+                      currency="GHS"
+                      description="Consultation Fee"
+                      onSuccess={() => {
+                        toast({
+                          title: "Payment Successful!",
+                          description: "Thank you for your payment. We'll contact you soon.",
+                        });
+                      }}
+                      onError={(error) => {
+                        toast({
+                          title: "Payment Failed",
+                          description: error,
+                          variant: "destructive",
+                        });
+                      }}
+                    />
+                  </div>
                 </form>
               </Form>
             </div>
@@ -344,7 +387,9 @@ const Contact = () => {
           </div>
         </div>
       </section>
-    </>
+        </>
+      )}
+    </ContactFormProtectionProvider>
   );
 };
 

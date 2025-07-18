@@ -13,7 +13,9 @@ import Solutions from "@/pages/solutions/index";
 import Agriconnect from "@/pages/solutions/agriconnect";
 import GhEHR from "@/pages/solutions/ghehr";
 import WebsiteDesign from "@/pages/solutions/website-design";
+import Products from "@/pages/products";
 import Blog from "@/pages/blog/index";
+import Careers from "@/pages/careers";
 import Contact from "@/pages/contact";
 
 function Router() {
@@ -28,7 +30,9 @@ function Router() {
           <Route path="/solutions/agriconnect" component={Agriconnect} />
           <Route path="/solutions/ghehr" component={GhEHR} />
           <Route path="/solutions/website-design" component={WebsiteDesign} />
+          <Route path="/products" component={Products} />
           <Route path="/blog" component={Blog} />
+          <Route path="/careers" component={Careers} />
           <Route path="/contact" component={Contact} />
           <Route component={NotFound} />
         </Switch>

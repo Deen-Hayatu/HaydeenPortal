@@ -1,8 +1,33 @@
 import express, { type Request, Response, NextFunction } from "express";
+import rateLimit from "express-rate-limit";
 import { registerRoutes } from "./routes";
 import { setupVite, serveStatic, log } from "./vite";
 
 const app = express();
+
+// Trust proxy for rate limiting (needed for deployment environments)
+app.set('trust proxy', 1);
+
+// Rate limiting middleware
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 100, // limit each IP to 100 requests per windowMs
+  message: 'Too many requests from this IP, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const contactLimiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 3, // limit each IP to 3 contact form submissions per windowMs
+  message: 'Too many contact form submissions, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+// Apply rate limiting
+app.use(generalLimiter);
+app.use('/api/contact', contactLimiter);
 
 // Security middleware
 app.use((req, res, next) => {
@@ -19,6 +44,12 @@ app.use((req, res, next) => {
   
   next();
 });
+
+// Static file caching
+app.use(express.static('public', { 
+  maxAge: process.env.NODE_ENV === 'production' ? '1y' : '1h',
+  immutable: process.env.NODE_ENV === 'production'
+}));
 
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
