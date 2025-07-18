@@ -1,0 +1,11 @@
+User-agent: *
+Allow: /
+
+# Block access to admin/private areas (none currently)
+# Disallow: /admin/
+
+# Sitemap location
+Sitemap: https://haydeentechnologies.com/sitemap.xml
+
+# Crawl-delay for respectful crawling
+Crawl-delay: 1

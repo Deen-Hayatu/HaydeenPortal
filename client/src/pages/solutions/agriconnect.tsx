@@ -2,10 +2,17 @@ import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, Award, Globe, Users, Database, BookOpen } from "lucide-react";
+import HeadTags from "@/components/seo/head-tags";
 
 const Agriconnect = () => {
   return (
     <>
+      <HeadTags
+        title="AgriConnect | Agricultural Platform by Haydeen Technologies Ghana"
+        description="AgriConnect connects farmers, buyers, and suppliers across Ghana and West Africa. Our digital agricultural platform offers market access, logistics coordination, and data-driven farming solutions."
+        keywords="AgriConnect, agricultural platform Ghana, farmers marketplace, agricultural technology, farming solutions West Africa, agricultural data, crop management"
+        canonical="https://haydeentechnologies.com/solutions/agriconnect"
+      />
       {/* Hero Section */}
       <section className="relative bg-[#27AE60] text-white py-16 md:py-20">
         <div className="container">

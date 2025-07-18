@@ -1,11 +1,18 @@
 import { Link } from "wouter";
 import { Shield, Users, FileText, BarChart3, Check, Stethoscope, Database, Cloud } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import HeadTags from "@/components/seo/head-tags";
 import ghehrLogo from "@assets/GhEHR logo_1752832735160.png";
 
 const GhEHR = () => {
   return (
     <>
+      <HeadTags
+        title="GhEHR | Ghana Electronic Health Record System by Haydeen Technologies"
+        description="GhEHR is a comprehensive electronic health record system designed specifically for Ghana's healthcare ecosystem. Features patient records, healthcare analytics, NHIS integration, and secure data management."
+        keywords="GhEHR, electronic health records Ghana, healthcare technology, NHIS integration, Ghana Health Service, medical records system, healthcare analytics Ghana, patient data management"
+        canonical="https://haydeentechnologies.com/solutions/ghehr"
+      />
       {/* Hero Section */}
       <section className="relative bg-[#27AE60] text-white py-16 md:py-20">
         <div className="container">
