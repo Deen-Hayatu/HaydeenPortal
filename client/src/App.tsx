@@ -10,6 +10,7 @@ import Home from "@/pages/home";
 import About from "@/pages/about";
 import Solutions from "@/pages/solutions/index";
 import Agriconnect from "@/pages/solutions/agriconnect";
+import GhEHR from "@/pages/solutions/ghehr";
 import WebsiteDesign from "@/pages/solutions/website-design";
 import Blog from "@/pages/blog/index";
 import Contact from "@/pages/contact";
@@ -24,6 +25,7 @@ function Router() {
           <Route path="/about" component={About} />
           <Route path="/solutions" component={Solutions} />
           <Route path="/solutions/agriconnect" component={Agriconnect} />
+          <Route path="/solutions/ghehr" component={GhEHR} />
           <Route path="/solutions/website-design" component={WebsiteDesign} />
           <Route path="/blog" component={Blog} />
           <Route path="/contact" component={Contact} />

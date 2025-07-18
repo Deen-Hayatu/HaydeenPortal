@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Solution } from "@/lib/types";
-import { Globe, ShoppingBag, Map, BarChart, Laptop } from "lucide-react";
+import { Globe, ShoppingBag, Map, BarChart, Laptop, Heart } from "lucide-react";
 
 const Solutions = () => {
   const { data: solutions, isLoading } = useQuery<Solution[]>({
@@ -30,6 +30,24 @@ const Solutions = () => {
     },
     {
       id: 2,
+      title: "GhEHR",
+      description: "Comprehensive electronic health record system designed specifically for Ghana's healthcare ecosystem and medical practices.",
+      longDescription: "GhEHR (Ghana Electronic Health Record) is a comprehensive healthcare management system tailored to Ghana's unique medical infrastructure and practices. It provides unified patient records, healthcare analytics, and system integration to improve healthcare outcomes across the country.",
+      features: [
+        "Digital patient history and medical records",
+        "Healthcare analytics and population health insights",
+        "Ghana Health Service and NHIS integration",
+        "Multi-language support for local medical terminology",
+        "Secure cloud infrastructure with local data residency"
+      ],
+      icon: <Heart className="h-10 w-10 text-[#E74C3C]" />,
+      color: "bg-[#E74C3C]",
+      colorClass: "text-[#E74C3C]",
+      slug: "ghehr",
+      isAvailable: true,
+    },
+    {
+      id: 3,
       title: "EcoVend",
       description: "Sustainable e-commerce platform connecting local artisans and eco-friendly products with global markets.",
       longDescription: "EcoVend is our upcoming e-commerce platform that connects local artisans and eco-friendly product manufacturers in West Africa with global markets. This platform focuses on sustainability, fair trade, and creating economic opportunities for small-scale producers.",
@@ -47,7 +65,7 @@ const Solutions = () => {
       isAvailable: false,
     },
     {
-      id: 3,
+      id: 4,
       title: "TransitPro",
       description: "Optimizing logistics and transportation networks across West Africa for efficient goods movement.",
       longDescription: "TransitPro will address the logistics challenges faced in West Africa by optimizing transportation networks, tracking shipments, and improving the efficiency of goods movement across the region. The platform will help reduce costs and delivery times while improving reliability.",
@@ -65,7 +83,7 @@ const Solutions = () => {
       isAvailable: false,
     },
     {
-      id: 4,
+      id: 5,
       title: "MarketMate",
       description: "AI-powered market research and analytics platform for businesses operating in West African markets.",
       longDescription: "MarketMate will provide businesses with AI-powered market research and analytics specifically tailored for West African markets. The platform will help companies make data-driven decisions based on accurate, localized market insights.",

@@ -29,6 +29,7 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
 - **Core Pages**: Home, About, Solutions, Blog, Contact
 - **Solutions Showcased**: 
   - AgriConnect (flagship agricultural platform)
+  - GhEHR (comprehensive electronic health record system for Ghana)
   - Website Design services (featuring MPCGhana.org case study)
   - EcoVend, MarketMate, TransitPro (coming soon)
 - **Website Design Services**: Highlighted for companies and individuals
@@ -37,6 +38,12 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
 - **Responsive Design**: Mobile-first approach
 
 ## Recent Changes
+- **2025-01-30**: Added GhEHR (Ghana Electronic Health Record) as major healthcare solution
+  - Created dedicated GhEHR solution page with comprehensive features and roadmap
+  - Added GhEHR to main solutions teaser and solutions index page
+  - Updated About page technology roadmap to include GhEHR as Phase 2
+  - Integrated healthcare analytics and Ghana Health Service integration details
+  - Added NHIS (National Health Insurance Scheme) connectivity features
 - **2025-01-29**: Replaced all stock images with West African representation
   - Updated all blog post cover images and author avatars
   - Changed hero section background image

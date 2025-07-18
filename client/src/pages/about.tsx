@@ -222,11 +222,44 @@ const About = () => {
               </div>
             </div>
 
-            {/* Phase 2: Expansion */}
+            {/* Phase 2: GhEHR Healthcare */}
+            <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#E74C3C]">
+              <div className="flex flex-col md:flex-row md:items-center gap-6">
+                <div className="md:w-1/4">
+                  <span className="inline-block bg-[#E74C3C] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 2 - Development</span>
+                  <h3 className="text-2xl font-bold text-[#0A3D62]">GhEHR Healthcare System</h3>
+                </div>
+                <div className="md:w-3/4">
+                  <p className="text-gray-600 mb-4">
+                    Comprehensive electronic health record system designed specifically for Ghana's healthcare ecosystem and medical practices.
+                  </p>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#E74C3C]"></div>
+                      <span className="text-sm">Digital Patient Records</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#E74C3C]"></div>
+                      <span className="text-sm">Healthcare Analytics</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#E74C3C]"></div>
+                      <span className="text-sm">NHIS Integration</span>
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <div className="w-5 h-5 rounded-full border-2 border-[#E74C3C]"></div>
+                      <span className="text-sm">Multi-Language Support</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Phase 3: Multi-Sector Expansion */}
             <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#1ABC9C]">
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="md:w-1/4">
-                  <span className="inline-block bg-[#1ABC9C] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 2 - Year 3</span>
+                  <span className="inline-block bg-[#1ABC9C] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 3 - Year 3</span>
                   <h3 className="text-2xl font-bold text-[#0A3D62]">Multi-Sector Solutions</h3>
                 </div>
                 <div className="md:w-3/4">
@@ -255,11 +288,11 @@ const About = () => {
               </div>
             </div>
 
-            {/* Phase 3: Regional Expansion */}
+            {/* Phase 4: Regional Expansion */}
             <div className="bg-white rounded-xl p-8 shadow-lg border-l-4 border-[#F39C12]">
               <div className="flex flex-col md:flex-row md:items-center gap-6">
                 <div className="md:w-1/4">
-                  <span className="inline-block bg-[#F39C12] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 3 - Year 4-5</span>
+                  <span className="inline-block bg-[#F39C12] text-white px-4 py-2 rounded-full text-sm font-medium mb-2">Phase 4 - Year 4-5</span>
                   <h3 className="text-2xl font-bold text-[#0A3D62]">West Africa Expansion</h3>
                 </div>
                 <div className="md:w-3/4">

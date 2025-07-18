@@ -1,5 +1,5 @@
 import { Link } from "wouter";
-import { Globe, ShoppingBag, Map, Laptop } from "lucide-react";
+import { Globe, ShoppingBag, Map, Laptop, Heart } from "lucide-react";
 
 const solutions = [
   {
@@ -13,6 +13,15 @@ const solutions = [
   },
   {
     id: 2,
+    title: "GhEHR",
+    description: "Comprehensive electronic health record system designed specifically for Ghana's healthcare ecosystem and medical practices.",
+    icon: <Heart className="h-8 w-8 text-[#E74C3C]" />,
+    color: "bg-[#E74C3C]",
+    path: "/solutions/ghehr",
+    isAvailable: true,
+  },
+  {
+    id: 3,
     title: "EcoVend",
     description: "Sustainable e-commerce platform connecting local artisans and eco-friendly products with global markets.",
     icon: <ShoppingBag className="h-8 w-8 text-[#1ABC9C]" />,
@@ -21,7 +30,7 @@ const solutions = [
     isAvailable: false,
   },
   {
-    id: 3,
+    id: 4,
     title: "TransitPro",
     description: "Optimizing logistics and transportation networks across West Africa for efficient goods movement.",
     icon: <Map className="h-8 w-8 text-[#F39C12]" />,
@@ -30,7 +39,7 @@ const solutions = [
     isAvailable: false,
   },
   {
-    id: 4,
+    id: 5,
     title: "Website Design",
     description: "Custom website design and development for companies and individuals, creating modern, responsive digital experiences.",
     icon: <Laptop className="h-8 w-8 text-[#3498DB]" />,
