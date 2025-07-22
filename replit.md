@@ -103,6 +103,7 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
 - Professional, supportive tone without emojis
 - Focus on authentic business information over placeholder content
 - Emphasis on West African market focus and local context
+- Interested in VS Code development and Vercel deployment workflow
 
 ## Project Architecture
 - Frontend: React SPA with Wouter routing
