@@ -320,64 +320,97 @@ const Solutions = () => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {/* Industry 1 */}
-            <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="w-16 h-16 rounded-full bg-[#27AE60] bg-opacity-10 flex items-center justify-center mx-auto mb-4">
+            {/* Agriculture */}
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-[#27AE60] bg-opacity-10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#27AE60]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-2">Agriculture</h3>
-              <p className="text-gray-600">Empowering farmers with technology for improved productivity and market access.</p>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-2 font-poppins group-hover:text-[#27AE60] transition-colors">Agriculture</h3>
+              <p className="text-gray-600 leading-relaxed">Empowering farmers with technology for improved productivity, market access, and sustainable farming practices.</p>
+              <div className="mt-4">
+                <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">AgriConnect MVP</span>
+              </div>
             </div>
 
-            {/* Industry 2 */}
-            <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="w-16 h-16 rounded-full bg-[#1ABC9C] bg-opacity-10 flex items-center justify-center mx-auto mb-4">
+            {/* Healthcare */}
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-[#E74C3C] bg-opacity-10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#E74C3C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-2 font-poppins group-hover:text-[#E74C3C] transition-colors">Healthcare</h3>
+              <p className="text-gray-600 leading-relaxed">Modernizing Ghana's healthcare system with comprehensive electronic health records and patient management solutions.</p>
+              <div className="mt-4">
+                <span className="bg-[#E74C3C] text-white text-xs px-2 py-1 rounded-full font-medium">GhEHR MVP</span>
+              </div>
+            </div>
+
+            {/* E-commerce */}
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-[#1ABC9C] bg-opacity-10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#1ABC9C]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-2">Commerce</h3>
-              <p className="text-gray-600">Enabling businesses to reach new markets and optimize their operations.</p>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-2 font-poppins group-hover:text-[#1ABC9C] transition-colors">E-commerce</h3>
+              <p className="text-gray-600 leading-relaxed">Sustainable marketplace connecting local artisans and eco-friendly products with global markets and fair trade practices.</p>
+              <div className="mt-4">
+                <span className="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full font-medium">EcoVend Planned</span>
+              </div>
             </div>
 
-            {/* Industry 3 */}
-            <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="w-16 h-16 rounded-full bg-[#F39C12] bg-opacity-10 flex items-center justify-center mx-auto mb-4">
+            {/* Logistics */}
+            <div className="bg-white rounded-xl shadow-lg p-6 text-center hover:shadow-xl transition-shadow duration-300 group">
+              <div className="w-16 h-16 rounded-full bg-[#F39C12] bg-opacity-10 flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#F39C12]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                 </svg>
               </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-2">Logistics</h3>
-              <p className="text-gray-600">Optimizing transportation and delivery networks across the region.</p>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-2 font-poppins group-hover:text-[#F39C12] transition-colors">Logistics</h3>
+              <p className="text-gray-600 leading-relaxed">Optimizing transportation networks and supply chain management across West Africa for efficient goods movement.</p>
+              <div className="mt-4">
+                <span className="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full font-medium">TransitPro Planned</span>
+              </div>
             </div>
 
-            {/* Industry 4 */}
-            <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-              <div className="w-16 h-16 rounded-full bg-[#0A3D62] bg-opacity-10 flex items-center justify-center mx-auto mb-4">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#0A3D62]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </div>
-              <h3 className="text-xl font-bold text-[#0A3D62] mb-2">Research</h3>
-              <p className="text-gray-600">Supporting scientific innovation with data processing and analytics tools.</p>
-            </div>
+
           </div>
         </div>
       </section>
 
       {/* Call to Action */}
-      <section className="py-16 bg-[#0A3D62] text-white">
+      <section className="py-16 md:py-20 bg-gradient-to-r from-[#0A3D62] to-[#3C6382] text-white">
         <div className="container">
-          <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Industry?</h2>
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">Join Our Development Journey</h2>
             <p className="text-xl mb-8 opacity-90">
-              Contact us today to discuss how our solutions can address your specific challenges.
+              Be part of Ghana's digital transformation. Stay updated on our MVP development progress and get early access to AgriConnect and GhEHR when they launch.
             </p>
-            <Link href="/contact" className="btn btn-primary">
-              Get in Touch
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link 
+                href="/contact" 
+                className="inline-flex items-center gap-2 bg-[#27AE60] hover:bg-[#229954] text-white px-8 py-4 rounded-lg font-medium transition-colors"
+              >
+                Get Development Updates
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </Link>
+              <Link 
+                href="/products" 
+                className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-medium transition-colors backdrop-blur-sm"
+              >
+                View Our MVPs
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                </svg>
+              </Link>
+            </div>
           </div>
         </div>
       </section>
