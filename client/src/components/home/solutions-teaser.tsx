@@ -68,47 +68,51 @@ const SolutionsTeaser = () => {
             <AnimatedCard 
               key={solution.id}
               delay={index * 0.1}
-              className="bg-white rounded-xl shadow-lg overflow-hidden group"
+              className="bg-white rounded-xl shadow-lg overflow-hidden group flex flex-col h-full"
             >
               <div className={`${solution.color} h-2 transition-all duration-300 group-hover:h-3`}></div>
-              <div className="p-6">
-                <div className="w-14 h-14 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
-                  {solution.icon}
+              <div className="p-6 flex flex-col flex-grow">
+                <div className="flex flex-col flex-grow">
+                  <div className="w-14 h-14 bg-gradient-to-br from-gray-100 to-gray-200 rounded-full flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300">
+                    {solution.icon}
+                  </div>
+                  <h3 className="text-xl font-bold text-[#0A3D62] font-poppins mb-2 group-hover:text-[#27AE60] transition-colors duration-300">
+                    {solution.title}
+                  </h3>
+                  <p className="text-gray-600 mb-4 leading-relaxed flex-grow">{solution.description}</p>
+                  
+                  <div className="mb-4">
+                    {solution.isAvailable ? (
+                      <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">
+                        In Development
+                      </span>
+                    ) : (
+                      <span className="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full font-medium">
+                        Planned
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-[#0A3D62] font-poppins mb-2 group-hover:text-[#27AE60] transition-colors duration-300">
-                  {solution.title}
-                </h3>
-                <p className="text-gray-600 mb-4 leading-relaxed">{solution.description}</p>
                 
-                <div className="mb-4">
+                <div className="mt-auto">
                   {solution.isAvailable ? (
-                    <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">
-                      In Development
-                    </span>
+                    <EnhancedCTAButton
+                      variant="primary"
+                      size="sm"
+                      href={solution.path}
+                      className="w-full justify-center group-hover:scale-105 transition-transform duration-300"
+                    >
+                      Explore MVP
+                    </EnhancedCTAButton>
                   ) : (
-                    <span className="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full font-medium">
-                      Planned
-                    </span>
+                    <div className="flex items-center justify-center gap-2 text-gray-400 py-2">
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                      <span className="text-sm font-medium">Future Development</span>
+                    </div>
                   )}
                 </div>
-                
-                {solution.isAvailable ? (
-                  <EnhancedCTAButton
-                    variant="primary"
-                    size="sm"
-                    href={solution.path}
-                    className="w-full justify-center group-hover:scale-105 transition-transform duration-300"
-                  >
-                    Explore MVP
-                  </EnhancedCTAButton>
-                ) : (
-                  <div className="flex items-center justify-center gap-2 text-gray-400 py-2">
-                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <span className="text-sm font-medium">Future Development</span>
-                  </div>
-                )}
               </div>
             </AnimatedCard>
           ))}
@@ -128,7 +132,7 @@ const SolutionsTeaser = () => {
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
             Stay updated on our MVP development progress and be among the first to experience AgriConnect and GhEHR when they launch.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <EnhancedCTAButton variant="primary" size="lg" href="/contact">
               Get Updates
             </EnhancedCTAButton>

@@ -166,44 +166,48 @@ const Solutions = () => {
           ) : (
             <div className="grid md:grid-cols-2 gap-8">
               {displaySolutions.map((solution) => (
-                <div key={solution.id} className="bg-white rounded-lg border shadow-sm p-8 hover:shadow-md transition-shadow">
-                  <div className={`w-16 h-16 ${solution.color} bg-opacity-10 rounded-full flex items-center justify-center mb-4`}>
-                    {solution.icon}
-                  </div>
-                  <h3 className="text-2xl font-bold text-[#0A3D62] mb-3">{solution.title}</h3>
-                  <p className="text-gray-600 mb-4">{solution.longDescription}</p>
-                  <div className="mb-6">
-                    <h4 className="font-semibold mb-2">Key Features:</h4>
-                    <ul className="space-y-2">
-                      {solution.features.slice(0, 3).map((feature, index) => (
-                        <li key={index} className="flex items-start">
-                          <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${solution.colorClass} mr-2 flex-shrink-0 mt-0.5`} viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
-                          </svg>
-                          <span className="text-gray-700">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                <div key={solution.id} className="bg-white rounded-lg border shadow-sm p-8 hover:shadow-md transition-shadow flex flex-col h-full">
+                  <div className="flex flex-col flex-grow">
+                    <div className={`w-16 h-16 ${solution.color} bg-opacity-10 rounded-full flex items-center justify-center mb-4`}>
+                      {solution.icon}
+                    </div>
+                    <h3 className="text-2xl font-bold text-[#0A3D62] mb-3">{solution.title}</h3>
+                    <p className="text-gray-600 mb-4 flex-grow">{solution.longDescription}</p>
+                    <div className="mb-6">
+                      <h4 className="font-semibold mb-2">Key Features:</h4>
+                      <ul className="space-y-2">
+                        {solution.features.slice(0, 3).map((feature, index) => (
+                          <li key={index} className="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" className={`h-5 w-5 ${solution.colorClass} mr-2 flex-shrink-0 mt-0.5`} viewBox="0 0 20 20" fill="currentColor">
+                              <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
+                            </svg>
+                            <span className="text-gray-700">{feature}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                   
-                  {solution.isAvailable ? (
-                    <Link 
-                      href={`/solutions/${solution.slug}`} 
-                      className={`inline-flex items-center px-4 py-2 font-medium rounded-md ${solution.color} text-white hover:bg-opacity-90 transition`}
-                    >
-                      Learn More
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
-                      </svg>
-                    </Link>
-                  ) : (
-                    <span className="inline-flex items-center px-4 py-2 font-medium rounded-md bg-gray-100 text-gray-500">
-                      Coming Soon
-                      <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
-                        <path fillRule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clipRule="evenodd" />
-                      </svg>
-                    </span>
-                  )}
+                  <div className="mt-auto">
+                    {solution.isAvailable ? (
+                      <Link 
+                        href={`/solutions/${solution.slug}`} 
+                        className={`inline-flex items-center px-4 py-2 font-medium rounded-md ${solution.color} text-white hover:bg-opacity-90 transition`}
+                      >
+                        Learn More
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M12.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                        </svg>
+                      </Link>
+                    ) : (
+                      <span className="inline-flex items-center px-4 py-2 font-medium rounded-md bg-gray-100 text-gray-500">
+                        Coming Soon
+                        <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
+                          <path fillRule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clipRule="evenodd" />
+                        </svg>
+                      </span>
+                    )}
+                  </div>
                 </div>
               ))}
             </div>

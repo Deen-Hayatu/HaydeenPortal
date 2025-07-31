@@ -55,16 +55,16 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <nav className="flex space-x-8">
+            <nav className="flex items-center space-x-8">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   href={item.path}
-                  className={`font-medium ${
+                  className={`font-medium flex items-center ${
                     isActive(item.path) 
                       ? "text-[#27AE60]" 
                       : "text-[#0A3D62] hover:text-[#27AE60]"
-                  } transition`}
+                  } transition-colors duration-200`}
                 >
                   {item.label}
                 </Link>

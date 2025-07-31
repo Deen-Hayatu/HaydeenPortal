@@ -50,7 +50,7 @@ const Hero = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.6 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-4 items-start sm:items-center"
             >
               <EnhancedCTAButton variant="primary" size="lg" href="/solutions/agriconnect" className="bg-[#FCD116] text-black hover:bg-[#F1C40F] px-8 py-4 text-lg font-bold">
                 Learn About AgriConnect

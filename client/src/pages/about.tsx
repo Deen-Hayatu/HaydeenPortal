@@ -62,16 +62,16 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {/* Objective 1 */}
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center flex flex-col h-full">
               <div className="text-3xl font-bold text-[#27AE60] mb-2">6 Months</div>
               <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Beta Launch</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-sm flex-grow">
                 AgriConnect and GhEHR beta versions for initial user testing
               </p>
             </div>
 
             {/* Objective 2 */}
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center flex flex-col h-full">
               <div className="text-3xl font-bold text-[#1ABC9C] mb-2">50+</div>
               <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Beta Users</h3>
               <p className="text-gray-600 text-sm">
@@ -80,19 +80,19 @@ const About = () => {
             </div>
 
             {/* Objective 3 */}
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center flex flex-col h-full">
               <div className="text-3xl font-bold text-[#F39C12] mb-2">2025 Q2</div>
               <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Public Launch</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-sm flex-grow">
                 Official launch based on beta feedback and iterations
               </p>
             </div>
 
             {/* Objective 4 */}
-            <div className="bg-white p-6 rounded-lg shadow-md text-center">
+            <div className="bg-white p-6 rounded-lg shadow-md text-center flex flex-col h-full">
               <div className="text-3xl font-bold text-[#E74C3C] mb-2">500+</div>
               <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Year 1 Goal</h3>
-              <p className="text-gray-600 text-sm">
+              <p className="text-gray-600 text-sm flex-grow">
                 Target active users by end of first year post-launch
               </p>
             </div>
@@ -137,7 +137,7 @@ const About = () => {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {/* Value 1 */}
-            <div className="bg-white p-8 rounded-lg shadow-md">
+            <div className="bg-white p-8 rounded-lg shadow-md flex flex-col h-full">
               <div className="w-14 h-14 rounded-full bg-[#27AE60] bg-opacity-10 flex items-center justify-center mb-4">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-8 w-8 text-[#27AE60]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />

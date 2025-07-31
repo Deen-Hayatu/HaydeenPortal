@@ -104,21 +104,21 @@ const Contact = () => {
               </p>
 
               <div className="space-y-6">
-                <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center flex-shrink-0">
                     <MapPin className="h-5 w-5 text-[#0A3D62]" />
                   </div>
-                  <div>
+                  <div className="flex-grow">
                     <h3 className="text-lg font-semibold text-[#0A3D62] mb-1">Visit Us</h3>
                     <p className="text-gray-600">Bw 14 Benz road<br />Effiduasi Ashanti</p>
                   </div>
                 </div>
 
-                <div className="flex items-start">
-                  <div className="w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center mr-4">
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 rounded-full bg-[#F2F2F2] flex items-center justify-center flex-shrink-0">
                     <Mail className="h-5 w-5 text-[#0A3D62]" />
                   </div>
-                  <div>
+                  <div className="flex-grow">
                     <h3 className="text-lg font-semibold text-[#0A3D62] mb-1">Email Us</h3>
                     <p className="text-gray-600">info@haydeentech.com</p>
                   </div>
