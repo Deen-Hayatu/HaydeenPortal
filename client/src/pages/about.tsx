@@ -27,7 +27,7 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-[#0A3D62] mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Founded by Mohammad Deen Hayatu in Effiduasi, Ghana, Haydeen Technologies emerged with a clear mission: to develop innovative software solutions that bridge critical gaps in Ghana's and West Africa's industries, starting with agriculture and STEM fields.
+                Founded by Mohammad Deen Hayatu in January 2025 in Effiduasi, Ghana, Haydeen Technologies emerged with a clear mission: to develop innovative software solutions that bridge critical gaps in Ghana's and West Africa's industries, starting with agriculture and STEM fields.
               </p>
               <p className="text-gray-600 mb-4">
                 Our journey began with recognizing the challenges facing Ghana's agricultural sector, which contributes ~20% to GDP and employs ~45% of the workforce. We saw inefficient supply chains, limited market access, and low technology adoption as key problems to solve.

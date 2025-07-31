@@ -5,6 +5,7 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
 
 ## Project Details
 - **Founder**: Mohammad Deen Hayatu
+- **Founded**: January 2025
 - **Location**: Effiduasi, Ghana
 - **Mission**: Develop innovative software solutions to bridge critical gaps in Ghana's and West Africa's industries, starting with agriculture and STEM fields
 - **Vision**: To become the leading provider of industry-specific software solutions in West Africa

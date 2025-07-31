@@ -17,7 +17,7 @@ const StatsSection = () => {
     },
     {
       icon: <Award className="w-8 h-8 text-[#27AE60]" />,
-      number: "2024",
+      number: "Jan 2025",
       label: "Founded",
       description: "Licensed startup based in Effiduasi, Ghana"
     },
@@ -43,7 +43,7 @@ const StatsSection = () => {
             Our Development Journey
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Building innovative solutions for Ghana's agriculture and healthcare sectors through research-driven MVP development.
+            Since our founding in January 2025, we've been building innovative solutions for Ghana's agriculture and healthcare sectors through research-driven MVP development.
           </p>
         </motion.div>
 
