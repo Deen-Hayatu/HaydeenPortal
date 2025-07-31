@@ -9,28 +9,28 @@ interface TrustBadgesProps {
 const TrustBadges = ({ className = "", variant = "light" }: TrustBadgesProps) => {
   const badges = [
     {
-      icon: <Smartphone className="w-6 h-6" />,
-      text: "MTN Mobile Money",
-      subtitle: "Certified Partner",
-      color: "bg-yellow-500"
-    },
-    {
-      icon: <Shield className="w-6 h-6" />,
-      text: "Ghana Health Service",
-      subtitle: "Approved Provider",
-      color: "bg-green-600"
+      icon: <Award className="w-6 h-6" />,
+      text: "Ghana Business",
+      subtitle: "Licensed & Registered",
+      color: "bg-purple-600"
     },
     {
       icon: <CheckCircle className="w-6 h-6" />,
-      text: "ISO 27001",
-      subtitle: "Data Security",
+      text: "Data Security",
+      subtitle: "Compliant Systems",
       color: "bg-blue-600"
     },
     {
-      icon: <Award className="w-6 h-6" />,
-      text: "Ghana Business",
-      subtitle: "Licensed",
-      color: "bg-purple-600"
+      icon: <Shield className="w-6 h-6" />,
+      text: "Local Expertise",
+      subtitle: "Ghana-Based Team",
+      color: "bg-green-600"
+    },
+    {
+      icon: <Smartphone className="w-6 h-6" />,
+      text: "Mobile Ready",
+      subtitle: "Payment Integration",
+      color: "bg-yellow-500"
     }
   ];
 

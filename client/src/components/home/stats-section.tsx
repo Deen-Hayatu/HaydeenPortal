@@ -85,7 +85,7 @@ const StatsSection = () => {
         >
           <div className="bg-gradient-to-r from-[#0A3D62] to-[#3C6382] rounded-2xl p-8 text-white">
             <h3 className="text-2xl font-bold mb-4">
-              Trusted by Leading Organizations Across Ghana
+              Building Solutions for Ghana's Digital Future
             </h3>
             <div className="grid md:grid-cols-3 gap-6 mt-8">
               <div className="flex items-center justify-center gap-3">
@@ -94,7 +94,7 @@ const StatsSection = () => {
                 </div>
                 <div className="text-left">
                   <div className="font-bold">Ghana Business License</div>
-                  <div className="text-sm opacity-80">Certified & Compliant</div>
+                  <div className="text-sm opacity-80">Officially Registered</div>
                 </div>
               </div>
               <div className="flex items-center justify-center gap-3">
@@ -102,7 +102,7 @@ const StatsSection = () => {
                   <Building className="w-6 h-6 text-[#27AE60]" />
                 </div>
                 <div className="text-left">
-                  <div className="font-bold">Data Protection</div>
+                  <div className="font-bold">Local Expertise</div>
                   <div className="text-sm opacity-80">ISO 27001 Standards</div>
                 </div>
               </div>

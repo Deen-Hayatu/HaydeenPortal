@@ -95,7 +95,7 @@ const Testimonials = () => {
                   <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </div>
-              <span className="text-gray-700 font-medium">ISO 27001 Compliant</span>
+              <span className="text-gray-700 font-medium">Local Ghana Team</span>
             </div>
             <div className="flex items-center gap-2">
               <div className="w-8 h-8 bg-[#27AE60] rounded-full flex items-center justify-center">
