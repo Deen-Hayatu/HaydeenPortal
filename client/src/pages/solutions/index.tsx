@@ -125,12 +125,16 @@ const Solutions = () => {
   return (
     <>
       {/* Hero Section */}
-      <section className="relative bg-[#0A3D62] text-white py-20">
-        <div className="container">
-          <div className="max-w-2xl mx-auto text-center">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Our Solutions</h1>
-            <p className="text-xl opacity-90">
-              Innovative software addressing critical challenges across West Africa's industries.
+      <section className="relative bg-gradient-to-br from-[#0A3D62] to-[#3C6382] text-white py-20 md:py-28">
+        <div className="absolute inset-0 bg-black/20"></div>
+        <div className="container relative z-10">
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">Our Solutions</h1>
+            <p className="text-xl md:text-2xl opacity-90 mb-4">
+              Building innovative MVPs to transform West Africa's digital landscape
+            </p>
+            <p className="text-lg opacity-80 max-w-2xl mx-auto">
+              From AgriConnect's agricultural marketplace to GhEHR's healthcare platform - we're developing solutions that address real challenges faced by Ghanaian communities.
             </p>
           </div>
         </div>
@@ -140,9 +144,9 @@ const Solutions = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#0A3D62] mb-4">Transforming Industries Through Technology</h2>
-            <p className="max-w-2xl mx-auto text-gray-600">
-              Our suite of innovative solutions is designed to address the unique challenges and opportunities across various sectors in West Africa.
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4 font-poppins">MVP Development Portfolio</h2>
+            <p className="max-w-3xl mx-auto text-gray-600 text-lg">
+              We're currently developing two flagship MVPs and have a pipeline of solutions designed to address critical challenges across Ghana's key industries. Each solution is built through extensive stakeholder research and local market understanding.
             </p>
           </div>
 
@@ -207,13 +211,111 @@ const Solutions = () => {
         </div>
       </section>
 
-      {/* Industries We Serve */}
-      <section className="py-16 md:py-24 bg-[#F2F2F2]">
+      {/* Development Roadmap */}
+      <section className="py-16 md:py-24 bg-[#F8F9FA]">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#0A3D62] mb-4">Industries We Serve</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4 font-poppins">Development Roadmap</h2>
+            <p className="max-w-3xl mx-auto text-gray-600 text-lg">
+              Our strategic development approach focuses on addressing Ghana's most critical digital infrastructure needs through carefully planned MVP releases.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {/* Phase 1 - Current */}
+            <div className="bg-white rounded-xl shadow-lg p-8 border-l-4 border-[#27AE60]">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-[#27AE60] text-white rounded-full flex items-center justify-center font-bold text-sm">
+                  1
+                </div>
+                <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">
+                  Current Phase
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3 font-poppins">Foundation MVPs</h3>
+              <p className="text-gray-600 mb-4">Building core solutions for agriculture and healthcare sectors.</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#27AE60] rounded-full"></div>
+                  AgriConnect MVP Development
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#27AE60] rounded-full"></div>
+                  GhEHR System Architecture
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#27AE60] rounded-full"></div>
+                  Stakeholder Feedback Integration
+                </li>
+              </ul>
+            </div>
+
+            {/* Phase 2 - Next */}
+            <div className="bg-white rounded-xl shadow-lg p-8 border-l-4 border-[#F39C12]">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-[#F39C12] text-white rounded-full flex items-center justify-center font-bold text-sm">
+                  2
+                </div>
+                <span className="bg-[#F39C12] text-white text-xs px-2 py-1 rounded-full font-medium">
+                  Next Phase
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3 font-poppins">Market Expansion</h3>
+              <p className="text-gray-600 mb-4">Scale successful MVPs and launch beta programs.</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#F39C12] rounded-full"></div>
+                  Beta Testing Programs
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#F39C12] rounded-full"></div>
+                  E-commerce Platform Launch
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-[#F39C12] rounded-full"></div>
+                  Regional Market Research
+                </li>
+              </ul>
+            </div>
+
+            {/* Phase 3 - Future */}
+            <div className="bg-white rounded-xl shadow-lg p-8 border-l-4 border-gray-300">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-gray-400 text-white rounded-full flex items-center justify-center font-bold text-sm">
+                  3
+                </div>
+                <span className="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full font-medium">
+                  Future Vision
+                </span>
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3 font-poppins">Regional Leadership</h3>
+              <p className="text-gray-600 mb-4">Expand across West Africa with comprehensive solutions.</p>
+              <ul className="space-y-2 text-sm text-gray-600">
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                  Multi-country Deployment
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                  AI/ML Enhancement
+                </li>
+                <li className="flex items-center gap-2">
+                  <div className="w-2 h-2 bg-gray-400 rounded-full"></div>
+                  Enterprise Solutions
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Industries We Serve */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="container">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl font-bold text-[#0A3D62] mb-4">Target Industries</h2>
             <p className="max-w-2xl mx-auto text-gray-600">
-              Our solutions are tailored to address the unique challenges and opportunities in key sectors across West Africa.
+              Our solutions focus on key sectors where technology can create the most significant impact in Ghana and West Africa.
             </p>
           </div>
 

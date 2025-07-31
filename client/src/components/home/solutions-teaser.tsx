@@ -57,9 +57,9 @@ const SolutionsTeaser = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] font-poppins mb-4">Our Solutions</h2>
-          <p className="max-w-2xl mx-auto text-gray-600">
-            We develop innovative software solutions that address critical challenges across various industries in West Africa.
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] font-poppins mb-4">Our MVP Portfolio</h2>
+          <p className="max-w-3xl mx-auto text-gray-600 text-lg">
+            Building innovative solutions for Ghana's agriculture and healthcare sectors. Our flagship MVPs AgriConnect and GhEHR are currently in development, with additional solutions planned for future release.
           </p>
         </div>
 
@@ -78,21 +78,35 @@ const SolutionsTeaser = () => {
                 <h3 className="text-xl font-bold text-[#0A3D62] font-poppins mb-2 group-hover:text-[#27AE60] transition-colors duration-300">
                   {solution.title}
                 </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">{solution.description}</p>
+                <p className="text-gray-600 mb-4 leading-relaxed">{solution.description}</p>
+                
+                <div className="mb-4">
+                  {solution.isAvailable ? (
+                    <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">
+                      In Development
+                    </span>
+                  ) : (
+                    <span className="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full font-medium">
+                      Planned
+                    </span>
+                  )}
+                </div>
                 
                 {solution.isAvailable ? (
                   <EnhancedCTAButton
                     variant="primary"
                     size="sm"
                     href={solution.path}
-                    className="w-full justify-center"
+                    className="w-full justify-center group-hover:scale-105 transition-transform duration-300"
                   >
-                    Learn More
+                    Explore MVP
                   </EnhancedCTAButton>
                 ) : (
                   <div className="flex items-center justify-center gap-2 text-gray-400 py-2">
-                    <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm font-medium">Coming Soon</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span className="text-sm font-medium">Future Development</span>
                   </div>
                 )}
               </div>
@@ -109,17 +123,17 @@ const SolutionsTeaser = () => {
           className="text-center mt-16"
         >
           <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">
-            Ready to Transform Your Business?
+            Join Our Development Journey
           </h3>
           <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Join hundreds of businesses across Ghana and West Africa who have modernized their operations with our innovative solutions.
+            Stay updated on our MVP development progress and be among the first to experience AgriConnect and GhEHR when they launch.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <EnhancedCTAButton variant="primary" size="lg" href="/contact">
-              Get Started Today
+              Get Updates
             </EnhancedCTAButton>
             <EnhancedCTAButton variant="demo" size="lg" href="/products">
-              Book a Demo
+              View MVPs
             </EnhancedCTAButton>
           </div>
         </motion.div>
