@@ -24,8 +24,17 @@ const LanguageToggle = () => {
   };
 
   const languages = [
-    { code: 'en' as const, name: 'English', flag: '🇺🇸' },
-    { code: 'twi' as const, name: 'Twi', flag: '🇬🇭' }
+    // International
+    { code: 'en' as const, name: 'English', flag: '🇺🇸', region: 'International' },
+    { code: 'fr' as const, name: 'Français', flag: '🇫🇷', region: 'West Africa' },
+    
+    // Ghanaian Languages
+    { code: 'twi' as const, name: 'Twi (Akan)', flag: '🇬🇭', region: 'Ghana' },
+    { code: 'fante' as const, name: 'Fante', flag: '🇬🇭', region: 'Ghana' },
+    { code: 'ga' as const, name: 'Ga', flag: '🇬🇭', region: 'Ghana' },
+    { code: 'ewe' as const, name: 'Ewe', flag: '🇬🇭', region: 'Ghana' },
+    { code: 'hausa' as const, name: 'Hausa', flag: '🇬🇭', region: 'Ghana' },
+    { code: 'dagbani' as const, name: 'Dagbani', flag: '🇬🇭', region: 'Ghana' }
   ];
 
   return (
@@ -36,22 +45,44 @@ const LanguageToggle = () => {
           <span className="sr-only">Toggle language</span>
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent align="end" className="w-48">
-        {languages.map((lang) => (
-          <DropdownMenuItem
-            key={lang.code}
-            onClick={() => handleLanguageChange(lang.code)}
-            className={`flex items-center gap-2 cursor-pointer ${
-              currentLang === lang.code ? 'bg-accent' : ''
-            }`}
-          >
-            <span className="text-lg">{lang.flag}</span>
-            <span className="flex-1">{lang.name}</span>
-            {currentLang === lang.code && (
-              <span className="text-xs text-muted-foreground">Current</span>
-            )}
-          </DropdownMenuItem>
-        ))}
+      <DropdownMenuContent align="end" className="w-56 max-h-80 overflow-y-auto">
+        <div className="p-2">
+          <div className="text-xs font-semibold text-muted-foreground mb-2">International</div>
+          {languages.filter(lang => lang.region === 'International' || lang.region === 'West Africa').map((lang) => (
+            <DropdownMenuItem
+              key={lang.code}
+              onClick={() => handleLanguageChange(lang.code)}
+              className={`flex items-center gap-2 cursor-pointer rounded-md ${
+                currentLang === lang.code ? 'bg-accent' : ''
+              }`}
+            >
+              <span className="text-lg">{lang.flag}</span>
+              <span className="flex-1">{lang.name}</span>
+              {currentLang === lang.code && (
+                <span className="text-xs text-muted-foreground">Current</span>
+              )}
+            </DropdownMenuItem>
+          ))}
+        </div>
+        
+        <div className="p-2 border-t">
+          <div className="text-xs font-semibold text-muted-foreground mb-2">Ghanaian Languages</div>
+          {languages.filter(lang => lang.region === 'Ghana').map((lang) => (
+            <DropdownMenuItem
+              key={lang.code}
+              onClick={() => handleLanguageChange(lang.code)}
+              className={`flex items-center gap-2 cursor-pointer rounded-md ${
+                currentLang === lang.code ? 'bg-accent' : ''
+              }`}
+            >
+              <span className="text-lg">{lang.flag}</span>
+              <span className="flex-1">{lang.name}</span>
+              {currentLang === lang.code && (
+                <span className="text-xs text-muted-foreground">Current</span>
+              )}
+            </DropdownMenuItem>
+          ))}
+        </div>
       </DropdownMenuContent>
     </DropdownMenu>
   );

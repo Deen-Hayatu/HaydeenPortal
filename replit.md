@@ -35,7 +35,7 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
   - EcoVend, MarketMate, TransitPro (coming soon)
 - **Ghana-Specific Features**:
   - Mobile Money payment integration (MTN, Vodafone, AirtelTigo)
-  - Twi language support with language toggle
+  - Multi-language support: English, Twi (Akan), Fante, Ga, Ewe, Hausa, Dagbani, French
   - Local contact information (Effiduasi, Ashanti)
 - **Website Design Services**: Highlighted for companies and individuals
 - **Contact System**: Email.js integration with form validation and rate limiting
@@ -54,15 +54,16 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
   - Replaced inflated user numbers with development milestones and beta targets
   - Enhanced mobile-responsive navigation with products submenu
   - Strengthened brand identity with consistent visual hierarchy
-- **2025-01-30**: Major Modernization & Ghana-Specific Enhancements
+- **2025-01-30**: Major Modernization & Ghana-Specific Enhancements + Multi-Language Expansion
   - Added new Products page showcasing AgriConnect and GhEHR with demo sections
   - Created comprehensive Careers page to attract local tech talent
   - Added mobile money payment integration support for Ghana market
-  - Added Twi language support with toggle (English/Twi)
+  - Expanded language support to 8 languages: English, Twi (Akan), Fante, Ga, Ewe, Hausa, Dagbani, French
+  - Enhanced language toggle with organized grouping (International vs Ghanaian languages)
   - Enhanced server with express-rate-limit for API protection
   - Added static asset caching for improved performance
   - Updated navigation to include Products and Careers pages
-  - Created language toggle component for header navigation
+  - Created comprehensive language system supporting major Ghanaian languages
 - **2025-01-30**: Comprehensive Security & SEO Enhancement
   - Enhanced HTML meta tags with Open Graph, Twitter Cards, and structured data (JSON-LD)
   - Added security headers (CSP, X-Frame-Options, HSTS, XSS Protection)

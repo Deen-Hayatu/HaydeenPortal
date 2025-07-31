@@ -52,11 +52,125 @@ export const twi: LanguageStrings = {
   viewAll: "Hwɛ nyinaa"
 };
 
-export type SupportedLanguage = 'en' | 'twi';
+// Ga translations
+export const ga: LanguageStrings = {
+  welcome: "Akwaaba",
+  services: "Nkwaahemee",
+  about: "Niihii",
+  contact: "Gbaleme",
+  solutions: "Tsuilii",
+  products: "Nkɛmoo",
+  blog: "Bloo",
+  careers: "Saamɛi",
+  home: "Fie",
+  getStarted: "Daase",
+  learnMore: "Kɛ sɛ pii",
+  contactUs: "Gbaleme",
+  readMore: "Klan pii",
+  viewAll: "Lɛ nyɛ"
+};
+
+// Ewe translations
+export const ewe: LanguageStrings = {
+  welcome: "Wolɔ̃",
+  services: "Dɔwɔwɔwo",
+  about: "Míawo ŋuti",
+  contact: "Kaa nu mí",
+  solutions: "Kpɔɖenuwɔwo",
+  products: "Nuwo",
+  blog: "Nuŋlɔɖi",
+  careers: "Dɔwɔwo",
+  home: "Aƒe",
+  getStarted: "Dze egɔme",
+  learnMore: "Srɔ̃ wu",
+  contactUs: "Ka nu mí",
+  readMore: "Xlẽ wu",
+  viewAll: "Kpɔ wo katã"
+};
+
+// Hausa translations
+export const hausa: LanguageStrings = {
+  welcome: "Barka da zuwa",
+  services: "Ayyuka",
+  about: "Game da mu",
+  contact: "Tuntube mu",
+  solutions: "Mafita",
+  products: "Kayayyaki",
+  blog: "Rubutu",
+  careers: "Aiki",
+  home: "Gida",
+  getStarted: "Fara",
+  learnMore: "Kara koyo",
+  contactUs: "Tuntube mu",
+  readMore: "Karanta kara",
+  viewAll: "Duba duka"
+};
+
+// Dagbani translations
+export const dagbani: LanguageStrings = {
+  welcome: "Marhaba",
+  services: "Tuma",
+  about: "Ti shɛli",
+  contact: "Gɔli ti",
+  solutions: "Yɛltɔɣi",
+  products: "Tiɣri",
+  blog: "Karatu",
+  careers: "Tuma",
+  home: "Yiili",
+  getStarted: "Piili",
+  learnMore: "Karandi pam",
+  contactUs: "Gɔli ti",
+  readMore: "Karandi kpam",
+  viewAll: "Lɛbi kpakpam"
+};
+
+// Fante translations
+export const fante: LanguageStrings = {
+  welcome: "Akwaaba",
+  services: "Adwuma",
+  about: "Yen ho nsɛm",
+  contact: "Ka yen ho",
+  solutions: "Ano aduru",
+  products: "Nneɛma",
+  blog: "Amanneɛbɔ",
+  careers: "Adwuma",
+  home: "Efie",
+  getStarted: "Fi ase",
+  learnMore: "Sua bio",
+  contactUs: "Ka yen ho",
+  readMore: "Kenkan bio",
+  viewAll: "Hwɛ nyinaa"
+};
+
+// French translations (for neighboring countries)
+export const fr: LanguageStrings = {
+  welcome: "Bienvenue",
+  services: "Services",
+  about: "À propos",
+  contact: "Contact",
+  solutions: "Solutions",
+  products: "Produits",
+  blog: "Blog",
+  careers: "Carrières",
+  home: "Accueil",
+  getStarted: "Commencer",
+  learnMore: "En savoir plus",
+  contactUs: "Nous contacter",
+  readMore: "Lire plus",
+  viewAll: "Voir tout"
+};
+
+export type SupportedLanguage = 'en' | 'twi' | 'ga' | 'ewe' | 'hausa' | 'dagbani' | 'fante' | 'fr';
 
 export const languages = {
   en,
-  twi
+  twi,
+  ga,
+  ewe,
+  hausa,
+  dagbani,
+  fante,
+  fr
 };
 
 export function getLanguageStrings(lang: SupportedLanguage): LanguageStrings {
@@ -66,7 +180,8 @@ export function getLanguageStrings(lang: SupportedLanguage): LanguageStrings {
 export function getCurrentLanguage(): SupportedLanguage {
   if (typeof window !== 'undefined') {
     const stored = localStorage.getItem('language');
-    if (stored && (stored === 'en' || stored === 'twi')) {
+    const supportedLanguages: SupportedLanguage[] = ['en', 'twi', 'ga', 'ewe', 'hausa', 'dagbani', 'fante', 'fr'];
+    if (stored && supportedLanguages.includes(stored as SupportedLanguage)) {
       return stored as SupportedLanguage;
     }
   }
