@@ -42,7 +42,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg md:text-xl opacity-90 max-w-2xl"
               >
-                Addressing critical gaps in Ghana's and West Africa's industries—starting with agriculture and expanding into healthcare, commerce, logistics, and scientific research.
+                Developing innovative MVP solutions for Ghana's agriculture and healthcare sectors. AgriConnect and GhEHR are currently in development, shaped by extensive stakeholder research.
               </motion.p>
             </div>
             
@@ -53,13 +53,13 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4"
             >
               <EnhancedCTAButton variant="primary" size="lg" href="/solutions/agriconnect" className="bg-[#FCD116] text-black hover:bg-[#F1C40F] px-8 py-4 text-lg font-bold">
-                Explore AgriConnect
+                Learn About AgriConnect
               </EnhancedCTAButton>
               <EnhancedCTAButton variant="demo" size="lg" href="/products">
-                Watch Demo
+                View MVPs
               </EnhancedCTAButton>
               <EnhancedCTAButton variant="contact" size="lg" href="/contact">
-                Talk to an Expert
+                Get Updates
               </EnhancedCTAButton>
             </motion.div>
             

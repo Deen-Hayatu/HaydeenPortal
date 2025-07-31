@@ -64,36 +64,36 @@ const About = () => {
             {/* Objective 1 */}
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
               <div className="text-3xl font-bold text-[#27AE60] mb-2">6 Months</div>
-              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Launch AgriConnect</h3>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Beta Launch</h3>
               <p className="text-gray-600 text-sm">
-                Complete MVP development and official platform launch
+                AgriConnect and GhEHR beta versions for initial user testing
               </p>
             </div>
 
             {/* Objective 2 */}
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="text-3xl font-bold text-[#1ABC9C] mb-2">1,000+</div>
-              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Active Users</h3>
+              <div className="text-3xl font-bold text-[#1ABC9C] mb-2">50+</div>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Beta Users</h3>
               <p className="text-gray-600 text-sm">
-                Farmers, buyers, and suppliers using our platform by Year 1
+                Initial farmers and healthcare providers for MVP validation
               </p>
             </div>
 
             {/* Objective 3 */}
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="text-3xl font-bold text-[#F39C12] mb-2">GHS200K</div>
-              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Revenue Target</h3>
+              <div className="text-3xl font-bold text-[#F39C12] mb-2">2025 Q2</div>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Public Launch</h3>
               <p className="text-gray-600 text-sm">
-                Projected revenue generation by end of Year 1
+                Official launch based on beta feedback and iterations
               </p>
             </div>
 
             {/* Objective 4 */}
             <div className="bg-white p-6 rounded-lg shadow-md text-center">
-              <div className="text-3xl font-bold text-[#E74C3C] mb-2">3 Countries</div>
-              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Regional Expansion</h3>
+              <div className="text-3xl font-bold text-[#E74C3C] mb-2">500+</div>
+              <h3 className="text-lg font-bold text-[#0A3D62] mb-2">Year 1 Goal</h3>
               <p className="text-gray-600 text-sm">
-                Ghana, Nigeria, and Côte d'Ivoire by Year 4-5
+                Target active users by end of first year post-launch
               </p>
             </div>
           </div>

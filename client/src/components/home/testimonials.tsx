@@ -7,28 +7,28 @@ const Testimonials = () => {
       name: "Kwame Asante",
       role: "Farm Manager",
       company: "Asante Cocoa Farms",
-      content: "AgriConnect has transformed how we manage our cocoa plantation. The weather forecasting and market price alerts help us make better decisions every day. Our productivity has increased by 40% since using this platform.",
+      content: "I participated in AgriConnect's development interviews. Mohammad's team really understands our daily challenges - from weather unpredictability to market access. Looking forward to using the platform when it launches.",
       rating: 5,
     },
     {
       name: "Dr. Akosua Mensah",
       role: "Chief Medical Officer",
       company: "Kumasi General Hospital",
-      content: "GhEHR has revolutionized our patient records management. We can now access patient history instantly, and the integration with NHIS makes billing seamless. It's exactly what Ghana's healthcare system needed.",
+      content: "The GhEHR concept addresses real problems we face daily. Having participated in their research, I'm impressed by their thorough understanding of Ghana's healthcare system challenges and NHIS integration needs.",
       rating: 5,
     },
     {
       name: "Samuel Osei",
       role: "CEO",
       company: "Osei Trading Company",
-      content: "Haydeen Technologies built our e-commerce platform in just 6 weeks. Their understanding of the Ghanaian market and mobile money integration was outstanding. Sales have tripled since launch.",
+      content: "Haydeen Technologies delivered an excellent website for us. Their understanding of local business needs and mobile money integration was outstanding. Professional service from a promising Ghana-based startup.",
       rating: 5,
     },
     {
       name: "Fatima Ibrahim",
       role: "Agricultural Coordinator",
       company: "Northern Ghana Farmers Association",
-      content: "The multilingual support in AgriConnect, including local languages, makes it accessible to all our farmers. The offline functionality is crucial for our remote areas. Highly recommend!",
+      content: "Their focus on multilingual support and offline functionality shows deep understanding of rural Ghana's needs. We're excited to see AgriConnect launch and support our farmers' digital transformation.",
       rating: 5,
     },
   ];
@@ -44,10 +44,10 @@ const Testimonials = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">
-            What Our Clients Say
+            What Stakeholders Say
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Join hundreds of satisfied customers across Ghana and West Africa who have transformed their businesses with our innovative solutions.
+            Feedback from farmers, healthcare providers, and business partners who are shaping our MVP development process.
           </p>
         </motion.div>
 

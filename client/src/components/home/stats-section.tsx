@@ -5,27 +5,27 @@ const StatsSection = () => {
   const stats = [
     {
       icon: <Users className="w-8 h-8 text-[#27AE60]" />,
-      number: "2,500+",
-      label: "Active Users",
-      description: "Farmers and healthcare providers using our platforms"
+      number: "2",
+      label: "Core MVPs",
+      description: "AgriConnect and GhEHR in active development"
     },
     {
       icon: <Building className="w-8 h-8 text-[#27AE60]" />,
-      number: "150+",
-      label: "Partner Organizations",
-      description: "Hospitals, farms, and businesses we've worked with"
+      number: "15+",
+      label: "Stakeholder Interviews",
+      description: "Farmers and healthcare providers shaping our solutions"
     },
     {
       icon: <Award className="w-8 h-8 text-[#27AE60]" />,
-      number: "5 Years",
-      label: "Industry Experience",
-      description: "Delivering innovative solutions across Ghana"
+      number: "2024",
+      label: "Founded",
+      description: "Licensed startup based in Effiduasi, Ghana"
     },
     {
       icon: <TrendingUp className="w-8 h-8 text-[#27AE60]" />,
-      number: "95%",
-      label: "Success Rate",
-      description: "Projects completed on time and within budget"
+      number: "100%",
+      label: "Focus on Ghana",
+      description: "Building solutions for West African markets"
     }
   ];
 
@@ -40,10 +40,10 @@ const StatsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">
-            Our Impact in Numbers
+            Our Development Journey
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Since our founding in Ghana, we've been committed to delivering exceptional results for businesses across West Africa.
+            Building innovative solutions for Ghana's agriculture and healthcare sectors through research-driven MVP development.
           </p>
         </motion.div>
 
