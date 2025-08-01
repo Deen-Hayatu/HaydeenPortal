@@ -1,5 +1,9 @@
 # Deployment Guide: VS Code Development & Vercel Hosting
 
+**⚠️ IMPORTANT: For complete migration from Replit to Vercel, see `VERCEL_MIGRATION_GUIDE.md`**
+
+This is a quick deployment guide. For comprehensive migration instructions, database setup, and production optimization, refer to the detailed migration guide.
+
 ## Prerequisites
 - Node.js 18+ installed
 - Git installed
