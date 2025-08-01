@@ -45,26 +45,31 @@ const Header = () => {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-white shadow-md">
+    <header className="sticky top-0 z-50 bg-white shadow-md" role="banner">
       <div className="container mx-auto">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link 
+            href="/" 
+            className="flex items-center focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 rounded-md"
+            aria-label="Haydeen Technologies - Return to homepage"
+          >
             <CompanyLogo size="md" />
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <nav className="flex items-center space-x-8">
+            <nav className="flex items-center space-x-8" role="navigation" aria-label="Main navigation">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   href={item.path}
-                  className={`font-medium flex items-center ${
+                  className={`font-medium flex items-center px-3 py-2 rounded-md transition-all duration-200 ${
                     isActive(item.path) 
-                      ? "text-[#27AE60]" 
-                      : "text-[#0A3D62] hover:text-[#27AE60]"
-                  } transition-colors duration-200`}
+                      ? "text-[#27AE60] bg-green-50" 
+                      : "text-[#0A3D62] hover:text-[#27AE60] hover:bg-green-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500"
+                  }`}
+                  aria-current={isActive(item.path) ? "page" : undefined}
                 >
                   {item.label}
                 </Link>
@@ -109,9 +114,11 @@ const Header = () => {
           <div className="md:hidden flex items-center space-x-2">
             <LanguageToggle />
             <button
-              className="text-[#0A3D62]"
+              className="text-[#0A3D62] hover:text-[#27AE60] transition-all duration-200 p-2 rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-500 cta-button"
               onClick={toggleMobileMenu}
-              aria-label="Toggle mobile menu"
+              aria-label={isMobileMenuOpen ? "Close mobile menu" : "Open mobile menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? (
                 <X className="h-6 w-6" />
@@ -123,7 +130,11 @@ const Header = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className={`md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}>
+        <div 
+          id="mobile-menu"
+          className={`md:hidden ${isMobileMenuOpen ? "block" : "hidden"}`}
+          aria-hidden={!isMobileMenuOpen}
+        >
           <div className="px-2 pt-2 pb-4 space-y-1">
             {navItems.map((item) => (
               <Link

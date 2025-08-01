@@ -7,6 +7,11 @@ import GoogleAnalytics from "@/components/seo/google-analytics";
 import NotFound from "@/pages/not-found";
 import Header from "@/components/layout/header";
 import Footer from "@/components/layout/footer";
+import SkipToMain from "@/components/accessibility/skip-to-main";
+import ErrorBoundary from "@/components/ui/error-boundary";
+import { OrganizationSchema, WebsiteSchema } from "@/components/seo/schema-markup";
+import PreloadManager, { useCriticalResourcePreloader } from "@/components/performance/preload-manager";
+import { PerformanceLogger } from "@/components/performance/performance-monitor";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Solutions from "@/pages/solutions/index";
@@ -20,10 +25,48 @@ import Contact from "@/pages/contact";
 import JobApplication from "@/pages/apply";
 
 function Router() {
+  useCriticalResourcePreloader();
+
   return (
     <div className="min-h-screen flex flex-col">
+      <SkipToMain />
+      
+      {/* Global Schema Markup */}
+      <OrganizationSchema
+        name="Haydeen Technologies"
+        description="Innovative software solutions for West African industries"
+        url="https://haydeen.com"
+        address={{
+          streetAddress: "Bw 14 Benz road",
+          addressLocality: "Effiduasi",
+          addressRegion: "Ashanti",
+          addressCountry: "Ghana"
+        }}
+        contactPoint={{
+          telephone: "+233-207-884-182",
+          contactType: "customer service",
+          email: "info@haydeen.com"
+        }}
+      />
+      
+      <WebsiteSchema
+        name="Haydeen Technologies"
+        url="https://haydeen.com"
+        description="Building innovative MVP solutions for Ghana's agriculture and healthcare sectors"
+        publisher="Haydeen Technologies"
+        inLanguage="en"
+      />
+      
+      <PreloadManager
+        images={[
+          '/images/hero-bg.jpg',
+          '/images/agriconnect-hero.jpg',
+          '/images/logo.png'
+        ]}
+      />
+      
       <Header />
-      <main className="flex-grow">
+      <main id="main-content" className="flex-grow" tabIndex={-1}>
         <Switch>
           <Route path="/" component={Home} />
           <Route path="/about" component={About} />
@@ -46,13 +89,16 @@ function Router() {
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <GoogleAnalytics />
-        <Toaster />
-        <Router />
-      </TooltipProvider>
-    </QueryClientProvider>
+    <ErrorBoundary>
+      <QueryClientProvider client={queryClient}>
+        <TooltipProvider>
+          <GoogleAnalytics />
+          <PerformanceLogger />
+          <Toaster />
+          <Router />
+        </TooltipProvider>
+      </QueryClientProvider>
+    </ErrorBoundary>
   );
 }
 

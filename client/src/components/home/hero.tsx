@@ -3,11 +3,16 @@ import AgriculturalHeroBg from "@/components/ui/agricultural-hero-bg";
 import EnhancedCTAButton from "@/components/ui/enhanced-cta-button";
 import PlatformScreenshot from "@/components/ui/platform-screenshot";
 import TrustBadges from "@/components/ui/trust-badges";
+import OptimizedImage from "@/components/ui/optimized-image";
+import { LazyComponent } from "@/components/performance/intersection-observer";
 import { motion } from "framer-motion";
 
 const Hero = () => {
   return (
-    <section className="relative bg-gradient-to-br from-[#0A3D62] via-[#1B4F72] to-[#27AE60] text-white overflow-hidden min-h-screen flex items-center">
+    <section 
+      className="relative bg-gradient-to-br from-[#0A3D62] via-[#1B4F72] to-[#27AE60] text-white overflow-hidden min-h-screen flex items-center"
+      aria-label="Hero section - Innovative Software Solutions for West Africa"
+    >
       {/* Enhanced background with agricultural theme */}
       <div className="absolute inset-0 z-0">
         <AgriculturalHeroBg />

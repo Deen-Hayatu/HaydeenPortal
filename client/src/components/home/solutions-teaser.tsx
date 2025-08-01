@@ -1,7 +1,7 @@
 import { Link } from "wouter";
-import { Globe, ShoppingBag, Map, Laptop, Heart } from "lucide-react";
+import { Globe, ShoppingBag, Map, Laptop, Heart, ArrowRight } from "lucide-react";
 import AnimatedCard from "@/components/ui/animated-card";
-import EnhancedCTAButton from "@/components/ui/enhanced-cta-button";
+import EnhancedButton from "@/components/ui/enhanced-button";
 import { motion } from "framer-motion";
 
 const solutions = [
@@ -96,14 +96,17 @@ const SolutionsTeaser = () => {
                 
                 <div className="mt-auto">
                   {solution.isAvailable ? (
-                    <EnhancedCTAButton
-                      variant="primary"
-                      size="sm"
-                      href={solution.path}
-                      className="w-full justify-center group-hover:scale-105 transition-transform duration-300"
-                    >
-                      Explore MVP
-                    </EnhancedCTAButton>
+                    <Link href={solution.path}>
+                      <EnhancedButton
+                        variant="primary"
+                        size="sm"
+                        fullWidth
+                        rightIcon={<ArrowRight className="w-4 h-4" />}
+                        className="group-hover:scale-105 transition-transform duration-300"
+                      >
+                        Explore MVP
+                      </EnhancedButton>
+                    </Link>
                   ) : (
                     <div className="flex items-center justify-center gap-2 text-gray-400 py-2">
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -133,12 +136,24 @@ const SolutionsTeaser = () => {
             Stay updated on our MVP development progress and be among the first to experience AgriConnect and GhEHR when they launch.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <EnhancedCTAButton variant="primary" size="lg" href="/contact">
-              Get Updates
-            </EnhancedCTAButton>
-            <EnhancedCTAButton variant="demo" size="lg" href="/products">
-              View MVPs
-            </EnhancedCTAButton>
+            <Link href="/contact">
+              <EnhancedButton 
+                variant="primary" 
+                size="lg"
+                rightIcon={<ArrowRight className="w-5 h-5" />}
+              >
+                Get Updates
+              </EnhancedButton>
+            </Link>
+            <Link href="/products">
+              <EnhancedButton 
+                variant="outline" 
+                size="lg"
+                rightIcon={<ArrowRight className="w-5 h-5" />}
+              >
+                View MVPs
+              </EnhancedButton>
+            </Link>
           </div>
         </motion.div>
       </div>

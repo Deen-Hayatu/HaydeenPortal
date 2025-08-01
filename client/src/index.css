@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;600&family=Poppins:wght@400;500;600;700&display=swap&swap');
 
 @tailwind base;
 @tailwind components;
@@ -73,6 +73,70 @@
     @apply px-6 py-3 font-semibold rounded-lg transition duration-300 inline-block;
   }
 
+  /* Performance optimizations */
+  img {
+    @apply transition-opacity duration-300;
+  }
+
+  img[loading="lazy"] {
+    @apply opacity-0;
+  }
+
+  img[loading="lazy"].loaded {
+    @apply opacity-100;
+  }
+
+  /* Accessibility enhancements */
+  .focus-visible {
+    @apply outline-2 outline-offset-2 outline-blue-500;
+  }
+
+  /* Micro-interactions */
+  .btn-primary {
+    @apply transform transition-all duration-200 hover:scale-105 active:scale-95;
+  }
+
+  .card-hover {
+    @apply transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1;
+  }
+
+  /* Mobile-first improvements */
+  .container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Skip to main content for accessibility */
+  .skip-to-main {
+    @apply absolute -top-96 left-4 z-50 bg-blue-600 text-white px-4 py-2 rounded-md;
+    @apply focus:top-4 transition-all duration-200;
+  }
+
+  /* High contrast for better accessibility */
+  .high-contrast {
+    @apply contrast-125;
+  }
+
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Loading animation */
+  .loading-pulse {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+
+  /* CTA improvements */
+  .cta-button {
+    @apply min-h-11 min-w-11 touch-manipulation;
+  }
+
+  /* Error states */
+  .error-state {
+    @apply border-red-300 bg-red-50 text-red-800;
+  }
+
+  /* Legacy button styles */
   .btn-primary {
     @apply bg-[#27AE60] text-white hover:bg-opacity-90;
   }
@@ -89,7 +153,72 @@
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
+  /* Override container with better responsive spacing */
   .container {
     @apply px-4 sm:px-6 lg:px-8 mx-auto;
+  }
+
+  /* Advanced accessibility improvements */
+  
+  /* Smooth scroll behavior */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Reduced motion for accessibility */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+    
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  /* High contrast mode support */
+  @media (prefers-contrast: high) {
+    .btn-primary {
+      @apply border-2 border-white;
+    }
+    
+    .btn-outline {
+      @apply border-4;
+    }
+  }
+
+  /* Content zoom support */
+  @media (max-width: 320px) {
+    .container {
+      @apply px-2;
+    }
+    
+    h1 {
+      @apply text-2xl;
+    }
+    
+    .mobile-optimized {
+      @apply text-xs;
+    }
+  }
+
+  /* Print styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+    
+    a[href]:after {
+      content: " (" attr(href) ")";
+    }
+    
+    .btn-primary,
+    .btn-secondary {
+      @apply border border-gray-600 text-black bg-white;
+    }
   }
 }

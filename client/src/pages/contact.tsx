@@ -7,18 +7,32 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
-import { Mail, Phone, MapPin, Send } from "lucide-react";
+import EnhancedButton from "@/components/ui/enhanced-button";
+import { Mail, Phone, MapPin, Send, AlertCircle } from "lucide-react";
 import { sendContactForm } from "@/lib/emailjs-service";
 import MobileMoney from "@/components/payment/mobile-money";
 import ContactFormProtectionProvider from "@/components/security/contact-form-protection";
 import HeadTags from "@/components/seo/head-tags";
+import ResponsiveContainer from "@/components/mobile/responsive-container";
+import TouchOptimized from "@/components/mobile/touch-optimized";
+import { EnhancedValidation, emailRules, ghanaPhoneRules } from "@/components/forms/enhanced-form-validation";
 
 const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
-  email: z.string().email({ message: "Please enter a valid email address" }),
-  phone: z.string().optional(),
-  company: z.string().optional(),
-  message: z.string().min(10, { message: "Message must be at least 10 characters" }),
+  name: z.string()
+    .min(2, { message: "Name must be at least 2 characters" })
+    .max(100, { message: "Name must be less than 100 characters" }),
+  email: z.string()
+    .email({ message: "Please enter a valid email address" })
+    .max(254, { message: "Email address is too long" }),
+  phone: z.string()
+    .optional()
+    .refine((val) => !val || /^(\+233|0)[2-5][0-9]{8}$/.test(val.replace(/\s/g, '')), {
+      message: "Please enter a valid Ghana phone number"
+    }),
+  company: z.string().max(100, { message: "Company name is too long" }).optional(),
+  message: z.string()
+    .min(10, { message: "Message must be at least 10 characters" })
+    .max(1000, { message: "Message must be less than 1000 characters" }),
 });
 
 type FormData = z.infer<typeof formSchema>;
@@ -29,6 +43,7 @@ const Contact = () => {
 
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
+    mode: 'onChange', // Enable real-time validation
     defaultValues: {
       name: "",
       email: "",
@@ -37,6 +52,8 @@ const Contact = () => {
       message: "",
     },
   });
+
+  const watchedFields = form.watch();
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
@@ -192,11 +209,17 @@ const Contact = () => {
                             <Input 
                               placeholder="john@example.com" 
                               type="email" 
+                              autoComplete="email"
                               {...field} 
                               className="bg-white"
                             />
                           </FormControl>
                           <FormMessage />
+                          <EnhancedValidation
+                            value={field.value}
+                            rules={emailRules}
+                            showValidation={field.value.length > 0}
+                          />
                         </FormItem>
                       )}
                     />
@@ -211,11 +234,17 @@ const Contact = () => {
                             <Input 
                               placeholder="+233 207 884 182" 
                               type="tel" 
+                              autoComplete="tel"
                               {...field} 
                               className="bg-white"
                             />
                           </FormControl>
                           <FormMessage />
+                          <EnhancedValidation
+                            value={field.value || ''}
+                            rules={ghanaPhoneRules}
+                            showValidation={field.value && field.value.length > 5}
+                          />
                         </FormItem>
                       )}
                     />
@@ -257,26 +286,18 @@ const Contact = () => {
                     )}
                   />
 
-                  <Button 
+                  <EnhancedButton 
                     type="submit" 
-                    className="w-full bg-[#27AE60] hover:bg-opacity-90"
-                    disabled={isSubmitting || !canSubmit}
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                    isLoading={isSubmitting}
+                    loadingText="Sending message..."
+                    disabled={!canSubmit}
+                    leftIcon={!isSubmitting ? <Send className="w-4 h-4" /> : undefined}
                   >
-                    {isSubmitting ? (
-                      <div className="flex items-center">
-                        <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                        </svg>
-                        Sending...
-                      </div>
-                    ) : (
-                      <div className="flex items-center">
-                        <Send className="h-4 w-4 mr-2" />
-                        Send Message
-                      </div>
-                    )}
-                  </Button>
+                    Send Message
+                  </EnhancedButton>
                   
                   {!canSubmit && remainingCooldown > 0 && (
                     <p className="text-sm text-red-600 mt-2">

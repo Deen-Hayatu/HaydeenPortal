@@ -11,10 +11,11 @@ app.set('trust proxy', 1);
 // Rate limiting middleware
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // limit each IP to 100 requests per windowMs
+  max: 1000, // Increased limit for development
   message: 'Too many requests from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
+  skip: (req) => process.env.NODE_ENV === 'development', // Skip rate limiting in development
 });
 
 const contactLimiter = rateLimit({
@@ -25,8 +26,10 @@ const contactLimiter = rateLimit({
   legacyHeaders: false,
 });
 
-// Apply rate limiting
-app.use(generalLimiter);
+// Apply rate limiting (only in production)
+if (process.env.NODE_ENV === 'production') {
+  app.use(generalLimiter);
+}
 app.use('/api/contact', contactLimiter);
 
 // Security middleware
@@ -37,7 +40,12 @@ app.use((req, res, next) => {
   res.setHeader('X-XSS-Protection', '1; mode=block');
   res.setHeader('Referrer-Policy', 'strict-origin-when-cross-origin');
   res.setHeader('Strict-Transport-Security', 'max-age=31536000; includeSubDomains');
-  res.setHeader('Content-Security-Policy', "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://replit.com; connect-src 'self';");
+  // More permissive CSP for development
+  if (process.env.NODE_ENV === 'development') {
+    res.setHeader('Content-Security-Policy', "default-src 'self' 'unsafe-inline' 'unsafe-eval' data: blob: https: http: ws: wss:; img-src * data: blob:; style-src * 'unsafe-inline'; font-src * data:; script-src * 'unsafe-inline' 'unsafe-eval'; connect-src * 'unsafe-inline';");
+  } else {
+    res.setHeader('Content-Security-Policy', "default-src 'self'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://replit.com; connect-src 'self';");
+  }
   
   // Remove server information
   res.removeHeader('X-Powered-By');
