@@ -124,3 +124,49 @@ export const contactFormSchema = z.object({
 export const newsletterSubscriptionFormSchema = z.object({
   email: z.string().email({ message: "Please enter a valid email address" }),
 });
+
+// Job Applications Table
+export const jobApplications = pgTable("job_applications", {
+  id: serial("id").primaryKey(),
+  position: text("position").notNull(), // "UX/UI Design Intern" or "Agribusiness Research Intern"
+  firstName: text("first_name").notNull(),
+  lastName: text("last_name").notNull(),
+  email: text("email").notNull(),
+  phone: text("phone").notNull(),
+  location: text("location").notNull(),
+  university: text("university"),
+  studyField: text("study_field"),
+  graduationYear: text("graduation_year"),
+  experience: text("experience"), // Brief description of relevant experience
+  motivation: text("motivation").notNull(), // Why they want to join
+  cvFileName: text("cv_file_name"), // File name of uploaded CV
+  cvFileData: text("cv_file_data"), // Base64 encoded CV file
+  submittedAt: timestamp("submitted_at").defaultNow().notNull(),
+  isProcessed: boolean("is_processed").notNull().default(false),
+});
+
+export const insertJobApplicationSchema = createInsertSchema(jobApplications).omit({
+  id: true,
+  submittedAt: true,
+  isProcessed: true,
+});
+
+export type JobApplication = typeof jobApplications.$inferSelect;
+export type InsertJobApplication = z.infer<typeof insertJobApplicationSchema>;
+
+export const jobApplicationFormSchema = z.object({
+  position: z.enum(["UX/UI Design Intern", "Agribusiness Research Intern"], {
+    message: "Please select a position"
+  }),
+  firstName: z.string().min(2, { message: "First name must be at least 2 characters" }),
+  lastName: z.string().min(2, { message: "Last name must be at least 2 characters" }),
+  email: z.string().email({ message: "Please enter a valid email address" }),
+  phone: z.string().min(10, { message: "Please enter a valid phone number" }),
+  location: z.string().min(2, { message: "Please enter your location" }),
+  university: z.string().optional(),
+  studyField: z.string().optional(),
+  graduationYear: z.string().optional(),
+  experience: z.string().optional(),
+  motivation: z.string().min(50, { message: "Please tell us why you want to join (at least 50 characters)" }),
+  cvFile: z.any().optional(), // File will be handled separately
+});

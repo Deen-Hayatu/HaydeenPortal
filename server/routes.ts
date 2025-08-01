@@ -4,11 +4,33 @@ import { storage } from "./storage";
 import { sendEmail } from "./services/email";
 import { 
   contactFormSchema, 
-  newsletterSubscriptionFormSchema 
+  newsletterSubscriptionFormSchema,
+  jobApplicationFormSchema 
 } from "@shared/schema";
 import { ZodError } from "zod";
+import multer from "multer";
 
 export async function registerRoutes(app: Express): Promise<Server> {
+  // Configure multer for file uploads
+  const upload = multer({
+    limits: {
+      fileSize: 5 * 1024 * 1024, // 5MB limit
+    },
+    fileFilter: (req, file, cb) => {
+      const allowedTypes = [
+        'application/pdf',
+        'application/msword',
+        'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+      ];
+      
+      if (allowedTypes.includes(file.mimetype)) {
+        cb(null, true);
+      } else {
+        cb(new Error('Invalid file type. Only PDF, DOC, and DOCX files are allowed.'));
+      }
+    },
+  });
+
   // API Routes - all prefixed with /api
   
   // Blog routes
@@ -272,6 +294,130 @@ export async function registerRoutes(app: Express): Promise<Server> {
     } catch (error) {
       console.error("Error processing newsletter unsubscription:", error);
       res.status(500).json({ message: "Failed to process newsletter unsubscription" });
+    }
+  });
+
+  // Job application submission
+  app.post("/api/job-applications", upload.single('cvFile'), async (req, res) => {
+    try {
+      // Validate form data (excluding file)
+      const formData = {
+        position: req.body.position,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email: req.body.email,
+        phone: req.body.phone,
+        location: req.body.location,
+        university: req.body.university || null,
+        studyField: req.body.studyField || null,
+        graduationYear: req.body.graduationYear || null,
+        experience: req.body.experience || null,
+        motivation: req.body.motivation,
+      };
+
+      const validatedData = jobApplicationFormSchema.omit({ cvFile: true }).parse(formData);
+      
+      // Handle CV file if uploaded
+      let cvFileName = null;
+      let cvFileData = null;
+      
+      if (req.file) {
+        cvFileName = req.file.originalname;
+        cvFileData = req.file.buffer.toString('base64');
+      }
+
+      // Save to storage
+      const applicationData = {
+        ...validatedData,
+        cvFileName,
+        cvFileData,
+      };
+
+      const application = await storage.createJobApplication(applicationData);
+      
+      // Send email notification to company
+      const emailContent = `
+        New job application received:
+        
+        Position: ${validatedData.position}
+        Name: ${validatedData.firstName} ${validatedData.lastName}
+        Email: ${validatedData.email}
+        Phone: ${validatedData.phone}
+        Location: ${validatedData.location}
+        University: ${validatedData.university || 'Not provided'}
+        Field of Study: ${validatedData.studyField || 'Not provided'}
+        Graduation Year: ${validatedData.graduationYear || 'Not provided'}
+        
+        Experience:
+        ${validatedData.experience || 'Not provided'}
+        
+        Motivation:
+        ${validatedData.motivation}
+        
+        CV: ${cvFileName ? 'Attached' : 'Not provided'}
+        
+        Application ID: ${application.id}
+      `;
+      
+      await sendEmail(
+        process.env.SENDGRID_API_KEY || "",
+        {
+          to: "careers@haydeentech.com",
+          from: process.env.EMAIL_FROM || "noreply@haydeentech.com",
+          subject: `New Application: ${validatedData.position} - ${validatedData.firstName} ${validatedData.lastName}`,
+          text: emailContent,
+        }
+      );
+      
+      // Send confirmation email to applicant
+      const confirmationContent = `
+        Dear ${validatedData.firstName},
+        
+        Thank you for applying for the ${validatedData.position} position at Haydeen Technologies. We have received your application and will review it carefully.
+        
+        We appreciate your interest in joining our team and helping us build innovative solutions for Ghana's agricultural and healthcare sectors. Our team will review your application and get back to you within 1-2 weeks.
+        
+        If you have any questions in the meantime, please don't hesitate to contact us.
+        
+        Best regards,
+        The Haydeen Technologies Team
+        
+        Application Details:
+        - Position: ${validatedData.position}
+        - Application ID: ${application.id}
+        - Submitted: ${new Date().toLocaleDateString()}
+      `;
+      
+      await sendEmail(
+        process.env.SENDGRID_API_KEY || "",
+        {
+          to: validatedData.email,
+          from: process.env.EMAIL_FROM || "noreply@haydeentech.com",
+          subject: "Application Received - Haydeen Technologies",
+          text: confirmationContent,
+        }
+      );
+      
+      res.status(201).json({ 
+        message: "Application submitted successfully",
+        applicationId: application.id
+      });
+    } catch (error) {
+      if (error instanceof ZodError) {
+        res.status(400).json({ 
+          message: "Validation error", 
+          errors: error.errors 
+        });
+      } else if (error instanceof multer.MulterError) {
+        if (error.code === 'LIMIT_FILE_SIZE') {
+          res.status(400).json({ message: "File too large. Maximum size is 5MB." });
+        } else {
+          res.status(400).json({ message: "File upload error: " + error.message });
+        }
+      } else {
+        console.error("Error processing job application:", error);
+        res.status(500).json({ message: "Failed to process job application" });
+      }
     }
   });
 

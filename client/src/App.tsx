@@ -17,6 +17,7 @@ import Products from "@/pages/products";
 import Blog from "@/pages/blog/index";
 import Careers from "@/pages/careers";
 import Contact from "@/pages/contact";
+import JobApplication from "@/pages/apply";
 
 function Router() {
   return (
@@ -34,6 +35,7 @@ function Router() {
           <Route path="/blog" component={Blog} />
           <Route path="/careers" component={Careers} />
           <Route path="/contact" component={Contact} />
+          <Route path="/apply" component={JobApplication} />
           <Route component={NotFound} />
         </Switch>
       </main>

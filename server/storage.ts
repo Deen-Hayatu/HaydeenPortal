@@ -4,7 +4,8 @@ import {
   solutions, type Solution, type InsertSolution,
   solutionFeatures, type SolutionFeature, type InsertSolutionFeature,
   contactSubmissions, type ContactSubmission, type InsertContactSubmission,
-  newsletterSubscriptions, type NewsletterSubscription, type InsertNewsletterSubscription
+  newsletterSubscriptions, type NewsletterSubscription, type InsertNewsletterSubscription,
+  jobApplications, type JobApplication, type InsertJobApplication
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
@@ -36,6 +37,11 @@ export interface IStorage {
   subscribeToNewsletter(subscription: InsertNewsletterSubscription): Promise<NewsletterSubscription>;
   unsubscribeFromNewsletter(email: string): Promise<void>;
   isEmailSubscribed(email: string): Promise<boolean>;
+
+  // Job application operations
+  createJobApplication(application: InsertJobApplication): Promise<JobApplication>;
+  getJobApplications(): Promise<JobApplication[]>;
+  markJobApplicationAsProcessed(id: number): Promise<void>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -166,6 +172,27 @@ export class DatabaseStorage implements IStorage {
       .where(eq(newsletterSubscriptions.email, email));
     
     return subscription || undefined;
+  }
+
+  // Job application operations
+  async createJobApplication(application: InsertJobApplication): Promise<JobApplication> {
+    const [newApplication] = await db
+      .insert(jobApplications)
+      .values(application)
+      .returning();
+    
+    return newApplication;
+  }
+
+  async getJobApplications(): Promise<JobApplication[]> {
+    return db.select().from(jobApplications).orderBy(desc(jobApplications.submittedAt));
+  }
+
+  async markJobApplicationAsProcessed(id: number): Promise<void> {
+    await db
+      .update(jobApplications)
+      .set({ isProcessed: true })
+      .where(eq(jobApplications.id, id));
   }
 }
 

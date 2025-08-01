@@ -132,7 +132,7 @@ const Careers = () => {
                 </div>
 
                 <div className="mt-8 text-center">
-                  <Link href="/contact">
+                  <Link href="/apply?position=UX/UI Design Intern">
                     <Button size="lg" className="bg-[#27AE60] hover:bg-[#27AE60]/90 text-white px-8 py-3 text-lg">
                       Apply for UX/UI Position
                     </Button>
@@ -232,7 +232,7 @@ const Careers = () => {
                 </div>
 
                 <div className="mt-8 text-center">
-                  <Link href="/contact">
+                  <Link href="/apply?position=Agribusiness Research Intern">
                     <Button size="lg" className="bg-[#1ABC9C] hover:bg-[#1ABC9C]/90 text-white px-8 py-3 text-lg">
                       Apply for Research Position
                     </Button>
@@ -331,7 +331,7 @@ const Careers = () => {
               Send us your portfolio and let us know why you're interested in designing for Ghana's agricultural and healthcare sectors.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-              <Link href="/contact">
+              <Link href="/apply">
                 <Button size="lg" className="bg-white text-[#0A3D62] hover:bg-gray-100 px-8 py-3 text-lg font-medium">
                   Apply Now
                 </Button>
