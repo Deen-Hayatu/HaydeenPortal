@@ -1,314 +1,244 @@
 import { Link } from "wouter";
-import { MapPin, Clock, Users, Briefcase, GraduationCap, Heart } from "lucide-react";
+import { MapPin, Clock, Users, Briefcase, Palette, Monitor } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import HeadTags from "@/components/seo/head-tags";
 
 const Careers = () => {
-  const openPositions = [
-    {
-      id: 1,
-      title: "Frontend Developer",
-      department: "Engineering",
-      location: "Effiduasi, Ashanti / Remote",
-      type: "Full-time",
-      experience: "2-4 years",
-      description: "Join our team to build user-friendly interfaces for AgriConnect and GhEHR platforms using React and modern web technologies.",
-      requirements: [
-        "3+ years experience with React.js and TypeScript",
-        "Experience with Tailwind CSS and responsive design",
-        "Understanding of Ghana's digital landscape",
-        "Fluency in English and Twi preferred"
-      ],
-      benefits: [
-        "Competitive salary in GHS",
-        "Health insurance coverage",
-        "Professional development opportunities",
-        "Flexible remote work options"
-      ]
-    },
-    {
-      id: 2,
-      title: "Backend Developer",
-      department: "Engineering",
-      location: "Effiduasi, Ashanti / Remote",
-      type: "Full-time",
-      experience: "3-5 years",
-      description: "Develop robust APIs and database systems for our agricultural and healthcare platforms, with focus on Ghana-specific integrations.",
-      requirements: [
-        "4+ years experience with Node.js and PostgreSQL",
-        "Experience with payment integrations (Mobile Money preferred)",
-        "Knowledge of healthcare or agricultural systems",
-        "Understanding of Ghana's regulatory requirements"
-      ],
-      benefits: [
-        "Competitive salary in GHS",
-        "Health insurance coverage",
-        "Professional development opportunities",
-        "Flexible remote work options"
-      ]
-    },
-    {
-      id: 3,
-      title: "Product Manager",
-      department: "Product",
-      location: "Effiduasi, Ashanti",
-      type: "Full-time",
-      experience: "4-6 years",
-      description: "Lead product strategy for AgriConnect and GhEHR, working closely with stakeholders in Ghana's agricultural and healthcare sectors.",
-      requirements: [
-        "5+ years product management experience",
-        "Experience in healthcare or agricultural technology",
-        "Deep understanding of Ghana's market dynamics",
-        "Strong communication skills in English and local languages"
-      ],
-      benefits: [
-        "Competitive salary in GHS",
-        "Health insurance coverage",
-        "Professional development opportunities",
-        "Leadership development programs"
-      ]
-    },
-    {
-      id: 4,
-      title: "UI/UX Designer",
-      department: "Design",
-      location: "Remote",
-      type: "Contract",
-      experience: "2-4 years",
-      description: "Design intuitive user experiences for our platforms, considering Ghana's diverse user base and technological constraints.",
-      requirements: [
-        "3+ years UI/UX design experience",
-        "Portfolio showing mobile-first design",
-        "Understanding of accessibility in developing markets",
-        "Experience with Figma and design systems"
-      ],
-      benefits: [
-        "Competitive hourly rate",
-        "Flexible working hours",
-        "Project-based compensation",
-        "Portfolio enhancement opportunities"
-      ]
-    }
-  ];
-
-  const companyValues = [
-    {
-      icon: Heart,
-      title: "Impact-Driven",
-      description: "We build technology that makes a real difference in Ghana and West Africa"
-    },
-    {
-      icon: Users,
-      title: "Collaborative",
-      description: "We work together as a team, valuing diverse perspectives and local knowledge"
-    },
-    {
-      icon: GraduationCap,
-      title: "Learning-Focused",
-      description: "We invest in continuous learning and professional development for all team members"
-    },
-    {
-      icon: Briefcase,
-      title: "Professional Excellence",
-      description: "We deliver high-quality solutions while maintaining work-life balance"
-    }
-  ];
-
   return (
     <>
       <HeadTags
-        title="Careers | Join Haydeen Technologies Ghana - Software Development Jobs"
-        description="Join Ghana's leading technology company. We're hiring developers, product managers, and designers to build innovative solutions for agriculture and healthcare in West Africa."
-        keywords="software jobs Ghana, developer jobs Ashanti, tech careers Ghana, AgriConnect jobs, healthcare technology jobs, remote work Ghana, Effiduasi jobs"
+        title="Careers | UX/UI Design Internship - Haydeen Technologies Ghana"
+        description="Join Haydeen Technologies as a UX/UI Design Intern. Help design user experiences for AgriConnect and GhEHR platforms. Short-term contract opportunity in Ghana."
+        keywords="UX UI design internship Ghana, design jobs Ghana, UX internship Ashanti, AgriConnect design, healthcare UX design, remote design work Ghana"
         canonical="https://haydeentechnologies.com/careers"
       />
-
+      
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-[#0A3D62] to-[#3C6382] text-white py-16 md:py-20">
+      <section className="relative bg-[#0A3D62] text-white py-20">
         <div className="container">
-          <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Join Our Team
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 opacity-90">
-              Build the future of technology in Ghana and West Africa
+          <div className="max-w-3xl mx-auto text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">Join Our Design Team</h1>
+            <p className="text-xl opacity-90 mb-4">
+              We're currently seeking a UX/UI Design Intern to help shape the user experience of our AgriConnect and GhEHR platforms.
             </p>
-            <p className="text-lg mb-8 opacity-80">
-              We're looking for passionate individuals who want to make a difference through technology
+            <p className="text-lg opacity-80">
+              Join us in creating intuitive, user-centered designs that will impact farmers and healthcare workers across Ghana.
             </p>
-            <Button asChild size="lg" className="bg-[#27AE60] hover:bg-[#229954]">
-              <Link href="#positions">View Open Positions</Link>
-            </Button>
           </div>
         </div>
       </section>
 
-      {/* Company Values */}
-      <section className="py-16 md:py-20">
+      {/* Current Opening */}
+      <section className="py-16 md:py-24 bg-white">
         <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Values</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              We're building a company culture that reflects the best of Ghana's collaborative spirit and innovative mindset.
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Current Opening</h2>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              We have one exciting opportunity available for a talented UX/UI design intern.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {companyValues.map((value, index) => (
-              <Card key={index} className="text-center">
-                <CardHeader>
-                  <value.icon className="h-12 w-12 text-[#27AE60] mx-auto mb-4" />
-                  <CardTitle className="text-xl">{value.title}</CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <p className="text-muted-foreground">{value.description}</p>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Open Positions */}
-      <section id="positions" className="bg-gray-50 py-16 md:py-20">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Open Positions</h2>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Join us in building innovative solutions for Ghana's agricultural and healthcare sectors.
-            </p>
-          </div>
-
-          <div className="grid gap-6 max-w-4xl mx-auto">
-            {openPositions.map((position) => (
-              <Card key={position.id} className="overflow-hidden">
-                <CardHeader>
-                  <div className="flex flex-wrap items-start justify-between gap-4">
-                    <div>
-                      <CardTitle className="text-2xl mb-2">{position.title}</CardTitle>
-                      <CardDescription className="text-lg">{position.description}</CardDescription>
-                    </div>
-                    <Badge variant="secondary" className="bg-[#27AE60] text-white">
-                      {position.department}
-                    </Badge>
+          <div className="max-w-4xl mx-auto">
+            <Card className="bg-white border shadow-lg">
+              <CardHeader className="bg-gradient-to-r from-[#0A3D62] to-[#27AE60] text-white">
+                <div className="flex items-start justify-between">
+                  <div>
+                    <CardTitle className="text-2xl font-bold mb-2">UX/UI Design Intern</CardTitle>
+                    <CardDescription className="text-white/90 text-lg">
+                      Help design user experiences for Ghana's leading AgriTech and HealthTech platforms
+                    </CardDescription>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Palette className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+                
+                <div className="flex flex-wrap gap-3 mt-4">
+                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                    <MapPin className="h-4 w-4 mr-1" />
+                    Remote / Effiduasi, Ashanti
+                  </Badge>
+                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                    <Clock className="h-4 w-4 mr-1" />
+                    Short-term Contract
+                  </Badge>
+                  <Badge variant="secondary" className="bg-white/20 text-white border-white/30">
+                    <Users className="h-4 w-4 mr-1" />
+                    Internship Level
+                  </Badge>
+                </div>
+              </CardHeader>
+              
+              <CardContent className="p-8">
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <h3 className="text-xl font-bold text-[#0A3D62] mb-4">What You'll Do</h3>
+                    <ul className="space-y-3 text-gray-600">
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#27AE60] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Design user interfaces for AgriConnect agricultural marketplace platform</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#27AE60] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Create user experience flows for GhEHR healthcare record system</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#27AE60] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Conduct user research with farmers and healthcare workers</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#27AE60] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Design mobile-first interfaces optimized for Ghana's connectivity</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#27AE60] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Collaborate with development team on implementation</span>
+                      </li>
+                    </ul>
                   </div>
                   
-                  <div className="flex flex-wrap gap-4 text-sm text-muted-foreground">
-                    <div className="flex items-center gap-1">
-                      <MapPin className="h-4 w-4" />
-                      {position.location}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Clock className="h-4 w-4" />
-                      {position.type}
-                    </div>
-                    <div className="flex items-center gap-1">
-                      <Briefcase className="h-4 w-4" />
-                      {position.experience}
-                    </div>
+                  <div>
+                    <h3 className="text-xl font-bold text-[#0A3D62] mb-4">What We're Looking For</h3>
+                    <ul className="space-y-3 text-gray-600">
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#1ABC9C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Experience with UX/UI design tools (Figma, Adobe XD, or similar)</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#1ABC9C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Portfolio showcasing mobile-first design projects</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#1ABC9C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Understanding of user-centered design principles</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#1ABC9C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Interest in agricultural or healthcare technology</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#1ABC9C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Knowledge of Ghana's digital landscape preferred</span>
+                      </li>
+                      <li className="flex items-start">
+                        <div className="w-2 h-2 bg-[#1ABC9C] rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                        <span>Strong communication skills in English</span>
+                      </li>
+                    </ul>
                   </div>
-                </CardHeader>
+                </div>
 
-                <CardContent>
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div>
-                      <h4 className="font-semibold mb-3">Requirements:</h4>
-                      <ul className="space-y-2">
-                        {position.requirements.map((req, index) => (
-                          <li key={index} className="text-sm text-muted-foreground">
-                            • {req}
-                          </li>
-                        ))}
-                      </ul>
+                <div className="mt-8 p-6 bg-[#F8F9FA] rounded-lg">
+                  <h3 className="text-xl font-bold text-[#0A3D62] mb-4">What We Offer</h3>
+                  <div className="grid md:grid-cols-2 gap-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#27AE60] bg-opacity-10 rounded-full flex items-center justify-center">
+                        <Monitor className="h-4 w-4 text-[#27AE60]" />
+                      </div>
+                      <span className="text-gray-700">Flexible remote work options</span>
                     </div>
-                    
-                    <div>
-                      <h4 className="font-semibold mb-3">Benefits:</h4>
-                      <ul className="space-y-2">
-                        {position.benefits.map((benefit, index) => (
-                          <li key={index} className="text-sm text-muted-foreground">
-                            • {benefit}
-                          </li>
-                        ))}
-                      </ul>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#1ABC9C] bg-opacity-10 rounded-full flex items-center justify-center">
+                        <Briefcase className="h-4 w-4 text-[#1ABC9C]" />
+                      </div>
+                      <span className="text-gray-700">Real-world project experience</span>
                     </div>
-                  </div>
-                  
-                  <div className="mt-6 pt-6 border-t">
-                    <div className="flex flex-wrap gap-3">
-                      <Button className="bg-[#0A3D62] hover:bg-[#082E4A]">
-                        Apply Now
-                      </Button>
-                      <Button variant="outline">
-                        Share Position
-                      </Button>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#F39C12] bg-opacity-10 rounded-full flex items-center justify-center">
+                        <Users className="h-4 w-4 text-[#F39C12]" />
+                      </div>
+                      <span className="text-gray-700">Mentorship from experienced team</span>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-8 bg-[#E74C3C] bg-opacity-10 rounded-full flex items-center justify-center">
+                        <Palette className="h-4 w-4 text-[#E74C3C]" />
+                      </div>
+                      <span className="text-gray-700">Portfolio development opportunities</span>
                     </div>
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                </div>
+
+                <div className="mt-8 text-center">
+                  <Link href="/contact">
+                    <Button size="lg" className="bg-[#27AE60] hover:bg-[#27AE60]/90 text-white px-8 py-3 text-lg">
+                      Apply for This Position
+                    </Button>
+                  </Link>
+                  <p className="text-sm text-gray-500 mt-3">
+                    Send your portfolio and interest via our contact form
+                  </p>
+                </div>
+              </CardContent>
+            </Card>
           </div>
         </div>
       </section>
 
-      {/* Application Process */}
-      <section className="py-16 md:py-20">
+      {/* Why Join Us */}
+      <section className="py-16 md:py-24 bg-[#F2F2F2]">
         <div className="container">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-center mb-12">Application Process</h2>
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Why Join Haydeen Technologies?</h2>
+            <p className="max-w-2xl mx-auto text-gray-600">
+              Be part of a mission-driven team creating technology that transforms lives across Ghana and West Africa.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <div className="w-16 h-16 bg-[#27AE60] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Users className="h-8 w-8 text-[#27AE60]" />
+              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3">Real Impact</h3>
+              <p className="text-gray-600">
+                Your designs will directly impact farmers improving their livelihoods and healthcare workers serving their communities.
+              </p>
+            </div>
             
-            <div className="grid md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="w-12 h-12 bg-[#27AE60] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  1
-                </div>
-                <h3 className="font-semibold mb-2">Submit Application</h3>
-                <p className="text-sm text-muted-foreground">
-                  Send your CV and cover letter highlighting your experience with Ghana's tech ecosystem.
-                </p>
+            <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <div className="w-16 h-16 bg-[#1ABC9C] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Briefcase className="h-8 w-8 text-[#1ABC9C]" />
               </div>
-              
-              <div className="text-center">
-                <div className="w-12 h-12 bg-[#27AE60] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  2
-                </div>
-                <h3 className="font-semibold mb-2">Technical Interview</h3>
-                <p className="text-sm text-muted-foreground">
-                  Discuss your technical skills and experience with projects relevant to our mission.
-                </p>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3">Career Growth</h3>
+              <p className="text-gray-600">
+                Gain experience working on innovative MVPs in Ghana's growing tech ecosystem with mentorship and learning opportunities.
+              </p>
+            </div>
+            
+            <div className="bg-white p-8 rounded-lg shadow-md text-center">
+              <div className="w-16 h-16 bg-[#F39C12] bg-opacity-10 rounded-full flex items-center justify-center mx-auto mb-6">
+                <Monitor className="h-8 w-8 text-[#F39C12]" />
               </div>
-              
-              <div className="text-center">
-                <div className="w-12 h-12 bg-[#27AE60] text-white rounded-full flex items-center justify-center mx-auto mb-4 text-xl font-bold">
-                  3
-                </div>
-                <h3 className="font-semibold mb-2">Team Meeting</h3>
-                <p className="text-sm text-muted-foreground">
-                  Meet our team and learn more about our culture and vision for Ghana's digital future.
-                </p>
-              </div>
+              <h3 className="text-xl font-bold text-[#0A3D62] mb-3">Cutting-Edge Projects</h3>
+              <p className="text-gray-600">
+                Work on AgriConnect and GhEHR platforms, designing solutions for unique challenges in West African markets.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section className="bg-[#0A3D62] text-white py-16">
+      {/* Application CTA */}
+      <section className="py-16 bg-gradient-to-r from-[#0A3D62] to-[#27AE60] text-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl font-bold mb-4">Don't See Your Role?</h2>
-            <p className="text-lg mb-8 opacity-90">
-              We're always looking for talented individuals who share our passion for building technology solutions for Ghana and West Africa.
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Join Our Mission?</h2>
+            <p className="text-xl opacity-90 mb-8">
+              Send us your portfolio and let us know why you're interested in designing for Ghana's agricultural and healthcare sectors.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Button asChild size="lg" className="bg-[#27AE60] hover:bg-[#229954]">
-                <Link href="/contact">Get in Touch</Link>
-              </Button>
-              <Button asChild variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-[#0A3D62]">
-                <a href="mailto:careers@haydeentechnologies.com">Send CV</a>
-              </Button>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+              <Link href="/contact">
+                <Button size="lg" className="bg-white text-[#0A3D62] hover:bg-gray-100 px-8 py-3 text-lg font-medium">
+                  Apply Now
+                </Button>
+              </Link>
+              <Link href="/products">
+                <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-[#0A3D62] px-8 py-3 text-lg font-medium">
+                  View Our Platforms
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
