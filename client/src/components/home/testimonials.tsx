@@ -1,38 +1,6 @@
-import TestimonialCard from "@/components/ui/testimonial-card";
 import { motion } from "framer-motion";
 
 const Testimonials = () => {
-  const testimonials = [
-    {
-      name: "Kwame Asante",
-      role: "Farm Manager",
-      company: "Asante Cocoa Farms",
-      content: "I participated in AgriConnect's development interviews. Mohammad's team really understands our daily challenges - from weather unpredictability to market access. Looking forward to using the platform when it launches.",
-      rating: 5,
-    },
-    {
-      name: "Dr. Akosua Mensah",
-      role: "Chief Medical Officer",
-      company: "Kumasi General Hospital",
-      content: "The GhEHR concept addresses real problems we face daily. Having participated in their research, I'm impressed by their thorough understanding of Ghana's healthcare system challenges and NHIS integration needs.",
-      rating: 5,
-    },
-    {
-      name: "Samuel Osei",
-      role: "CEO",
-      company: "Osei Trading Company",
-      content: "Haydeen Technologies delivered an excellent website for us. Their understanding of local business needs and mobile money integration was outstanding. Professional service from a promising Ghana-based startup.",
-      rating: 5,
-    },
-    {
-      name: "Fatima Ibrahim",
-      role: "Agricultural Coordinator",
-      company: "Northern Ghana Farmers Association",
-      content: "Their focus on multilingual support and offline functionality shows deep understanding of rural Ghana's needs. We're excited to see AgriConnect launch and support our farmers' digital transformation.",
-      rating: 5,
-    },
-  ];
-
   return (
     <section className="py-16 md:py-24 bg-gradient-to-br from-gray-50 to-gray-100">
       <div className="container">
@@ -41,71 +9,66 @@ const Testimonials = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">
-            What Stakeholders Say
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-8">
+            Customer Testimonials
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Feedback from farmers, healthcare providers, and business partners who are shaping our MVP development process.
-          </p>
-        </motion.div>
-
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
-          {testimonials.map((testimonial, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-            >
-              <TestimonialCard
-                name={testimonial.name}
-                role={testimonial.role}
-                company={testimonial.company}
-                content={testimonial.content}
-                rating={testimonial.rating}
-                className="h-full"
-              />
-            </motion.div>
-          ))}
-        </div>
-
-        {/* Trust badges */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <div className="flex justify-center items-center gap-8 flex-wrap">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#27AE60] rounded-full flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+          
+          <div className="max-w-2xl mx-auto mb-16">
+            <div className="bg-white rounded-2xl shadow-lg p-12 border border-gray-100">
+              <div className="text-6xl text-[#27AE60] mb-6 opacity-20">
+                💬
               </div>
-              <span className="text-gray-700 font-medium">Ghana Business License</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#27AE60] rounded-full flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
+              <h3 className="text-2xl font-semibold text-[#0A3D62] mb-4">
+                Coming Soon
+              </h3>
+              <p className="text-lg text-gray-600 leading-relaxed">
+                We're actively developing our MVP solutions and working closely with farmers, healthcare providers, and businesses across Ghana. Customer testimonials will be available once our platforms launch.
+              </p>
+              <div className="mt-8 pt-6 border-t border-gray-100">
+                <p className="text-sm text-gray-500">
+                  Join our waiting list to be among the first to experience our solutions
+                </p>
               </div>
-              <span className="text-gray-700 font-medium">Local Ghana Team</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-[#27AE60] rounded-full flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
-                  <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-              </div>
-              <span className="text-gray-700 font-medium">24/7 Local Support</span>
             </div>
           </div>
+
+          {/* Trust badges */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16 text-center"
+          >
+            <div className="flex justify-center items-center gap-8 flex-wrap">
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-[#27AE60] rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="text-gray-700 font-medium">Ghana Business License</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-[#27AE60] rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="text-gray-700 font-medium">Local Ghana Team</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <div className="w-8 h-8 bg-[#27AE60] rounded-full flex items-center justify-center">
+                  <svg className="w-5 h-5 text-white" fill="currentColor" viewBox="0 0 20 20">
+                    <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <span className="text-gray-700 font-medium">24/7 Local Support</span>
+              </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
