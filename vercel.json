@@ -2,12 +2,7 @@
   "version": 2,
   "buildCommand": "vite build",
   "outputDirectory": "client/dist",
-  "functions": {
-    "server/index.ts": {
-      "maxDuration": 30,
-      "memory": 1024
-    }
-  },
+
 
   "env": {
     "NODE_ENV": "production"
@@ -55,7 +50,7 @@
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/server/index.ts"
+      "destination": "/api/index"
     },
     {
       "source": "/sitemap.xml",
