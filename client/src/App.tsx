@@ -18,6 +18,8 @@ import Solutions from "@/pages/solutions/index";
 import Agriconnect from "@/pages/solutions/agriconnect";
 import GhEHR from "@/pages/solutions/ghehr";
 import WebsiteDesign from "@/pages/solutions/website-design";
+import Technology from "@/pages/technology/index";
+import MVPDocumentation from "@/pages/mvp-documentation";
 import Products from "@/pages/products";
 import Blog from "@/pages/blog/index";
 import Careers from "@/pages/careers";
@@ -74,6 +76,8 @@ function Router() {
           <Route path="/solutions/agriconnect" component={Agriconnect} />
           <Route path="/solutions/ghehr" component={GhEHR} />
           <Route path="/solutions/website-design" component={WebsiteDesign} />
+          <Route path="/technology" component={Technology} />
+          <Route path="/mvp-progress" component={MVPDocumentation} />
           <Route path="/products" component={Products} />
           <Route path="/blog" component={Blog} />
           <Route path="/careers" component={Careers} />

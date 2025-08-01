@@ -3,6 +3,7 @@ import SolutionsTeaser from "@/components/home/solutions-teaser";
 import HowWeWork from "@/components/home/how-we-work";
 import FeaturedCaseStudy from "@/components/home/featured-case-study";
 import WebDesignShowcase from "@/components/home/web-design-showcase";
+import TechnicalCredibility from "@/components/home/technical-credibility";
 import StatsSection from "@/components/home/stats-section";
 import Testimonials from "@/components/home/testimonials";
 import BlogPreview from "@/components/home/blog-preview";
@@ -23,6 +24,7 @@ const Home = () => {
       <HowWeWork />
       <FeaturedCaseStudy />
       <WebDesignShowcase />
+      <TechnicalCredibility />
       <StatsSection />
       <Testimonials />
       <BlogPreview />
