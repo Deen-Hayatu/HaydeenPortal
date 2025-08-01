@@ -43,13 +43,14 @@ A comprehensive digital platform for Haydeen Technologies, delivering innovative
 - **Responsive Design**: Mobile-first approach
 
 ## Recent Changes
-- **2025-02-01**: Careers Page Updated to UX/UI Internship Focus + Blog Section Updated to "Coming Soon" + Comprehensive Flexbox Enhancements
-  - Completely redesigned careers page to focus solely on UX/UI Design Internship position
-  - Removed all placeholder job listings, focusing on current short-term contract need
-  - Enhanced job posting with detailed responsibilities, requirements, and benefits
-  - Added focus on AgriConnect and GhEHR platform design work
-  - Included portfolio development and mentorship opportunities
-  - Updated SEO meta tags for design internship focus
+- **2025-02-01**: Careers Page Updated with Two Internship Positions + Blog Section Updated to "Coming Soon" + Comprehensive Flexbox Enhancements
+  - Added UX/UI Design Intern position specifically for AgriConnect app interface work
+  - Added Agribusiness Research Intern position for agricultural market research
+  - Removed all placeholder job listings, focusing on current internship needs
+  - Enhanced job postings with detailed responsibilities, requirements, and benefits
+  - Clarified UX/UI intern will work specifically on AgriConnect user interface
+  - Added market research role to support AgriConnect platform development
+  - Updated SEO meta tags for both internship positions
 - **2025-02-01**: Blog Section Updated to "Coming Soon" + Comprehensive Flexbox Enhancements
   - Replaced all blog content with professional "Coming Soon" messaging
   - Updated both home page blog preview and main blog page
