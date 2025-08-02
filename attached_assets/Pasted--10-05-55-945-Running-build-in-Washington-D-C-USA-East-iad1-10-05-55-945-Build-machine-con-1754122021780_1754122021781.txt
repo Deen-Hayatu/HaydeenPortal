@@ -1,0 +1,39 @@
+[10:05:55.945] Running build in Washington, D.C., USA (East) – iad1
+[10:05:55.945] Build machine configuration: 2 cores, 8 GB
+[10:05:55.958] Cloning github.com/Deen-Hayatu/HaydeenPortal (Branch: main, Commit: c6e2316)
+[10:05:56.088] Previous build caches not available
+[10:05:56.597] Cloning completed: 639.000ms
+[10:05:56.636] Found .vercelignore
+[10:05:56.647] Removed 19 ignored files defined in .vercelignore
+[10:05:56.648]   /.git/logs/HEAD
+[10:05:56.648]   /.git/logs/refs/heads/master
+[10:05:56.648]   /.replit
+[10:05:56.648]   /DEPLOYMENT_GUIDE.md
+[10:05:56.648]   /EMAIL_SETUP_GUIDE.md
+[10:05:56.648]   /GITHUB_SETUP.md
+[10:05:56.648]   /LATEST_CHANGES.md
+[10:05:56.648]   /MODERNIZATION_SUMMARY.md
+[10:05:56.648]   /postcss.config.js
+[10:05:56.648]   /QUICK_START_GUIDE.md
+[10:05:56.907] Running "vercel build"
+[10:05:58.121] Vercel CLI 44.6.4
+[10:05:59.198] Installing dependencies...
+[10:06:03.687] npm warn deprecated @esbuild-kit/esm-loader@2.6.5: Merged into tsx: https://tsx.is
+[10:06:03.725] npm warn deprecated @esbuild-kit/core-utils@3.3.2: Merged into tsx: https://tsx.is
+[10:06:03.953] npm warn deprecated emailjs-com@3.2.0: The SDK name changed to @emailjs/browser
+[10:06:08.361] 
+[10:06:08.361] added 513 packages in 9s
+[10:06:08.362] 
+[10:06:08.362] 67 packages are looking for funding
+[10:06:08.362]   run `npm fund` for details
+[10:06:08.614] [36mvite v5.4.14 [32mbuilding for production...[36m[39m
+[10:06:08.643] [32m✓[39m 0 modules transformed.
+[10:06:08.645] [31mx[39m Build failed in 8ms
+[10:06:08.645] [31merror during build:
+[10:06:08.645] [31mCould not resolve entry module "index.html".[31m
+[10:06:08.645]     at getRollupError (file:///vercel/path0/node_modules/rollup/dist/es/shared/parseAst.js:396:41)
+[10:06:08.645]     at error (file:///vercel/path0/node_modules/rollup/dist/es/shared/parseAst.js:392:42)
+[10:06:08.645]     at ModuleLoader.loadEntryModule (file:///vercel/path0/node_modules/rollup/dist/es/shared/node-entry.js:20086:20)
+[10:06:08.645]     at async Promise.all (index 0)[39m
+[10:06:08.652] Error: Command "vite build" exited with 1
+[10:06:11.683] Exiting build container
