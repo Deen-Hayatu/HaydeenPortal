@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Solution } from "@/lib/types";
-import { Globe, ShoppingBag, Map, BarChart, Laptop, Heart } from "lucide-react";
+import { Globe, ShoppingBag, Map, BarChart, Laptop, Heart, ShieldCheck, Server, Clock } from "lucide-react";
 
 const Solutions = () => {
   const { data: solutions, isLoading } = useQuery<Solution[]>({
@@ -122,6 +122,30 @@ const Solutions = () => {
 
   const displaySolutions = solutions || fallbackSolutions;
 
+  const executionHighlights = [
+    {
+      title: "Production infrastructure ready",
+      description: "Vercel Edge hosting + Neon Postgres mean every MVP preview runs on the same stack we'll deploy to production.",
+      icon: <Server className="w-6 h-6 text-[#27AE60]" />,
+    },
+    {
+      title: "Security & compliance baked in",
+      description: "Data encryption, access logging, and role-based controls are part of the baseline—no retrofitting once pilots start.",
+      icon: <ShieldCheck className="w-6 h-6 text-[#0A3D62]" />,
+    },
+    {
+      title: "8-week delivery cycles",
+      description: "Each engagement follows research → build → review loops with a documented sprint report shared with partners.",
+      icon: <Clock className="w-6 h-6 text-[#F39C12]" />,
+    },
+  ];
+
+  const engagementSteps = [
+    { label: "Week 0-2", title: "Discovery & NDA", description: "Stakeholder interviews, access provisioning, and alignment on KPIs." },
+    { label: "Week 3-6", title: "Build & Validate", description: "Feature delivery on staging with usability tests across Ghanaian cohorts." },
+    { label: "Week 7-8", title: "Pilot Readiness", description: "Security checklist, training collateral, and go-live support plan." },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -136,9 +160,37 @@ const Solutions = () => {
             <p className="text-lg opacity-80 max-w-2xl mx-auto">
               From AgriConnect's agricultural marketplace to GhEHR's healthcare platform - we're developing solutions that address real challenges faced by Ghanaian communities.
             </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm uppercase tracking-[0.3em] text-white/80">
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-[#FCD116] animate-pulse" />
+                  Vercel Edge + Neon Postgres
+                </span>
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  8-week sprint reviews
+                </span>
+              </div>
           </div>
         </div>
       </section>
+
+        {/* Delivery Guarantees */}
+        <section className="bg-white">
+          <div className="container -mt-12 md:-mt-16 relative z-20">
+            <div className="grid md:grid-cols-3 gap-6">
+              {executionHighlights.map((item) => (
+                <div key={item.title} className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-[#0A3D62]">{item.title}</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
       {/* Solutions Overview */}
       <section className="py-16 md:py-24 bg-white">
@@ -312,6 +364,36 @@ const Solutions = () => {
           </div>
         </div>
       </section>
+
+        {/* Engagement Playbook */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container">
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#27AE60]">How we partner</p>
+              <h2 className="text-3xl font-bold text-[#0A3D62] mb-4">Engagement playbook in 3 checkpoints</h2>
+              <p className="max-w-2xl mx-auto text-gray-600">
+                Every MVP build is scoped against this cadence so stakeholders know exactly what happens each week.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {engagementSteps.map((step) => (
+                <div key={step.label} className="border border-gray-100 rounded-2xl p-6 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 mb-2">{step.label}</p>
+                  <h3 className="text-xl font-bold text-[#0A3D62] mb-3">{step.title}</h3>
+                  <p className="text-gray-600 text-sm">{step.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#0A3D62] text-white font-semibold hover:bg-[#0A3D62]/90 transition"
+              >
+                Schedule a discovery call
+              </Link>
+            </div>
+          </div>
+        </section>
 
       {/* Industries We Serve */}
       <section className="py-16 md:py-24 bg-white">
