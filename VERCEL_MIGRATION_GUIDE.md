@@ -206,8 +206,8 @@ vercel
 # Project name: haydeen-technologies
 # In which directory is your code located? ./
 # Want to modify settings? Yes
-# Build Command: npm run vercel-build
-# Output Directory: client/dist
+# Build Command: npm run build
+# Output Directory: dist/public
 # Development Command: npm run dev
 ```
 
@@ -368,7 +368,7 @@ vercel env ls
 ```bash
 # Analyze bundle size
 npm run build
-npx vite-bundle-analyzer client/dist
+npx vite-bundle-analyzer dist/public
 
 # Check Core Web Vitals
 # Use browser DevTools or Google PageSpeed Insights

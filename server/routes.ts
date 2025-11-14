@@ -1,5 +1,4 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { sendEmail } from "./services/email";
 import { 
@@ -10,7 +9,7 @@ import {
 import { ZodError } from "zod";
 import multer from "multer";
 
-export async function registerRoutes(app: Express): Promise<Server> {
+export function registerRoutes(app: Express): void {
   // Configure multer for file uploads
   const upload = multer({
     limits: {
@@ -420,7 +419,4 @@ export async function registerRoutes(app: Express): Promise<Server> {
       }
     }
   });
-
-  const httpServer = createServer(app);
-  return httpServer;
-}
+  }
