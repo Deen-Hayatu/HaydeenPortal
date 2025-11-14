@@ -177,6 +177,14 @@ const Contact = () => {
             {/* Contact Form */}
             <div className="bg-[#F2F2F2] rounded-lg p-8">
               <h2 className="text-2xl font-bold text-[#0A3D62] mb-6">Send Us a Message</h2>
+
+                <div className="bg-white rounded-lg border border-dashed border-[#0A3D62]/20 p-4 mb-6 flex items-start gap-3">
+                  <AlertCircle className="w-5 h-5 text-[#27AE60] mt-1" />
+                  <div className="text-sm text-gray-600">
+                    <p className="font-semibold text-[#0A3D62]">We respond within two business days.</p>
+                    <p>All submissions are stored securely in Neon Postgres and routed through our internal ticketing workflow—no marketing drip, just a human follow-up.</p>
+                  </div>
+                </div>
               
               <Form {...form}>
                 <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
@@ -298,6 +306,10 @@ const Contact = () => {
                   >
                     Send Message
                   </EnhancedButton>
+
+                    <p className="text-xs text-gray-500">
+                      By submitting, you consent to Haydeen Technologies contacting you regarding your enquiry. We never share your information with third parties and can execute an NDA before detailed conversations.
+                    </p>
                   
                   {!canSubmit && remainingCooldown > 0 && (
                     <p className="text-sm text-red-600 mt-2">

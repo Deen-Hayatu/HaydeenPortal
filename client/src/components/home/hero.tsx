@@ -1,4 +1,3 @@
-import { Link } from "wouter";
 import AgriculturalHeroBg from "@/components/ui/agricultural-hero-bg";
 import EnhancedCTAButton from "@/components/ui/enhanced-cta-button";
 import PlatformScreenshot from "@/components/ui/platform-screenshot";
@@ -6,8 +5,24 @@ import TrustBadges from "@/components/ui/trust-badges";
 import OptimizedImage from "@/components/ui/optimized-image";
 import { LazyComponent } from "@/components/performance/intersection-observer";
 import { motion } from "framer-motion";
+import { Link } from "wouter";
 
 const Hero = () => {
+  const deliverySignals = [
+    {
+      value: "2 MVPs",
+      label: "AgriConnect & GhEHR in build",
+    },
+    {
+      value: "15+ Interviews",
+      label: "Ghana farmers & clinicians",
+    },
+    {
+      value: "<48h",
+      label: "Response SLA for pilots",
+    },
+  ];
+
   return (
     <section 
       className="relative bg-gradient-to-br from-[#0A3D62] via-[#1B4F72] to-[#27AE60] text-white overflow-hidden min-h-screen flex items-center"
@@ -29,15 +44,25 @@ const Hero = () => {
             className="space-y-8"
           >
             <div className="space-y-6">
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-full px-4 py-2 text-sm font-medium tracking-wide uppercase"
+                >
+                  <span className="w-2 h-2 rounded-full bg-[#FCD116] animate-pulse" />
+                  Pre-seed Ghanaian team · Powered by Vercel + Neon
+                </motion.div>
+
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-5xl md:text-7xl font-bold font-poppins leading-tight"
               >
-                Innovative Software Solutions for{" "}
+                  Building mission-critical platforms for{" "}
                 <span className="text-[#FCD116] drop-shadow-lg">
-                  West Africa
+                    West Africa
                 </span>
               </motion.h1>
               
@@ -47,7 +72,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg md:text-xl opacity-90 max-w-2xl"
               >
-                Developing innovative MVP solutions for Ghana's agriculture and healthcare sectors. AgriConnect and GhEHR are currently in development, shaped by extensive stakeholder research.
+                  We craft reliable MVPs for Ghana's agriculture and healthcare systems—combining stakeholder research, compliant architecture, and an execution stack that ships fast (Vercel edge + Neon serverless Postgres). Partners get transparent roadmaps, data safeguards, and teams on the ground in Effiduasi.
               </motion.p>
             </div>
             
@@ -67,6 +92,38 @@ const Hero = () => {
                 Get Updates
               </EnhancedCTAButton>
             </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.7 }}
+                className="grid sm:grid-cols-3 gap-4 text-left"
+              >
+                {deliverySignals.map((signal) => (
+                  <div
+                    key={signal.label}
+                    className="bg-white/10 backdrop-blur-sm rounded-xl px-4 py-3 border border-white/10"
+                  >
+                    <div className="text-2xl font-bold">{signal.value}</div>
+                    <p className="text-sm text-white/80">{signal.label}</p>
+                  </div>
+                ))}
+              </motion.div>
+
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.8 }}
+                className="flex items-center gap-3 text-sm"
+              >
+                <span className="text-white/70">Need the delivery playbook?</span>
+                <Link
+                  href="/mvp-progress"
+                  className="inline-flex items-center gap-1 font-semibold text-[#FCD116] hover:text-white transition"
+                >
+                  Review MVP documentation →
+                </Link>
+              </motion.div>
             
             {/* Ghana-specific trust badges */}
             <motion.div 
