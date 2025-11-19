@@ -118,51 +118,27 @@ npm run dev
 ## Step 5: Vercel Deployment
 
 ### 5.1 Prepare for Deployment
-Create `vercel.json`:
+`vercel.json` (already provided in the repo) is configured for a Vite static build plus a catch-all Express API:
 ```json
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "server/index.ts",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "client/**/*",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    }
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "headers": [
+    { "source": "/(.*)", "headers": [{ "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }] }
   ],
   "routes": [
-    {
-      "src": "/api/(.*)",
-      "dest": "/server/index.ts"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/client/$1"
-    }
-  ],
-  "env": {
-    "NODE_ENV": "production"
-  }
+    { "handle": "filesystem" },
+    { "src": "/.*", "dest": "/index.html" }
+  ]
 }
 ```
+> 💡 `/api/[[...slug]].ts` shares the same Express routes used locally, so every `/api/*` request on Vercel automatically hits the same handlers that run in development.
 
-### 5.2 Update package.json Scripts
-Add Vercel build script:
-```json
-{
-  "scripts": {
-    "build": "npm run build:client && npm run build:server",
-    "build:client": "cd client && npm run build",
-    "build:server": "tsc server/**/*.ts --outDir dist/server",
-    "vercel-build": "npm run build:client"
-  }
-}
-```
+### 5.2 Verify package.json Scripts
+No extra scripts are required. The existing `npm run build` command already:
+- Builds the client into `dist/public`
+- Bundles the Express server for local previews
 
 ### 5.3 Deploy to Vercel
 ```bash
@@ -175,7 +151,7 @@ vercel
 # Follow the prompts:
 # - Link to existing project or create new
 # - Set build command: npm run build
-# - Set output directory: client/dist
+# - Set output directory: dist/public
 # - Set install command: npm install
 ```
 
@@ -184,10 +160,11 @@ In Vercel dashboard:
 1. Go to Project Settings
 2. Navigate to Environment Variables
 3. Add all variables from your `.env.local`:
-   - `DATABASE_URL`
-   - `VITE_GA_MEASUREMENT_ID`
-   - `SENDGRID_API_KEY`
-   - `SESSION_SECRET`
+    - `DATABASE_URL`
+    - `VITE_GA_MEASUREMENT_ID`
+    - `SENDGRID_API_KEY`
+    - `EMAIL_FROM`
+    - `SESSION_SECRET`
 
 ## Step 6: Domain & SSL Setup
 

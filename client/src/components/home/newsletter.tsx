@@ -53,8 +53,8 @@ const Newsletter = () => {
     }
   };
 
-  return (
-    <section className="py-16 md:py-20 bg-[#0A3D62] text-white">
+    return (
+      <section id="newsletter" className="py-16 md:py-20 bg-[#0A3D62] text-white">
       <div className="container">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold font-poppins mb-4">Stay Updated</h2>

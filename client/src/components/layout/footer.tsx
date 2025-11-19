@@ -2,9 +2,25 @@ import { Link } from "wouter";
 import CompanyLogo from "@/components/ui/company-logo";
 
 const Footer = () => {
-  return (
-    <footer className="bg-gray-900 text-white">
-      <div className="container mx-auto py-12">
+    return (
+      <footer className="bg-gray-900 text-white">
+        <div className="container mx-auto py-12 space-y-10">
+          <div className="bg-gradient-to-r from-[#0A3D62] to-[#1B4F72] rounded-2xl p-6 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 border border-white/10">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-white/70">Delivery status</p>
+              <h3 className="text-2xl font-semibold mt-2">Deployment-ready on Vercel + Neon with Ghana-based support</h3>
+              <p className="text-white/80 mt-2 max-w-2xl">
+                Our infrastructure is already provisioned—static frontends on Vercel Edge, APIs on serverless functions, and Neon Postgres for data. When you're ready, we can launch pilots without rework.
+              </p>
+            </div>
+            <Link
+              href="/contact"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-[#0A3D62] font-semibold hover:bg-[#FCD116] hover:text-black transition"
+            >
+              Talk to the team
+            </Link>
+          </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Company Info */}
           <div>
@@ -80,6 +96,12 @@ const Footer = () => {
                 </svg>
                 +233 207 884 182
               </li>
+                <li className="flex items-start">
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 mr-2 text-gray-500 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2v-7H3v7a2 2 0 002 2z" />
+                  </svg>
+                  Support hours: Mon–Fri, 9am–6pm GMT
+                </li>
             </ul>
           </div>
         </div>

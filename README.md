@@ -93,6 +93,32 @@ npm run dev
 
 The application will be available at `http://localhost:5000`.
 
+## Deployment (Vercel + Neon)
+
+1. **Provision Neon PostgreSQL**
+   - Create a project/branch in [Neon](https://neon.tech) and copy the connection string.
+   - Update `.env` (and Vercel environment variables) with `DATABASE_URL`.
+   - Apply the schema with `npm run db:push`.
+
+2. **Configure environment variables**
+   - Required: `DATABASE_URL`, `SESSION_SECRET`, `EMAIL_FROM`, `SENDGRID_API_KEY` (if email should send), `VITE_GA_MEASUREMENT_ID` (optional analytics).
+   - In Vercel: `Settings → Environment Variables`, add each key for Production/Preview/Development.
+
+3. **Build & deploy**
+   - Build locally with `npm run build` (outputs static assets to `dist/public` and bundles the Express server for local preview).
+   - Deploy with `vercel --prod`. When prompted:
+     - Build Command: `npm run build`
+     - Output Directory: `dist/public`
+     - Development Command: `npm run dev`
+
+4. **Serverless API on Vercel**
+   - All Express routes are shared between local development and the serverless function defined at `api/[[...slug]].ts`.
+   - Requests to `/api/*` automatically invoke the same handlers that back the local server, so no additional routing logic is needed.
+
+5. **Post-deploy checks**
+   - Verify `/api/health`, contact form, newsletter subscription, and job applications end-to-end.
+   - Monitor Neon connection usage and Vercel function logs for the first 24 hours after launch.
+
 ## Development
 
 ### Project Structure
