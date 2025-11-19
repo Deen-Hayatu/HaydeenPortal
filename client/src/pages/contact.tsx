@@ -251,7 +251,7 @@ const Contact = () => {
                           <EnhancedValidation
                             value={field.value || ''}
                             rules={ghanaPhoneRules}
-                            showValidation={field.value && field.value.length > 5}
+                            showValidation={!!(field.value && field.value.length > 5)}
                           />
                         </FormItem>
                       )}

@@ -24,13 +24,25 @@ export async function sendEmail(
     const mailService = new MailService();
     mailService.setApiKey(key);
 
-    await mailService.send({
+    // SendGrid requires at least text or html
+    const mailData: {
+      to: string;
+      from: string;
+      subject: string;
+      text: string;
+      html?: string;
+    } = {
       to: params.to,
       from: params.from,
       subject: params.subject,
-      text: params.text,
-      html: params.html,
-    });
+      text: params.text || params.html || params.subject, // Ensure text is always present
+    };
+
+    if (params.html) {
+      mailData.html = params.html;
+    }
+
+    await mailService.send(mailData);
     
     return true;
   } catch (error) {

@@ -54,15 +54,49 @@ function ensureRoutesRegistered() {
 
 ensureRoutesRegistered();
 
-app.get("/api/health", (_req: Request, res: Response) => {
-  res.json({ status: "healthy", timestamp: new Date().toISOString() });
+app.get("/api/health", async (_req: Request, res: Response) => {
+  try {
+    // Check database connectivity
+    const { pool } = await import("../server/db.js");
+    const client = await pool.connect();
+    await client.query("SELECT 1");
+    client.release();
+    
+    res.json({ 
+      status: "healthy", 
+      timestamp: new Date().toISOString(),
+      database: "connected"
+    });
+  } catch (error) {
+    res.status(503).json({ 
+      status: "unhealthy", 
+      timestamp: new Date().toISOString(),
+      database: "disconnected"
+    });
+  }
 });
 
 app.use((err: any, _req: Request, res: Response, _next: NextFunction) => {
   const status = err.status || err.statusCode || 500;
-  const message = err.message || "Internal Server Error";
-
-  res.status(status).json({ message });
+  
+  // Log error server-side
+  if (status >= 500) {
+    console.error('Server error:', {
+      message: err.message,
+      stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+      path: _req.path,
+    });
+  }
+  
+  // Return generic error message
+  const message = status >= 500 
+    ? "An internal server error occurred" 
+    : (err.message || "Bad request");
+  
+  res.status(status).json({ 
+    success: false,
+    error: message 
+  });
 });
 
 export const config = {

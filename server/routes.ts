@@ -8,10 +8,48 @@ import {
 } from "@shared/schema";
 import { ZodError } from "zod";
 import multer from "multer";
+import rateLimit from "express-rate-limit";
+import { logger } from "./utils/logger";
+import { sendSuccess, sendError, sendPaginated } from "./utils/response";
+import { validateSlug } from "./middleware/validation";
+import { slugSchema, paginationSchema } from "./utils/validation";
+import { sanitizeFileName } from "./utils/sanitize";
+import {
+  createContactNotificationEmail,
+  createContactConfirmationEmail,
+  createNewsletterSubscriptionEmail,
+  createJobApplicationNotificationEmail,
+  createJobApplicationConfirmationEmail,
+} from "./utils/email-templates";
+
+// Rate limiters
+const newsletterLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  max: 5, // 5 subscriptions per 15 minutes
+  message: 'Too many newsletter subscription attempts, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const jobApplicationLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000, // 1 hour
+  max: 3, // 3 applications per hour
+  message: 'Too many job application submissions, please try again later.',
+  standardHeaders: true,
+  legacyHeaders: false,
+});
+
+const unsubscribeLimiter = rateLimit({
+  windowMs: 5 * 60 * 1000, // 5 minutes
+  max: 10, // 10 unsubscribe attempts per 5 minutes
+  standardHeaders: true,
+  legacyHeaders: false,
+});
 
 export function registerRoutes(app: Express): void {
-  // Configure multer for file uploads
+  // Configure multer for file uploads with improved security
   const upload = multer({
+    storage: multer.memoryStorage(), // Store in memory temporarily
     limits: {
       fileSize: 5 * 1024 * 1024, // 5MB limit
     },
@@ -22,23 +60,40 @@ export function registerRoutes(app: Express): void {
         'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
       ];
       
-      if (allowedTypes.includes(file.mimetype)) {
-        cb(null, true);
-      } else {
-        cb(new Error('Invalid file type. Only PDF, DOC, and DOCX files are allowed.'));
+      // Check MIME type
+      if (!allowedTypes.includes(file.mimetype)) {
+        return cb(new Error('Invalid file type. Only PDF, DOC, and DOCX files are allowed.'));
       }
+      
+      // Additional validation: check file extension
+      const allowedExtensions = ['.pdf', '.doc', '.docx'];
+      const fileExtension = file.originalname.toLowerCase().substring(file.originalname.lastIndexOf('.'));
+      if (!allowedExtensions.includes(fileExtension)) {
+        return cb(new Error('Invalid file extension. Only PDF, DOC, and DOCX files are allowed.'));
+      }
+      
+      cb(null, true);
     },
   });
 
   // API Routes - all prefixed with /api
   
-  // Blog routes
+  // Blog routes with pagination
   app.get("/api/blog", async (req, res) => {
     try {
-      const blogPosts = await storage.getBlogPosts();
+      const pagination = paginationSchema.parse({
+        page: req.query.page || 1,
+        limit: req.query.limit || 10,
+      });
+
+      const allPosts = await storage.getBlogPosts();
+      const total = allPosts.length;
+      const startIndex = (pagination.page - 1) * pagination.limit;
+      const endIndex = startIndex + pagination.limit;
+      const paginatedPosts = allPosts.slice(startIndex, endIndex);
       
       // Transform to client format
-      const formattedPosts = blogPosts.map(post => ({
+      const formattedPosts = paginatedPosts.map(post => ({
         id: post.id,
         title: post.title,
         slug: post.slug,
@@ -54,20 +109,21 @@ export function registerRoutes(app: Express): void {
         category: post.category
       }));
       
-      res.json(formattedPosts);
+      sendPaginated(res, formattedPosts, pagination.page, pagination.limit, total);
     } catch (error) {
-      console.error("Error fetching blog posts:", error);
-      res.status(500).json({ message: "Failed to fetch blog posts" });
+      logger.error("Error fetching blog posts", "routes", error as Error);
+      sendError(res, "Failed to fetch blog posts", 500);
     }
   });
 
-  app.get("/api/blog/:slug", async (req, res) => {
+  // Blog post by slug with validation
+  app.get("/api/blog/:slug", validateSlug, async (req, res) => {
     try {
-      const { slug } = req.params;
+      const slug = slugSchema.parse(req.params.slug);
       const post = await storage.getBlogPostBySlug(slug);
       
       if (!post) {
-        return res.status(404).json({ message: "Blog post not found" });
+        return sendError(res, "Blog post not found", 404);
       }
       
       // Transform to client format
@@ -88,10 +144,14 @@ export function registerRoutes(app: Express): void {
         category: post.category
       };
       
-      res.json(formattedPost);
+      sendSuccess(res, formattedPost);
     } catch (error) {
-      console.error("Error fetching blog post:", error);
-      res.status(500).json({ message: "Failed to fetch blog post" });
+      if (error instanceof ZodError) {
+        sendError(res, "Invalid slug format", 400);
+      } else {
+        logger.error("Error fetching blog post", "routes", error as Error);
+        sendError(res, "Failed to fetch blog post", 500);
+      }
     }
   });
 
@@ -115,20 +175,21 @@ export function registerRoutes(app: Express): void {
         };
       }));
       
-      res.json(formattedSolutions);
+      sendSuccess(res, formattedSolutions);
     } catch (error) {
-      console.error("Error fetching solutions:", error);
-      res.status(500).json({ message: "Failed to fetch solutions" });
+      logger.error("Error fetching solutions", "routes", error as Error);
+      sendError(res, "Failed to fetch solutions", 500);
     }
   });
 
-  app.get("/api/solutions/:slug", async (req, res) => {
+  // Solution by slug with validation
+  app.get("/api/solutions/:slug", validateSlug, async (req, res) => {
     try {
-      const { slug } = req.params;
+      const slug = slugSchema.parse(req.params.slug);
       const solution = await storage.getSolutionBySlug(slug);
       
       if (!solution) {
-        return res.status(404).json({ message: "Solution not found" });
+        return sendError(res, "Solution not found", 404);
       }
       
       const features = await storage.getSolutionFeatures(solution.id);
@@ -145,14 +206,18 @@ export function registerRoutes(app: Express): void {
         features: features.map(f => f.feature)
       };
       
-      res.json(formattedSolution);
+      sendSuccess(res, formattedSolution);
     } catch (error) {
-      console.error("Error fetching solution:", error);
-      res.status(500).json({ message: "Failed to fetch solution" });
+      if (error instanceof ZodError) {
+        sendError(res, "Invalid slug format", 400);
+      } else {
+        logger.error("Error fetching solution", "routes", error as Error);
+        sendError(res, "Failed to fetch solution", 500);
+      }
     }
   });
 
-  // Contact form submission
+  // Contact form submission (rate limiting applied in server/index.ts)
   app.post("/api/contact", async (req, res) => {
     try {
       // Validate request body
@@ -161,68 +226,49 @@ export function registerRoutes(app: Express): void {
       // Save to storage
       const submission = await storage.createContactSubmission(validatedData);
       
-      // Send email notification
-      const emailContent = `
-        New contact form submission:
-        
-        Name: ${validatedData.name}
-        Email: ${validatedData.email}
-        Phone: ${validatedData.phone || 'Not provided'}
-        Company: ${validatedData.company || 'Not provided'}
-        
-        Message:
-        ${validatedData.message}
-      `;
+      // Get email addresses from environment
+      const adminEmail = process.env.ADMIN_EMAIL || process.env.EMAIL_TO || "info@haydeentech.com";
+      const fromEmail = process.env.EMAIL_FROM || "noreply@haydeentech.com";
+      
+      // Send email notification using sanitized templates
+      const emailContent = createContactNotificationEmail(validatedData);
       
       await sendEmail(
         process.env.SENDGRID_API_KEY || "",
         {
-          to: "info@haydeentech.com",
-          from: process.env.EMAIL_FROM || "noreply@haydeentech.com",
+          to: adminEmail,
+          from: fromEmail,
           subject: "New Contact Form Submission - Haydeen Technologies",
           text: emailContent,
         }
       );
       
       // Send confirmation email to user
-      const userEmailContent = `
-        Dear ${validatedData.name},
-        
-        Thank you for contacting Haydeen Technologies. We have received your message and will get back to you as soon as possible.
-        
-        Best regards,
-        The Haydeen Technologies Team
-      `;
+      const userEmailContent = createContactConfirmationEmail(validatedData.name);
       
       await sendEmail(
         process.env.SENDGRID_API_KEY || "",
         {
           to: validatedData.email,
-          from: process.env.EMAIL_FROM || "noreply@haydeentech.com",
+          from: fromEmail,
           subject: "Thank You for Contacting Haydeen Technologies",
           text: userEmailContent,
         }
       );
       
-      res.status(201).json({ 
-        message: "Contact form submitted successfully",
-        submissionId: submission.id
-      });
+      sendSuccess(res, { submissionId: submission.id }, "Contact form submitted successfully", 201);
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(400).json({ 
-          message: "Validation error", 
-          errors: error.errors 
-        });
+        sendError(res, "Validation error", 400, error.errors[0]?.message);
       } else {
-        console.error("Error processing contact form:", error);
-        res.status(500).json({ message: "Failed to process contact form" });
+        logger.error("Error processing contact form", "routes", error as Error);
+        sendError(res, "Failed to process contact form", 500);
       }
     }
   });
 
-  // Newsletter subscription
-  app.post("/api/newsletter/subscribe", async (req, res) => {
+  // Newsletter subscription with rate limiting
+  app.post("/api/newsletter/subscribe", newsletterLimiter, async (req, res) => {
     try {
       // Validate request body
       const validatedData = newsletterSubscriptionFormSchema.parse(req.body);
@@ -231,73 +277,67 @@ export function registerRoutes(app: Express): void {
       const isSubscribed = await storage.isEmailSubscribed(validatedData.email);
       
       if (isSubscribed) {
-        return res.json({
-          message: "Email is already subscribed to the newsletter"
-        });
+        return sendSuccess(res, null, "Email is already subscribed to the newsletter");
       }
       
       // Save subscription
       const subscription = await storage.subscribeToNewsletter(validatedData);
       
-      // Send confirmation email
-      const emailContent = `
-        Dear Subscriber,
-        
-        Thank you for subscribing to the Haydeen Technologies newsletter. You'll now receive updates on our solutions, industry insights, and upcoming events.
-        
-        If you did not request this subscription, please click here to unsubscribe:
-        https://haydeentech.com/newsletter/unsubscribe?email=${encodeURIComponent(validatedData.email)}
-        
-        Best regards,
-        The Haydeen Technologies Team
-      `;
+      // Create unsubscribe URL
+      const baseUrl = process.env.BASE_URL || "https://haydeentechnologies.com";
+      const unsubscribeUrl = `${baseUrl}/newsletter/unsubscribe?email=${encodeURIComponent(validatedData.email)}`;
+      
+      // Send confirmation email using sanitized template
+      const emailContent = createNewsletterSubscriptionEmail(validatedData.email, unsubscribeUrl);
+      const fromEmail = process.env.EMAIL_FROM || "noreply@haydeentech.com";
       
       await sendEmail(
         process.env.SENDGRID_API_KEY || "",
         {
           to: validatedData.email,
-          from: process.env.EMAIL_FROM || "noreply@haydeentech.com",
+          from: fromEmail,
           subject: "Welcome to the Haydeen Technologies Newsletter",
           text: emailContent,
         }
       );
       
-      res.status(201).json({ 
-        message: "Successfully subscribed to the newsletter",
-        subscriptionId: subscription.id
-      });
+      sendSuccess(res, { subscriptionId: subscription.id }, "Successfully subscribed to the newsletter", 201);
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(400).json({ 
-          message: "Validation error", 
-          errors: error.errors 
-        });
+        sendError(res, "Validation error", 400, error.errors[0]?.message);
       } else {
-        console.error("Error processing newsletter subscription:", error);
-        res.status(500).json({ message: "Failed to process newsletter subscription" });
+        logger.error("Error processing newsletter subscription", "routes", error as Error);
+        sendError(res, "Failed to process newsletter subscription", 500);
       }
     }
   });
 
-  app.post("/api/newsletter/unsubscribe", async (req, res) => {
+  // Newsletter unsubscribe with rate limiting
+  app.post("/api/newsletter/unsubscribe", unsubscribeLimiter, async (req, res) => {
     try {
       const { email } = req.body;
       
       if (!email || typeof email !== 'string') {
-        return res.status(400).json({ message: "Valid email address is required" });
+        return sendError(res, "Valid email address is required", 400);
+      }
+      
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        return sendError(res, "Invalid email address format", 400);
       }
       
       await storage.unsubscribeFromNewsletter(email);
       
-      res.json({ message: "Successfully unsubscribed from the newsletter" });
+      sendSuccess(res, null, "Successfully unsubscribed from the newsletter");
     } catch (error) {
-      console.error("Error processing newsletter unsubscription:", error);
-      res.status(500).json({ message: "Failed to process newsletter unsubscription" });
+      logger.error("Error processing newsletter unsubscription", "routes", error as Error);
+      sendError(res, "Failed to process newsletter unsubscription", 500);
     }
   });
 
-  // Job application submission
-  app.post("/api/job-applications", upload.single('cvFile'), async (req, res) => {
+  // Job application submission with rate limiting and improved file handling
+  app.post("/api/job-applications", jobApplicationLimiter, upload.single('cvFile'), async (req, res) => {
     try {
       // Validate form data (excluding file)
       const formData = {
@@ -321,8 +361,19 @@ export function registerRoutes(app: Express): void {
       let cvFileData = null;
       
       if (req.file) {
-        cvFileName = req.file.originalname;
+        // Sanitize file name
+        cvFileName = sanitizeFileName(req.file.originalname);
+        
+        // TODO: In production, upload to cloud storage (S3, Cloudinary) instead of storing in DB
+        // For now, store as base64 but this should be changed
         cvFileData = req.file.buffer.toString('base64');
+        
+        // Log file upload for security monitoring
+        logger.info("CV file uploaded", "routes", {
+          fileName: cvFileName,
+          size: req.file.size,
+          mimeType: req.file.mimetype,
+        });
       }
 
       // Save to storage
@@ -334,89 +385,58 @@ export function registerRoutes(app: Express): void {
 
       const application = await storage.createJobApplication(applicationData);
       
-      // Send email notification to company
-      const emailContent = `
-        New job application received:
-        
-        Position: ${validatedData.position}
-        Name: ${validatedData.firstName} ${validatedData.lastName}
-        Email: ${validatedData.email}
-        Phone: ${validatedData.phone}
-        Location: ${validatedData.location}
-        University: ${validatedData.university || 'Not provided'}
-        Field of Study: ${validatedData.studyField || 'Not provided'}
-        Graduation Year: ${validatedData.graduationYear || 'Not provided'}
-        
-        Experience:
-        ${validatedData.experience || 'Not provided'}
-        
-        Motivation:
-        ${validatedData.motivation}
-        
-        CV: ${cvFileName ? 'Attached' : 'Not provided'}
-        
-        Application ID: ${application.id}
-      `;
+      // Get email addresses from environment
+      const careersEmail = process.env.CAREERS_EMAIL || process.env.EMAIL_TO || "careers@haydeentech.com";
+      const fromEmail = process.env.EMAIL_FROM || "noreply@haydeentech.com";
+      
+      // Send email notification using sanitized template
+      const emailContent = createJobApplicationNotificationEmail({
+        ...validatedData,
+        applicationId: application.id,
+        cvFileName: cvFileName || undefined,
+      });
       
       await sendEmail(
         process.env.SENDGRID_API_KEY || "",
         {
-          to: "careers@haydeentech.com",
-          from: process.env.EMAIL_FROM || "noreply@haydeentech.com",
+          to: careersEmail,
+          from: fromEmail,
           subject: `New Application: ${validatedData.position} - ${validatedData.firstName} ${validatedData.lastName}`,
           text: emailContent,
         }
       );
       
-      // Send confirmation email to applicant
-      const confirmationContent = `
-        Dear ${validatedData.firstName},
-        
-        Thank you for applying for the ${validatedData.position} position at Haydeen Technologies. We have received your application and will review it carefully.
-        
-        We appreciate your interest in joining our team and helping us build innovative solutions for Ghana's agricultural and healthcare sectors. Our team will review your application and get back to you within 1-2 weeks.
-        
-        If you have any questions in the meantime, please don't hesitate to contact us.
-        
-        Best regards,
-        The Haydeen Technologies Team
-        
-        Application Details:
-        - Position: ${validatedData.position}
-        - Application ID: ${application.id}
-        - Submitted: ${new Date().toLocaleDateString()}
-      `;
+      // Send confirmation email to applicant using sanitized template
+      const confirmationContent = createJobApplicationConfirmationEmail({
+        firstName: validatedData.firstName,
+        position: validatedData.position,
+        applicationId: application.id,
+      });
       
       await sendEmail(
         process.env.SENDGRID_API_KEY || "",
         {
           to: validatedData.email,
-          from: process.env.EMAIL_FROM || "noreply@haydeentech.com",
+          from: fromEmail,
           subject: "Application Received - Haydeen Technologies",
           text: confirmationContent,
         }
       );
       
-      res.status(201).json({ 
-        message: "Application submitted successfully",
-        applicationId: application.id
-      });
+      sendSuccess(res, { applicationId: application.id }, "Application submitted successfully", 201);
     } catch (error) {
       if (error instanceof ZodError) {
-        res.status(400).json({ 
-          message: "Validation error", 
-          errors: error.errors 
-        });
+        sendError(res, "Validation error", 400, error.errors[0]?.message);
       } else if (error instanceof multer.MulterError) {
         if (error.code === 'LIMIT_FILE_SIZE') {
-          res.status(400).json({ message: "File too large. Maximum size is 5MB." });
+          sendError(res, "File too large. Maximum size is 5MB.", 400);
         } else {
-          res.status(400).json({ message: "File upload error: " + error.message });
+          sendError(res, `File upload error: ${error.message}`, 400);
         }
       } else {
-        console.error("Error processing job application:", error);
-        res.status(500).json({ message: "Failed to process job application" });
+        logger.error("Error processing job application", "routes", error as Error);
+        sendError(res, "Failed to process job application", 500);
       }
     }
   });
-  }
+}
