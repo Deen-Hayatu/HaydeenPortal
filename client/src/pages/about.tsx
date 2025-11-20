@@ -11,10 +11,10 @@ const About = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">About Haydeen Technologies</h1>
             <p className="text-xl opacity-90 mb-4">
-              Bridging critical gaps in Ghana's and West Africa's industries through innovative software solutions.
+              We're a Ghanaian tech company solving problems that matter.
             </p>
             <p className="text-lg opacity-80">
-              Our mission: Transform agriculture and STEM fields with technology that enhances efficiency and drives sustainable growth across key sectors.
+              Our founder saw farmers struggling to find buyers and healthcare workers managing records on paper. So we're building technology to change that—helping farmers get better prices and healthcare workers serve more patients.
             </p>
           </div>
         </div>
@@ -27,16 +27,16 @@ const About = () => {
             <div>
               <h2 className="text-3xl font-bold text-[#0A3D62] mb-6">Our Story</h2>
               <p className="text-gray-600 mb-4">
-                Founded by Mohammad Deen Hayatu in January 2025 in Effiduasi, Ghana, Haydeen Technologies emerged with a clear mission: to develop innovative software solutions that bridge critical gaps in Ghana's and West Africa's industries, starting with agriculture and STEM fields.
+                Founded by Mohammad Deen Hayatu in January 2025 in Effiduasi, Ghana, Haydeen Technologies started with a simple observation: farmers were losing money because they couldn't find buyers, and healthcare workers were drowning in paperwork.
               </p>
               <p className="text-gray-600 mb-4">
-                Our journey began with recognizing the challenges facing Ghana's agricultural sector, which contributes ~20% to GDP and employs ~45% of the workforce. We saw inefficient supply chains, limited market access, and low technology adoption as key problems to solve.
+                Ghana's agricultural sector contributes 20% to GDP and employs 45% of the workforce, yet farmers struggle with inefficient supply chains and limited market access. We saw technology as the solution—but technology built specifically for Ghana's unique challenges.
               </p>
               <p className="text-gray-600 mb-4">
-                This insight led to the development of our flagship product, AgriConnect—a comprehensive digital platform connecting farmers, buyers, suppliers, and logistics service providers to streamline agricultural trade and logistics across West Africa.
+                This led to AgriConnect, launching Q2 2026—a platform that connects farmers directly with buyers, eliminating middlemen and ensuring fair prices. We're also building GhEHR (launching Q1 2026) to modernize healthcare records, helping doctors serve more patients efficiently.
               </p>
               <p className="text-gray-600">
-                Today, we're positioning ourselves to become the leading provider of industry-specific software solutions in West Africa, with plans to expand into e-commerce, logistics, and STEM research—always enhancing efficiency and growth across key sectors.
+                Today, we're a small team with big ambitions: to become the leading provider of industry-specific software solutions in West Africa. But we're doing it the right way—building with the communities we serve, not for them.
               </p>
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
@@ -382,9 +382,9 @@ const About = () => {
       <section className="py-16 bg-[#0A3D62] text-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Join Us on Our Mission</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Your Business?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Interested in working with us or learning more about our solutions? Get in touch today.
+              Whether you're a farmer looking for better prices, a healthcare worker needing modern tools, or a business wanting to grow—we're here to help. Get in touch today.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link href="/contact" className="btn btn-primary">

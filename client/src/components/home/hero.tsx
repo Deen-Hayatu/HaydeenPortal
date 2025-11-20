@@ -35,9 +35,9 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.2 }}
                 className="text-5xl md:text-7xl font-bold font-poppins leading-tight"
               >
-                Innovative Software Solutions for{" "}
+                Technology Built for{" "}
                 <span className="text-[#FCD116] drop-shadow-lg">
-                  West Africa
+                  Ghana's Farmers & Healthcare Workers
                 </span>
               </motion.h1>
               
@@ -47,7 +47,7 @@ const Hero = () => {
                 transition={{ duration: 0.8, delay: 0.4 }}
                 className="text-lg md:text-xl opacity-90 max-w-2xl"
               >
-                Developing innovative MVP solutions for Ghana's agriculture and healthcare sectors. AgriConnect and GhEHR are currently in development, shaped by extensive stakeholder research.
+                We're creating digital tools that help farmers get better prices and healthcare workers serve more patients. Built in Effiduasi, Ghana, with direct input from the communities we serve.
               </motion.p>
             </div>
             
@@ -58,13 +58,13 @@ const Hero = () => {
               className="flex flex-col sm:flex-row gap-4 items-start sm:items-center"
             >
               <EnhancedCTAButton variant="primary" size="lg" href="/solutions/agriconnect" className="bg-[#FCD116] text-black hover:bg-[#F1C40F] px-8 py-4 text-lg font-bold">
-                Learn About AgriConnect
+                See How AgriConnect Works
               </EnhancedCTAButton>
               <EnhancedCTAButton variant="demo" size="lg" href="/products">
-                View MVPs
+                View Our Platforms
               </EnhancedCTAButton>
               <EnhancedCTAButton variant="contact" size="lg" href="/contact">
-                Get Updates
+                Get Early Access
               </EnhancedCTAButton>
             </motion.div>
             

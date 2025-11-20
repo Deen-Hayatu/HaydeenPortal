@@ -21,14 +21,14 @@ const Testimonials = () => {
                 💬
               </div>
               <h3 className="text-2xl font-semibold text-[#0A3D62] mb-4">
-                Coming Soon
+                Building Trust Through Results
               </h3>
               <p className="text-lg text-gray-600 leading-relaxed">
-                We're actively developing our MVP solutions and working closely with farmers, healthcare providers, and businesses across Ghana. Customer testimonials will be available once our platforms launch.
+                We're actively developing our MVP solutions and working closely with farmers, healthcare providers, and businesses across Ghana. As we launch AgriConnect (Q2 2026) and GhEHR (Q1 2026), we'll share real stories from the communities we serve.
               </p>
               <div className="mt-8 pt-6 border-t border-gray-100">
                 <p className="text-sm text-gray-500">
-                  Join our waiting list to be among the first to experience our solutions
+                  Join our beta program to be among the first to experience our solutions and share your feedback
                 </p>
               </div>
             </div>

@@ -1,4 +1,6 @@
 import { MailService } from '@sendgrid/mail';
+import { logger } from '../utils/logger';
+import { AppError } from '../utils/errors';
 
 interface EmailParams {
   to: string;
@@ -9,18 +11,24 @@ interface EmailParams {
 }
 
 export async function sendEmail(
-  apiKey: string,
+  apiKey: string | null,
   params: EmailParams
-): Promise<boolean> {
-  try {
-    // Use provided API key or fall back to environment variable
-    const key = apiKey || process.env.SENDGRID_API_KEY || "";
-    
-    if (!key) {
-      console.error("SendGrid API key not provided");
-      return false;
-    }
+): Promise<void> {
+  // Use provided API key or fall back to environment variable
+  const key = apiKey || process.env.SENDGRID_API_KEY || null;
+  
+  if (!key) {
+    logger.warn('SendGrid API key not provided, email will not be sent', {
+      to: params.to,
+      subject: params.subject,
+    });
+    throw new AppError(
+      500,
+      'Email service not configured. Please contact the administrator.'
+    );
+  }
 
+  try {
     const mailService = new MailService();
     mailService.setApiKey(key);
 
@@ -32,9 +40,20 @@ export async function sendEmail(
       html: params.html,
     });
     
-    return true;
+    logger.info('Email sent successfully', {
+      to: params.to,
+      subject: params.subject,
+    });
   } catch (error) {
-    console.error('SendGrid email error:', error);
-    return false;
+    logger.error('SendGrid email error', error as Error, {
+      to: params.to,
+      subject: params.subject,
+    });
+    
+    // Re-throw as AppError for proper error handling
+    throw new AppError(
+      500,
+      'Failed to send email. Please try again later.'
+    );
   }
 }

@@ -3,6 +3,8 @@ import { Shield, Users, FileText, BarChart3, Check, Stethoscope, Database, Cloud
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import HeadTags from "@/components/seo/head-tags";
 import ghehrLogo from "@assets/GhEHR logo_1752832735160.png";
+import CountdownTimer from "@/components/ui/countdown-timer";
+import BetaSignupForm from "@/components/ui/beta-signup-form";
 
 const GhEHR = () => {
   return (
@@ -29,15 +31,28 @@ const GhEHR = () => {
                   <p className="text-lg opacity-90">Ghana Electronic Health Record</p>
                 </div>
               </div>
-              <p className="text-xl mb-8 opacity-90">
-                A comprehensive electronic health record system designed specifically for Ghana's healthcare ecosystem, improving patient care and medical data management across all healthcare facilities.
+              <p className="text-xl mb-4 opacity-90">
+                Modernize patient care with digital records that work offline. No more paper files, lost records, or duplicate data entry.
               </p>
+              <p className="text-lg mb-4 opacity-80">
+                Launching Q1 2026 • Built specifically for Ghana's healthcare system, by Ghanaians who understand your challenges.
+              </p>
+              
+              {/* Countdown Timer */}
+              <div className="mb-6">
+                <CountdownTimer 
+                  targetDate={new Date('2026-01-01')} 
+                  label="GhEHR"
+                  className="bg-white/10 rounded-lg p-4 backdrop-blur-sm"
+                />
+              </div>
+              
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
-                  Request Demo
+                <Link href="#beta-signup" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
+                  Request Beta Access
                 </Link>
                 <a href="#features" className="btn bg-[#0A3D62] text-white hover:bg-opacity-90">
-                  Explore Features
+                  See How It Works
                 </a>
               </div>
             </div>
@@ -56,9 +71,13 @@ const GhEHR = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-6">Transforming Healthcare in Ghana</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-6">The Problem We're Solving</h2>
+            <p className="text-lg text-gray-600 mb-6">
+              Ghana's healthcare workers spend too much time on paperwork. Patient records are lost, duplicated, or incomplete. Doctors can't access patient history when they need it most. This slows down care and puts patients at risk.
+            </p>
+            <h3 className="text-2xl font-bold text-[#E74C3C] mb-4">How GhEHR Changes That</h3>
             <p className="text-lg text-gray-600">
-              GhEHR addresses the critical need for digital healthcare infrastructure in Ghana, providing a unified platform for patient records, medical history, and healthcare analytics tailored to local medical practices and regulatory requirements.
+              GhEHR gives you instant access to complete patient records, even offline. No more searching through filing cabinets. No more lost records. Just fast, accurate patient care. <strong>Launching Q1 2026.</strong>
             </p>
           </div>
 
@@ -390,20 +409,35 @@ const GhEHR = () => {
         </div>
       </section>
 
+      {/* Beta Signup Section */}
+      <section id="beta-signup" className="py-16 md:py-24 bg-[#F2F2F2]">
+        <div className="container">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Request Beta Access</h2>
+              <p className="text-lg text-gray-600">
+                Be among the first healthcare facilities to use GhEHR when it launches in Q1 2026. Limited spots available.
+              </p>
+            </div>
+            <BetaSignupForm defaultPlatform="GhEHR" />
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="py-16 bg-[#27AE60] text-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Transform Healthcare in Ghana?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">Ready to Modernize Your Healthcare Practice?</h2>
             <p className="text-xl mb-8 opacity-90">
-              Join us in building a comprehensive electronic health record system that will improve healthcare outcomes for all Ghanaians.
+              Join our beta program and be among the first healthcare facilities to use GhEHR when it launches in Q1 2026. Limited spots available.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
-                Request Partnership
+              <Link href="#beta-signup" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
+                Request Beta Access
               </Link>
               <Link href="/solutions" className="btn bg-[#0A3D62] text-white hover:bg-opacity-90">
-                Explore Other Solutions
+                View Other Platforms
               </Link>
             </div>
           </div>

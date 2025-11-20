@@ -31,7 +31,7 @@ const JobApplication = () => {
   const form = useForm<JobApplicationForm>({
     resolver: zodResolver(jobApplicationFormSchema),
     defaultValues: {
-      position: defaultPosition as any,
+      position: (defaultPosition as JobApplicationForm['position']) || undefined,
       firstName: "",
       lastName: "",
       email: "",
@@ -167,7 +167,7 @@ const JobApplication = () => {
                   <div className="space-y-2">
                     <Label htmlFor="position">Position Applied For *</Label>
                     <Select
-                      onValueChange={(value) => form.setValue("position", value as any)}
+                      onValueChange={(value) => form.setValue("position", value as JobApplicationForm['position'])}
                       defaultValue={form.getValues("position")}
                     >
                       <SelectTrigger>

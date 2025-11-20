@@ -1,7 +1,10 @@
 // Vercel serverless function entry point
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 import express, { type Request, Response, NextFunction } from "express";
 import rateLimit from "express-rate-limit";
 import { registerRoutes } from "../server/routes.js";
+import { getConfig } from "../server/config.js";
+import { logger } from "../server/utils/logger.js";
 
 const app = express();
 
@@ -11,7 +14,7 @@ app.set('trust proxy', 1);
 // Rate limiting middleware
 const generalLimiter = rateLimit({
   windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 1000,
+  max: 100, // Lower limit for serverless
   message: 'Too many requests from this IP, please try again later.',
   standardHeaders: true,
   legacyHeaders: false,
@@ -55,4 +58,31 @@ app.get('/api/health', (req, res) => {
   res.json({ status: 'healthy', timestamp: new Date().toISOString() });
 });
 
-export default app;
+// Error handling middleware
+app.use((err: any, req: Request, res: Response, next: NextFunction) => {
+  logger.error("API Error:", err);
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(err.statusCode || 500).json({
+    success: false,
+    error: {
+      message: err.message || 'Internal Server Error',
+      ...(process.env.NODE_ENV === 'development' && { stack: err.stack }),
+    },
+  });
+});
+
+// Vercel serverless function handler
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Convert Vercel request/response to Express format
+  return new Promise((resolve, reject) => {
+    app(req as any, res as any, (err: any) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(undefined);
+      }
+    });
+  });
+}

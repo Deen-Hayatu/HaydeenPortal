@@ -19,9 +19,9 @@ const BlogPreview = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
               </svg>
             </div>
-            <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">Blog & Insights Coming Soon</h3>
+            <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">Insights & Updates</h3>
             <p className="text-gray-600 mb-6">
-              We're preparing valuable content about AgriConnect development, Ghana's tech ecosystem, and insights from our MVP journey. Our blog will launch alongside our platform updates.
+              We're preparing valuable content about AgriConnect development, Ghana's tech ecosystem, and insights from our MVP journey. Our blog will launch alongside our platform updates in 2026.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
               <Link href="/contact" className="inline-flex items-center px-6 py-3 bg-[#27AE60] text-white font-medium rounded-lg hover:bg-[#27AE60]/90 transition">

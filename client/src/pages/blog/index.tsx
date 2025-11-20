@@ -5,7 +5,7 @@ const Blog = () => {
   return (
     <>
       <HeadTags
-        title="Blog & Insights | Haydeen Technologies Ghana - Coming Soon"
+        title="Blog & Insights | Haydeen Technologies Ghana"
         description="Stay tuned for insights from Haydeen Technologies about AgriConnect development, Ghana's tech ecosystem, and our MVP journey in West Africa."
         keywords="Haydeen Technologies blog, Ghana tech insights, AgriConnect development, MVP journey, West Africa technology"
         canonical="https://haydeentechnologies.com/blog"
@@ -17,7 +17,7 @@ const Blog = () => {
           <div className="max-w-3xl mx-auto text-center">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">Blog & Insights</h1>
             <p className="text-xl opacity-90">
-              Coming soon: Insights from our journey building innovative solutions for West Africa.
+              Insights from our journey building innovative solutions for West Africa.
             </p>
           </div>
         </div>
@@ -34,9 +34,9 @@ const Blog = () => {
                 </svg>
               </div>
               
-              <h2 className="text-3xl font-bold text-[#0A3D62] mb-6">Blog Coming Soon</h2>
+              <h2 className="text-3xl font-bold text-[#0A3D62] mb-6">Blog & Insights</h2>
               <p className="text-lg text-gray-600 mb-8 max-w-2xl mx-auto">
-                We're preparing valuable content that will share insights from our MVP development journey, lessons learned from building AgriConnect and GhEHR, and perspectives on Ghana's evolving tech ecosystem.
+                We're preparing valuable content that will share insights from our MVP development journey, lessons learned from building AgriConnect and GhEHR, and perspectives on Ghana's evolving tech ecosystem. Content will be available as we progress toward our Q1 and Q2 2026 launches.
               </p>
               
               <div className="grid md:grid-cols-3 gap-8 mb-8">

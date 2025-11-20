@@ -3,6 +3,7 @@ import { Globe, ShoppingBag, Map, Laptop, Heart, ArrowRight } from "lucide-react
 import AnimatedCard from "@/components/ui/animated-card";
 import EnhancedButton from "@/components/ui/enhanced-button";
 import { motion } from "framer-motion";
+import CountdownTimer from "@/components/ui/countdown-timer";
 
 const solutions = [
   {
@@ -57,9 +58,9 @@ const SolutionsTeaser = () => {
     <section className="py-16 md:py-24 bg-white">
       <div className="container">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] font-poppins mb-4">Our MVP Portfolio</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] font-poppins mb-4">Solving Real Problems for Ghana's Key Industries</h2>
           <p className="max-w-3xl mx-auto text-gray-600 text-lg">
-            Building innovative solutions for Ghana's agriculture and healthcare sectors. Our flagship MVPs AgriConnect and GhEHR are currently in development, with additional solutions planned for future release.
+            From helping farmers connect directly with buyers to modernizing healthcare records, we're building technology that makes a difference. AgriConnect launches Q2 2026, GhEHR launches Q1 2026.
           </p>
         </div>
 
@@ -83,12 +84,22 @@ const SolutionsTeaser = () => {
                   
                   <div className="mb-4">
                     {solution.isAvailable ? (
-                      <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">
-                        In Development
-                      </span>
+                      solution.title === "AgriConnect" ? (
+                        <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">
+                          Launching Q2 2026
+                        </span>
+                      ) : solution.title === "GhEHR" ? (
+                        <span className="bg-[#E74C3C] text-white text-xs px-2 py-1 rounded-full font-medium">
+                          Launching Q1 2026
+                        </span>
+                      ) : (
+                        <span className="bg-[#27AE60] text-white text-xs px-2 py-1 rounded-full font-medium">
+                          Available Now
+                        </span>
+                      )
                     ) : (
                       <span className="bg-gray-100 text-gray-500 text-xs px-2 py-1 rounded-full font-medium">
-                        Planned
+                        Coming Soon
                       </span>
                     )}
                   </div>
@@ -130,11 +141,27 @@ const SolutionsTeaser = () => {
           className="text-center mt-16"
         >
           <h3 className="text-2xl font-bold text-[#0A3D62] mb-4">
-            Join Our Development Journey
+            Be Among the First to Experience Our Platforms
           </h3>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
-            Stay updated on our MVP development progress and be among the first to experience AgriConnect and GhEHR when they launch.
+          <p className="text-gray-600 mb-6 max-w-2xl mx-auto">
+            Join our beta program and get early access to AgriConnect (Q2 2026) and GhEHR (Q1 2026). Limited spots available for farmers, healthcare workers, and early adopters.
           </p>
+          
+          {/* Countdown Timers */}
+          <div className="grid md:grid-cols-2 gap-6 max-w-3xl mx-auto mb-8">
+            <div className="bg-[#F2F2F2] rounded-lg p-6">
+              <CountdownTimer 
+                targetDate={new Date('2026-01-01')} 
+                label="GhEHR"
+              />
+            </div>
+            <div className="bg-[#F2F2F2] rounded-lg p-6">
+              <CountdownTimer 
+                targetDate={new Date('2026-04-01')} 
+                label="AgriConnect"
+              />
+            </div>
+          </div>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             <Link href="/contact">
               <EnhancedButton 
@@ -142,7 +169,7 @@ const SolutionsTeaser = () => {
                 size="lg"
                 rightIcon={<ArrowRight className="w-5 h-5" />}
               >
-                Get Updates
+                Request Beta Access
               </EnhancedButton>
             </Link>
             <Link href="/products">
@@ -151,7 +178,7 @@ const SolutionsTeaser = () => {
                 size="lg"
                 rightIcon={<ArrowRight className="w-5 h-5" />}
               >
-                View MVPs
+                View Platform Details
               </EnhancedButton>
             </Link>
           </div>

@@ -129,12 +129,12 @@ const Solutions = () => {
         <div className="absolute inset-0 bg-black/20"></div>
         <div className="container relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">Our Solutions</h1>
+            <h1 className="text-4xl md:text-6xl font-bold mb-6 font-poppins">Solving Real Problems for Ghana's Key Industries</h1>
             <p className="text-xl md:text-2xl opacity-90 mb-4">
-              Building innovative MVPs to transform West Africa's digital landscape
+              Technology that helps farmers get better prices and healthcare workers serve more patients
             </p>
             <p className="text-lg opacity-80 max-w-2xl mx-auto">
-              From AgriConnect's agricultural marketplace to GhEHR's healthcare platform - we're developing solutions that address real challenges faced by Ghanaian communities.
+              Built in Effiduasi, Ghana, with direct input from farmers and healthcare workers. AgriConnect launches Q2 2026, GhEHR launches Q1 2026.
             </p>
           </div>
         </div>
@@ -144,9 +144,9 @@ const Solutions = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4 font-poppins">MVP Development Portfolio</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4 font-poppins">Platforms Built for Ghana, by Ghanaians</h2>
             <p className="max-w-3xl mx-auto text-gray-600 text-lg">
-              We're currently developing two flagship MVPs and have a pipeline of solutions designed to address critical challenges across Ghana's key industries. Each solution is built through extensive stakeholder research and local market understanding.
+              We're solving problems that matter. Our founder saw farmers struggling to find buyers and healthcare workers managing records on paper. So we're building technology to change that. Each platform is built with direct input from the communities they serve.
             </p>
           </div>
 
@@ -201,7 +201,7 @@ const Solutions = () => {
                       </Link>
                     ) : (
                       <span className="inline-flex items-center px-4 py-2 font-medium rounded-md bg-gray-100 text-gray-500">
-                        Coming Soon
+                        In Development
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 ml-1" viewBox="0 0 20 20" fill="currentColor">
                           <path fillRule="evenodd" d="M6.672 1.911a1 1 0 10-1.932.518l.259.966a1 1 0 001.932-.518l-.26-.966zM2.429 4.74a1 1 0 10-.517 1.932l.966.259a1 1 0 00.517-1.932l-.966-.26zm8.814-.569a1 1 0 00-1.415-1.414l-.707.707a1 1 0 101.415 1.415l.707-.708zm-7.071 7.072l.707-.707A1 1 0 003.465 9.12l-.708.707a1 1 0 001.415 1.415zm3.2-5.171a1 1 0 00-1.3 1.3l4 10a1 1 0 001.823.075l1.38-2.759 3.018 3.02a1 1 0 001.414-1.415l-3.019-3.02 2.76-1.379a1 1 0 00-.076-1.822l-10-4z" clipRule="evenodd" />
                         </svg>
@@ -390,16 +390,16 @@ const Solutions = () => {
       <section className="py-16 md:py-20 bg-gradient-to-r from-[#0A3D62] to-[#3C6382] text-white">
         <div className="container">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">Join Our Development Journey</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-6 font-poppins">Get Early Access to Our Platforms</h2>
             <p className="text-xl mb-8 opacity-90">
-              Be part of Ghana's digital transformation. Stay updated on our MVP development progress and get early access to AgriConnect and GhEHR when they launch.
+              Join our beta program and be among the first to experience AgriConnect (Q2 2026) and GhEHR (Q1 2026). Limited beta spots available for farmers, healthcare workers, and early adopters.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link 
                 href="/contact" 
                 className="inline-flex items-center gap-2 bg-[#27AE60] hover:bg-[#229954] text-white px-8 py-4 rounded-lg font-medium transition-colors"
               >
-                Get Development Updates
+                Request Beta Access
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -408,7 +408,7 @@ const Solutions = () => {
                 href="/products" 
                 className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-lg font-medium transition-colors backdrop-blur-sm"
               >
-                View Our MVPs
+                View Platform Details
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />

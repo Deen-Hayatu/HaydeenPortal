@@ -3,6 +3,8 @@ import { useQuery } from "@tanstack/react-query";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Check, Award, Globe, Users, Database, BookOpen } from "lucide-react";
 import HeadTags from "@/components/seo/head-tags";
+import CountdownTimer from "@/components/ui/countdown-timer";
+import BetaSignupForm from "@/components/ui/beta-signup-form";
 
 const Agriconnect = () => {
   return (
@@ -19,15 +21,28 @@ const Agriconnect = () => {
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">AgriConnect</h1>
-              <p className="text-xl mb-8 opacity-90">
-                A digital platform connecting farmers, buyers, suppliers, and logistics service providers to streamline agricultural trade and logistics across West Africa.
+              <p className="text-xl mb-4 opacity-90">
+                Get fair prices for your crops and connect directly with buyers. No more middlemen taking your profits.
               </p>
+              <p className="text-lg mb-4 opacity-80">
+                Launching Q2 2026 • Built for Ghana's farmers, by Ghanaians who understand your challenges.
+              </p>
+              
+              {/* Countdown Timer */}
+              <div className="mb-6">
+                <CountdownTimer 
+                  targetDate={new Date('2026-04-01')} 
+                  label="AgriConnect"
+                  className="bg-white/10 rounded-lg p-4 backdrop-blur-sm"
+                />
+              </div>
+              
               <div className="flex flex-wrap gap-4">
-                <Link href="/contact" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
-                  Request a Demo
+                <Link href="#beta-signup" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
+                  Request Beta Access
                 </Link>
                 <a href="#features" className="btn bg-[#0A3D62] text-white hover:bg-opacity-90">
-                  Explore Features
+                  See How It Works
                 </a>
               </div>
             </div>
@@ -46,9 +61,13 @@ const Agriconnect = () => {
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-6">Transforming Agriculture in West Africa</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-6">The Problem We're Solving</h2>
+            <p className="text-lg text-gray-600 mb-6">
+              Ghana's farmers lose money every day. They can't find buyers, middlemen take huge cuts, and they have no way to know fair market prices. Many farmers still rely on word-of-mouth and hope for the best.
+            </p>
+            <h3 className="text-2xl font-bold text-[#27AE60] mb-4">How AgriConnect Changes That</h3>
             <p className="text-lg text-gray-600">
-              AgriConnect is our flagship platform designed to address the critical challenges faced by farmers across West Africa. By combining powerful technology with deep local knowledge, we're helping farmers improve yields, access better markets, and increase their income.
+              AgriConnect connects you directly with buyers, shows real-time market prices, and helps you get the best deal for your crops. No more guessing. No more middlemen. Just fair prices and direct connections. <strong>Launching Q2 2026.</strong>
             </p>
           </div>
 
@@ -579,6 +598,21 @@ const Agriconnect = () => {
         </div>
       </section>
 
+      {/* Beta Signup Section */}
+      <section id="beta-signup" className="py-16 md:py-24 bg-[#F2F2F2]">
+        <div className="container">
+          <div className="max-w-2xl mx-auto">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Request Beta Access</h2>
+              <p className="text-lg text-gray-600">
+                Be among the first farmers and buyers to experience AgriConnect when it launches in Q2 2026. Limited spots available.
+              </p>
+            </div>
+            <BetaSignupForm defaultPlatform="AgriConnect" />
+          </div>
+        </div>
+      </section>
+
       {/* Call to Action */}
       <section className="py-16 bg-[#27AE60] text-white">
         <div className="container">
@@ -588,8 +622,8 @@ const Agriconnect = () => {
               Whether you're a farmer, agricultural business, or organization working in the sector, AgriConnect can help you achieve better results.
             </p>
             <div className="flex flex-wrap justify-center gap-4">
-              <Link href="/contact" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
-                Request a Demo
+              <Link href="#beta-signup" className="btn bg-white text-[#27AE60] hover:bg-opacity-90">
+                Request Beta Access
               </Link>
               <Link href="/solutions" className="btn bg-[#0A3D62] text-white hover:bg-opacity-90">
                 Explore Other Solutions

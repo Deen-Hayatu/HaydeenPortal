@@ -9,6 +9,7 @@ import {
 } from "@shared/schema";
 import { db } from "./db";
 import { eq, desc } from "drizzle-orm";
+import { withRetry } from "./utils/db-retry";
 
 export interface IStorage {
   // User operations
@@ -63,11 +64,15 @@ export class DatabaseStorage implements IStorage {
 
   // Blog operations
   async getBlogPosts(): Promise<BlogPost[]> {
-    return db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt));
+    return withRetry(() => 
+      db.select().from(blogPosts).orderBy(desc(blogPosts.publishedAt))
+    );
   }
 
   async getBlogPostBySlug(slug: string): Promise<BlogPost | undefined> {
-    const [post] = await db.select().from(blogPosts).where(eq(blogPosts.slug, slug));
+    const [post] = await withRetry(() =>
+      db.select().from(blogPosts).where(eq(blogPosts.slug, slug))
+    );
     return post || undefined;
   }
 
@@ -176,10 +181,12 @@ export class DatabaseStorage implements IStorage {
 
   // Job application operations
   async createJobApplication(application: InsertJobApplication): Promise<JobApplication> {
-    const [newApplication] = await db
-      .insert(jobApplications)
-      .values(application)
-      .returning();
+    const [newApplication] = await withRetry(() =>
+      db
+        .insert(jobApplications)
+        .values(application)
+        .returning()
+    );
     
     return newApplication;
   }

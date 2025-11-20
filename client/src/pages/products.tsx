@@ -27,7 +27,7 @@ const Products = () => {
         "Mobile Money payment integration",
         "Multi-language support (English, Twi, Ga)"
       ],
-      demoVideo: "#", // Will be updated when demo is ready
+      demoVideo: null,
       liveDemo: "/solutions/agriconnect",
       targetUsers: "Farmers, Agricultural Buyers, Suppliers",
       techStack: ["React", "Node.js", "PostgreSQL", "Mobile Money API"],
@@ -47,7 +47,7 @@ const Products = () => {
         "Multi-facility data sharing",
         "Ghana Health Service compliance"
       ],
-      demoVideo: "#", // Will be updated when demo is ready
+      demoVideo: null,
       liveDemo: "/solutions/ghehr",
       targetUsers: "Hospitals, Clinics, Healthcare Providers",
       techStack: ["React", "Node.js", "PostgreSQL", "NHIS API"],
@@ -67,8 +67,8 @@ const Products = () => {
         "Mobile Money payments",
         "Delivery optimization"
       ],
-      demoVideo: "#",
-      liveDemo: "#",
+      demoVideo: null,
+      liveDemo: null,
       targetUsers: "Eco-conscious Consumers, Local Vendors",
       techStack: ["Next.js", "Stripe", "MongoDB", "Mobile Money"],
       image: "https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
@@ -195,20 +195,22 @@ const Products = () => {
 
                     {/* Action Buttons */}
                     <div className="flex flex-wrap gap-3">
-                      <EnhancedCTAButton 
-                        variant="primary" 
-                        size="md" 
-                        href={product.liveDemo}
-                      >
-                        View Details
-                      </EnhancedCTAButton>
+                      {product.liveDemo && (
+                        <EnhancedCTAButton 
+                          variant="primary" 
+                          size="md" 
+                          href={product.liveDemo}
+                        >
+                          View Details
+                        </EnhancedCTAButton>
+                      )}
                       
                       <EnhancedCTAButton 
                         variant="demo" 
                         size="md" 
                         href="/contact"
                       >
-                        Watch Demo
+                        Request Demo
                       </EnhancedCTAButton>
                       
                       <EnhancedCTAButton 

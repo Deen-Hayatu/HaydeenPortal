@@ -168,5 +168,7 @@ export const jobApplicationFormSchema = z.object({
   graduationYear: z.string().optional(),
   experience: z.string().optional(),
   motivation: z.string().min(50, { message: "Please tell us why you want to join (at least 50 characters)" }),
-  cvFile: z.any().optional(), // File will be handled separately
+  // Note: cvFile is handled separately on the client and not validated here
+  // The file is sent as FormData and processed by multer on the server
+  cvFile: z.unknown().optional(), // File will be handled separately
 });
