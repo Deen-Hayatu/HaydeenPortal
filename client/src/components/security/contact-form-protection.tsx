@@ -33,11 +33,14 @@ class ContactFormProtection {
 
   static recordAttempt(): void {
     const stored = localStorage.getItem(this.STORAGE_KEY);
-    let data = { attempts: [] };
+    let data: { attempts: number[] } = { attempts: [] };
 
     if (stored) {
       try {
         data = JSON.parse(stored);
+        if (!Array.isArray(data.attempts)) {
+          data.attempts = [];
+        }
       } catch {
         data = { attempts: [] };
       }

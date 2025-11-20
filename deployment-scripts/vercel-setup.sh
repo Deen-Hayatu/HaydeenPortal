@@ -158,8 +158,8 @@ deploy_to_vercel() {
     echo "   - Set up and deploy? Yes"
     echo "   - Link to existing project? No (for first deployment)"
     echo "   - Project name: haydeen-technologies"
-    echo "   - Build Command: npm run vercel-build"
-    echo "   - Output Directory: client/dist"
+    echo "   - Build Command: npm run build"
+    echo "   - Output Directory: dist/public"
     echo "   - Development Command: npm run dev"
     echo ""
     
@@ -199,6 +199,7 @@ env_vars_reminder() {
     echo "   DATABASE_URL (Production database connection string)"
     echo "   SESSION_SECRET (Secure random string)"
     echo "   SENDGRID_API_KEY (If using email functionality)"
+    echo "   EMAIL_FROM (Verified sender email for SendGrid)"
     echo "   VITE_GA_MEASUREMENT_ID (If using Google Analytics)"
     echo ""
     echo "5. Deploy again after adding environment variables:"

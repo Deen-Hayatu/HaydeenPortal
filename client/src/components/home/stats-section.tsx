@@ -1,32 +1,38 @@
 import { motion } from "framer-motion";
-import { Users, Building, Award, TrendingUp } from "lucide-react";
+import { Users, Building, ShieldCheck, Clock } from "lucide-react";
 
 const StatsSection = () => {
   const stats = [
     {
-      icon: <Users className="w-8 h-8 text-[#27AE60]" />,
-      number: "2",
-      label: "Core MVPs",
-      description: "AgriConnect and GhEHR in active development"
+      icon: <Clock className="w-8 h-8 text-[#27AE60]" />,
+      number: "8-week",
+      label: "Delivery Cycles",
+      description: "Time-boxed sprints with demo-ready increments"
+    },
+    {
+      icon: <ShieldCheck className="w-8 h-8 text-[#27AE60]" />,
+      number: "4",
+      label: "Compliance Checklists",
+      description: "Data, privacy, security & uptime review per release"
     },
     {
       icon: <Building className="w-8 h-8 text-[#27AE60]" />,
-      number: "15+",
-      label: "Stakeholder Interviews",
-      description: "Farmers and healthcare providers shaping our solutions"
+      number: "3",
+      label: "Pilot Verticals",
+      description: "Agriculture, primary care & digital commerce"
     },
     {
-      icon: <Award className="w-8 h-8 text-[#27AE60]" />,
-      number: "Jan 2025",
-      label: "Founded",
-      description: "Licensed startup based in Effiduasi, Ghana"
-    },
-    {
-      icon: <TrendingUp className="w-8 h-8 text-[#27AE60]" />,
+      icon: <Users className="w-8 h-8 text-[#27AE60]" />,
       number: "100%",
-      label: "Focus on Ghana",
-      description: "Building solutions for West African markets"
+      label: "Ghana-Based",
+      description: "Core team & research partners in-country"
     }
+  ];
+
+  const deliveryPrinciples = [
+    "Transparent reporting with MVP documentation hub",
+    "Hosted on Vercel edge + Neon for zero-ops scaling",
+    "Bank-grade encryption & access controls baked in",
   ];
 
   return (
@@ -40,10 +46,10 @@ const StatsSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">
-            Our Development Journey
+            Delivery metrics that de-risk your launch
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Since our founding in January 2025, we've been building innovative solutions for Ghana's agriculture and healthcare sectors through research-driven MVP development.
+            Every build sprint is backed by field interviews, measurable KPIs, and deployment practices trusted by modern SaaS teams. Here's how we keep the work professional even before public launch.
           </p>
         </motion.div>
 
@@ -76,48 +82,32 @@ const StatsSection = () => {
         </div>
 
         {/* Additional trust elements */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 text-center"
-        >
-          <div className="bg-gradient-to-r from-[#0A3D62] to-[#3C6382] rounded-2xl p-8 text-white">
-            <h3 className="text-2xl font-bold mb-4">
-              Building Solutions for Ghana's Digital Future
-            </h3>
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                  <Award className="w-6 h-6 text-[#27AE60]" />
-                </div>
-                <div className="text-left">
-                  <div className="font-bold">Ghana Business License</div>
-                  <div className="text-sm opacity-80">Officially Registered</div>
-                </div>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="mt-16"
+          >
+            <div className="bg-gradient-to-r from-[#0A3D62] to-[#3C6382] rounded-2xl px-8 py-10 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+              <div className="max-w-xl">
+                <h3 className="text-2xl font-bold mb-2">
+                  Operational readiness isn’t an afterthought
+                </h3>
+                <p className="text-white/80">
+                  Before we ever ask for public testimonials, we ship against the same standards enterprise partners expect.
+                </p>
               </div>
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                  <Building className="w-6 h-6 text-[#27AE60]" />
-                </div>
-                <div className="text-left">
-                  <div className="font-bold">Local Expertise</div>
-                  <div className="text-sm opacity-80">ISO 27001 Standards</div>
-                </div>
-              </div>
-              <div className="flex items-center justify-center gap-3">
-                <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center">
-                  <Users className="w-6 h-6 text-[#27AE60]" />
-                </div>
-                <div className="text-left">
-                  <div className="font-bold">Local Support</div>
-                  <div className="text-sm opacity-80">24/7 in Ghana</div>
-                </div>
-              </div>
+              <ul className="space-y-3 flex-1">
+                {deliveryPrinciples.map((principle) => (
+                  <li key={principle} className="flex items-start gap-3">
+                    <span className="mt-1 w-2 h-2 rounded-full bg-[#FCD116]" />
+                    <p className="text-sm">{principle}</p>
+                  </li>
+                ))}
+              </ul>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
       </div>
     </section>
   );

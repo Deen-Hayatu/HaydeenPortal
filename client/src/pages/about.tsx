@@ -1,8 +1,32 @@
 import { Link } from "wouter";
-import { Check } from "lucide-react";
+import { Check, ShieldCheck } from "lucide-react";
 import founderProfessionalPhoto from "../assets/founder-professional-photo.jpg";
 
+const operatingPrinciples = [
+  {
+    title: "Field research cadence",
+    description: "Bi-weekly interviews with farmers, clinicians, and cooperatives keep our backlog grounded in real needs.",
+    meta: "23 farmer + 12 clinic touchpoints logged",
+  },
+  {
+    title: "Deployment-first architecture",
+    description: "Vercel Edge + Neon serverless Postgres are live today, so MVPs ship onto the same stack we’ll use in production.",
+    meta: "Zero-downtime previews, SOC 2 aligned controls",
+  },
+  {
+    title: "Transparent delivery",
+    description: "We publish sprint notes, KPIs, and risks inside the MVP documentation hub for every partner engagement.",
+    meta: "8-week sprint reviews · Weekly stakeholder notes",
+  },
+];
+
 const About = () => {
+  const heroStats = [
+    { label: "Founded", value: "Jan 2025" },
+    { label: "HQ", value: "Effiduasi, Ghana" },
+    { label: "Focus", value: "Agri + Health MVPs" },
+  ];
+
   return (
     <>
       {/* Hero Section */}
@@ -16,11 +40,54 @@ const About = () => {
             <p className="text-lg opacity-80">
               Our founder saw farmers struggling to find buyers and healthcare workers managing records on paper. So we're building technology to change that—helping farmers get better prices and healthcare workers serve more patients.
             </p>
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm uppercase tracking-[0.3em] text-white/80">
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-[#FCD116] animate-pulse" />
+                  Pre-seed Ghanaian founders
+                </span>
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  Vercel Edge · Neon Postgres
+                </span>
+              </div>
           </div>
+            <div className="mt-12 grid gap-6 sm:grid-cols-3 max-w-4xl mx-auto">
+              {heroStats.map((stat) => (
+                <div key={stat.label} className="bg-white/10 rounded-xl p-4 text-center">
+                  <div className="text-2xl font-semibold">{stat.value}</div>
+                  <p className="text-white/70 text-sm tracking-wide">{stat.label}</p>
+                </div>
+              ))}
+            </div>
         </div>
       </section>
 
-      {/* Our Story */}
+        {/* Operating Principles */}
+        <section className="py-16 md:py-20 bg-[#F8F9FA]">
+          <div className="container">
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#27AE60]">How we operate</p>
+              <h2 className="text-3xl font-bold text-[#0A3D62] mb-4">Execution principles before public launch</h2>
+              <p className="max-w-3xl mx-auto text-gray-600">
+                Even without public testimonials, partners can audit our delivery playbook—research cadence, infrastructure, and transparency standards are already in motion.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {operatingPrinciples.map((principle) => (
+                <div key={principle.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                  <div className="inline-flex items-center gap-2 text-[#27AE60] text-xs font-semibold uppercase tracking-widest mb-3">
+                    <ShieldCheck className="w-4 h-4" />
+                    Operating principle
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#0A3D62] mb-2">{principle.title}</h3>
+                  <p className="text-gray-600 mb-4">{principle.description}</p>
+                  <p className="text-sm text-gray-500 border-t border-dashed pt-3">{principle.meta}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Our Story */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container">
           <div className="grid md:grid-cols-2 gap-12 items-center">

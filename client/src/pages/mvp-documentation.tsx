@@ -2,6 +2,24 @@ import { motion } from "framer-motion";
 import { Code, Database, Users, Calendar, CheckCircle, Clock, ArrowRight } from "lucide-react";
 import { Link } from "wouter";
 
+const deploymentChecklist = [
+  {
+    title: "Hosting & API",
+    detail: "Static frontends on Vercel Edge with serverless APIs. CI builds mirror production.",
+    status: "Ready",
+  },
+  {
+    title: "Database",
+    detail: "Neon serverless Postgres with drizzle migrations, nightly backups, and connection pooling.",
+    status: "Live",
+  },
+  {
+    title: "Security",
+    detail: "TLS enforced, role-based access, audit logging, and secrets managed in Vercel envs.",
+    status: "Tracked",
+  },
+];
+
 const MVPDocumentation = () => {
   const agriconnectFeatures = [
     {
@@ -323,6 +341,36 @@ const MVPDocumentation = () => {
           </div>
         </div>
       </section>
+
+        {/* Deployment Readiness */}
+        <section className="py-16 md:py-24 bg-gray-50">
+          <div className="container">
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#27AE60]">Deployment readiness</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Infrastructure already provisioned</h2>
+              <p className="max-w-3xl mx-auto text-gray-600">
+                MVPs ship on the same Vercel + Neon stack we'll use for production, so activating pilots is a configuration change—not a rebuild.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {deploymentChecklist.map((item) => (
+                <div key={item.title} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 mb-2">{item.status}</p>
+                  <h3 className="text-xl font-bold text-[#0A3D62] mb-3">{item.title}</h3>
+                  <p className="text-gray-600 text-sm">{item.detail}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#0A3D62] text-white font-semibold hover:bg-[#0A3D62]/90 transition"
+              >
+                Coordinate a pilot launch
+              </Link>
+            </div>
+          </div>
+        </section>
 
       {/* Technical Decisions */}
       <section className="py-16 md:py-24 bg-[#0A3D62] text-white">

@@ -1,9 +1,27 @@
 import { Link } from "wouter";
-import { MapPin, Clock, Users, Briefcase, Palette, Monitor, BarChart3, Search } from "lucide-react";
+import { MapPin, Clock, Users, Briefcase, Palette, Monitor, BarChart3, Search, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import HeadTags from "@/components/seo/head-tags";
+
+const hiringSteps = [
+  {
+    title: "Apply + portfolio/CV",
+    description: "Submit via the careers form or contact email; we acknowledge within 3 business days.",
+    duration: "Days 0–3",
+  },
+  {
+    title: "Working session",
+    description: "45-minute call to review past work or research approach—no speculative assignments.",
+    duration: "Days 4–7",
+  },
+  {
+    title: "Offer & onboarding",
+    description: "We execute NDAs, grant access to our Vercel/Neon stack, and plug you into sprint documentation.",
+    duration: "Days 8–10",
+  },
+];
 
 const Careers = () => {
   return (
@@ -26,6 +44,15 @@ const Careers = () => {
             <p className="text-lg opacity-80">
               Join us in creating technology and insights that will impact farmers and transform agriculture across Ghana.
             </p>
+              <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center text-xs uppercase tracking-[0.4em] text-white/80">
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-[#FCD116] animate-pulse" />
+                  Paid, sprint-based internships
+                </span>
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  Remote-friendly · Ghana time zones
+                </span>
+              </div>
           </div>
         </div>
       </section>
@@ -321,6 +348,34 @@ const Careers = () => {
           </div>
         </div>
       </section>
+
+        {/* Hiring Process */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container">
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#27AE60]">What to expect</p>
+              <h2 className="text-3xl md:text-4xl font-bold text-[#0A3D62] mb-4">Our hiring process in three check-ins</h2>
+              <p className="max-w-2xl mx-auto text-gray-600">
+                We keep internships structured and respectful of your time—here's exactly what happens once you apply.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {hiringSteps.map((step) => (
+                <div key={step.title} className="border border-gray-100 rounded-2xl p-6 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 mb-2">{step.duration}</p>
+                  <h3 className="text-xl font-bold text-[#0A3D62] mb-3">{step.title}</h3>
+                  <p className="text-gray-600 text-sm">{step.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-8 text-center text-sm text-gray-500">
+              <span className="inline-flex items-center gap-2 justify-center">
+                <ShieldCheck className="w-4 h-4 text-[#27AE60]" />
+                Every applicant receives written feedback after the working session.
+              </span>
+            </div>
+          </div>
+        </section>
 
       {/* Application CTA */}
       <section className="py-16 bg-gradient-to-r from-[#0A3D62] to-[#27AE60] text-white">

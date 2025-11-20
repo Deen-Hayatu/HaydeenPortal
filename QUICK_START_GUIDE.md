@@ -65,8 +65,8 @@ SESSION_SECRET=your_secure_random_string
 ```
 
 ## Build Commands for Vercel
-- **Build Command**: `npm run build:client`
-- **Output Directory**: `client/dist`
+- **Build Command**: `npm run build`
+- **Output Directory**: `dist/public`
 - **Install Command**: `npm install`
 
 ## VS Code Extensions to Install
@@ -89,7 +89,7 @@ SESSION_SECRET=your_secure_random_string
 ```bash
 # Check all imports are correct
 # Ensure all required environment variables are set
-# Run local build: npm run build:client
+# Run local build: npm run build
 ```
 
 ### Missing Environment Variables

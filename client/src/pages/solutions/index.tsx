@@ -1,7 +1,7 @@
 import { Link } from "wouter";
 import { useQuery } from "@tanstack/react-query";
 import { Solution } from "@/lib/types";
-import { Globe, ShoppingBag, Map, BarChart, Laptop, Heart } from "lucide-react";
+import { Globe, ShoppingBag, Map, BarChart, Laptop, Heart, ShieldCheck, Server, Clock, Brain, Sparkles } from "lucide-react";
 
 const Solutions = () => {
   const { data: solutions, isLoading } = useQuery<Solution[]>({
@@ -100,8 +100,8 @@ const Solutions = () => {
       slug: "marketmate",
       isAvailable: false,
     },
-    {
-      id: 5,
+      {
+        id: 6,
       title: "Website Design",
       description: "Custom website design and development for companies and individuals, creating modern, responsive digital experiences.",
       longDescription: "Our Website Design service provides custom, responsive websites for companies and individuals. We've designed sites for notable organizations like MPC.org, delivering visually appealing, user-friendly websites that effectively communicate brand messages and engage visitors.",
@@ -116,11 +116,68 @@ const Solutions = () => {
       color: "bg-[#3498DB]",
       colorClass: "text-[#3498DB]",
       slug: "website-design",
-      isAvailable: true,
+        isAvailable: true,
+      },
+      {
+        id: 7,
+        title: "Intelligent Knowledge Systems",
+        description: "Retrieval-Augmented Generation (RAG) and Agentic RAG implementations that put your proprietary data behind secure, explainable AI copilots.",
+        longDescription: "We architect, fine-tune, and deploy production-grade RAG/Agentic RAG stacks for banks, hospitals, and fast-scaling organisations. From vectorizing archives to orchestrating multi-step agents, we handle data governance, prompt engineering, and continued evaluation.",
+        features: [
+          "Document ingestion pipelines with automated PII scrubbing",
+          "Hybrid search (semantic + metadata) using pgvector/Weaviate",
+          "Guardrailed prompt orchestration with ReAct/State Graph agents",
+          "Observability dashboards for hallucination + latency tracking",
+          "Multi-tenant deployments on Vercel + Neon or customer cloud"
+        ],
+        icon: <Brain className="h-10 w-10 text-[#8E44AD]" />,
+        color: "bg-[#8E44AD]",
+        colorClass: "text-[#8E44AD]",
+        slug: "rag-solutions",
+        isAvailable: true,
     }
   ];
 
   const displaySolutions = solutions || fallbackSolutions;
+
+  const executionHighlights = [
+    {
+      title: "Production infrastructure ready",
+      description: "Vercel Edge hosting + Neon Postgres mean every MVP preview runs on the same stack we'll deploy to production.",
+      icon: <Server className="w-6 h-6 text-[#27AE60]" />,
+    },
+    {
+      title: "Security & compliance baked in",
+      description: "Data encryption, access logging, and role-based controls are part of the baseline—no retrofitting once pilots start.",
+      icon: <ShieldCheck className="w-6 h-6 text-[#0A3D62]" />,
+    },
+    {
+      title: "8-week delivery cycles",
+      description: "Each engagement follows research → build → review loops with a documented sprint report shared with partners.",
+      icon: <Clock className="w-6 h-6 text-[#F39C12]" />,
+    },
+  ];
+
+  const engagementSteps = [
+    { label: "Week 0-2", title: "Discovery & NDA", description: "Stakeholder interviews, access provisioning, and alignment on KPIs." },
+    { label: "Week 3-6", title: "Build & Validate", description: "Feature delivery on staging with usability tests across Ghanaian cohorts." },
+    { label: "Week 7-8", title: "Pilot Readiness", description: "Security checklist, training collateral, and go-live support plan." },
+  ];
+
+  const ragSellingPoints = [
+    {
+      title: "Data-first pipelines",
+      description: "Automated ingestion, cleaning, and chunking for PDFs, SharePoint, EMRs, and SQL sources—complete with PII redaction and versioning.",
+    },
+    {
+      title: "Foundation model agnostic",
+      description: "We deploy OpenAI, Anthropic, or on-prem llama variants with tool abstractions so you can swap models without rewriting code.",
+    },
+    {
+      title: "Agentic workflows",
+      description: "RAG is only step one: we add planning/critique loops, retrieval verification, and human handoff so agents act safely on your behalf.",
+    },
+  ];
 
   return (
     <>
@@ -136,9 +193,37 @@ const Solutions = () => {
             <p className="text-lg opacity-80 max-w-2xl mx-auto">
               Built in Effiduasi, Ghana, with direct input from farmers and healthcare workers. AgriConnect launches Q2 2026, GhEHR launches Q1 2026.
             </p>
+              <div className="mt-8 flex flex-wrap justify-center gap-3 text-sm uppercase tracking-[0.3em] text-white/80">
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  <span className="w-2 h-2 rounded-full bg-[#FCD116] animate-pulse" />
+                  Vercel Edge + Neon Postgres
+                </span>
+                <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
+                  8-week sprint reviews
+                </span>
+              </div>
           </div>
         </div>
       </section>
+
+        {/* Delivery Guarantees */}
+        <section className="bg-white">
+          <div className="container -mt-12 md:-mt-16 relative z-20">
+            <div className="grid md:grid-cols-3 gap-6">
+              {executionHighlights.map((item) => (
+                <div key={item.title} className="bg-white rounded-2xl shadow-lg border border-gray-100 p-6">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center">
+                      {item.icon}
+                    </div>
+                    <h3 className="text-lg font-semibold text-[#0A3D62]">{item.title}</h3>
+                  </div>
+                  <p className="text-gray-600 text-sm">{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
       {/* Solutions Overview */}
       <section className="py-16 md:py-24 bg-white">
@@ -214,6 +299,48 @@ const Solutions = () => {
           )}
         </div>
       </section>
+
+        {/* RAG & Agentic AI Services */}
+        <section className="py-16 md:py-24 bg-[#0A3D62] text-white">
+          <div className="container">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div>
+                <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#FCD116] mb-4">New capability</p>
+                <h2 className="text-3xl md:text-4xl font-bold mb-4">RAG & Agentic Intelligence for regulated teams</h2>
+                <p className="text-white/90 mb-6">
+                  We design, build, and operate Retrieval-Augmented Generation (RAG) and Agentic RAG systems that turn your private corpora into trustworthy copilots. From ingestion to evaluation, everything runs on the same Vercel + Neon backbone as our other MVPs or on your preferred cloud.
+                </p>
+                <div className="bg-white/10 rounded-2xl p-6 border border-white/10">
+                  <div className="flex items-center gap-3 mb-3">
+                    <Sparkles className="w-6 h-6 text-[#FCD116]" />
+                    <p className="text-sm font-semibold uppercase tracking-[0.3em] text-white/80">Typical deliverables</p>
+                  </div>
+                  <ul className="space-y-2 text-sm text-white/90">
+                    <li>• Data ingestion + vectorization pipelines with automated governance reports</li>
+                    <li>• RAG orchestration service (LangChain/LangGraph, custom TypeScript agents)</li>
+                    <li>• Evaluation harness covering hallucination, latency, and cost alerts</li>
+                  </ul>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {ragSellingPoints.map((point) => (
+                  <div key={point.title} className="bg-white/10 rounded-2xl p-5 border border-white/10">
+                    <h3 className="text-xl font-semibold mb-2">{point.title}</h3>
+                    <p className="text-white/80 text-sm">{point.description}</p>
+                  </div>
+                ))}
+                <div className="pt-4">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-white text-[#0A3D62] font-semibold hover:bg-[#FCD116] hover:text-black transition"
+                  >
+                    Scope a RAG engagement
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
 
       {/* Development Roadmap */}
       <section className="py-16 md:py-24 bg-[#F8F9FA]">
@@ -312,6 +439,36 @@ const Solutions = () => {
           </div>
         </div>
       </section>
+
+        {/* Engagement Playbook */}
+        <section className="py-16 md:py-24 bg-white">
+          <div className="container">
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-[0.3em] text-[#27AE60]">How we partner</p>
+              <h2 className="text-3xl font-bold text-[#0A3D62] mb-4">Engagement playbook in 3 checkpoints</h2>
+              <p className="max-w-2xl mx-auto text-gray-600">
+                Every MVP build is scoped against this cadence so stakeholders know exactly what happens each week.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {engagementSteps.map((step) => (
+                <div key={step.label} className="border border-gray-100 rounded-2xl p-6 shadow-sm">
+                  <p className="text-xs font-semibold uppercase tracking-[0.3em] text-gray-500 mb-2">{step.label}</p>
+                  <h3 className="text-xl font-bold text-[#0A3D62] mb-3">{step.title}</h3>
+                  <p className="text-gray-600 text-sm">{step.description}</p>
+                </div>
+              ))}
+            </div>
+            <div className="mt-10 text-center">
+              <Link
+                href="/contact"
+                className="inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#0A3D62] text-white font-semibold hover:bg-[#0A3D62]/90 transition"
+              >
+                Schedule a discovery call
+              </Link>
+            </div>
+          </div>
+        </section>
 
       {/* Industries We Serve */}
       <section className="py-16 md:py-24 bg-white">

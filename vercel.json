@@ -50,7 +50,7 @@
       "headers": [
         {
           "key": "Access-Control-Allow-Origin",
-          "value": "*"
+          "value": "https://haydeentechnologies.com,https://www.haydeentechnologies.com"
         },
         {
           "key": "Access-Control-Allow-Methods",
@@ -59,6 +59,10 @@
         {
           "key": "Access-Control-Allow-Headers",
           "value": "Content-Type, Authorization"
+        },
+        {
+          "key": "Access-Control-Max-Age",
+          "value": "86400"
         }
       ]
     }
