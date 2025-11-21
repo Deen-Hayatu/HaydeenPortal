@@ -50,8 +50,23 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Register API routes
-registerRoutes(app);
+// Register API routes (only if config is valid)
+try {
+  registerRoutes(app);
+} catch (error) {
+  // If routes fail to register (e.g., missing DATABASE_URL), 
+  // still allow the app to serve static files
+  logger.error("Failed to register routes:", error);
+  app.get('/api/*', (req, res) => {
+    res.status(503).json({
+      success: false,
+      error: {
+        message: 'Service temporarily unavailable. Please check environment variables.',
+        code: 'CONFIG_ERROR'
+      }
+    });
+  });
+}
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {

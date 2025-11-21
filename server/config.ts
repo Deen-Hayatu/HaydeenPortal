@@ -91,13 +91,16 @@ export function getConfig(): Config {
   return config;
 }
 
-// Validate on module load
+// Validate on module load (but don't exit in serverless environments)
+// In Vercel, static files should still be served even if API config is missing
 try {
   getConfig();
 } catch (error) {
   console.error('❌ Configuration Error:', error instanceof Error ? error.message : String(error));
   console.error('\n💡 Tip: Copy .env.example to .env and fill in the required values.');
-  if (process.env.NODE_ENV === 'production') {
+  // Don't exit in serverless environments - let Vercel serve static files
+  // Only exit in traditional server environments
+  if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
     process.exit(1);
   }
 }
