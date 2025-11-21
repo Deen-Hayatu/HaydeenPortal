@@ -1,17 +1,17 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
+import { fileURLToPath } from "url";
 
-// In Vercel, process.cwd() is the project root
-const root = process.cwd();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+const root = path.resolve(__dirname, "..");
 
 export default defineConfig({
   plugins: [react()],
-  // Set root to client directory where index.html lives
-  root: path.resolve(root, "client"),
   resolve: {
     alias: {
-      "@": path.resolve(root, "client", "src"),
+      "@": path.resolve(__dirname, "src"),
       "@shared": path.resolve(root, "shared"),
       "@assets": path.resolve(root, "attached_assets"),
     },
@@ -21,3 +21,4 @@ export default defineConfig({
     emptyOutDir: true,
   },
 });
+
