@@ -10,11 +10,20 @@ const projectRoot = path.resolve(clientDir, "..");
 export default defineConfig({
   plugins: [react()],
   resolve: {
-    alias: {
-      "@": path.resolve(clientDir, "src"),
-      "@shared": path.resolve(projectRoot, "shared"),
-      "@assets": path.resolve(projectRoot, "attached_assets"),
-    },
+    alias: [
+      {
+        find: "@",
+        replacement: path.resolve(clientDir, "src"),
+      },
+      {
+        find: "@shared",
+        replacement: path.resolve(projectRoot, "shared"),
+      },
+      {
+        find: "@assets",
+        replacement: path.resolve(projectRoot, "attached_assets"),
+      },
+    ],
   },
   css: {
     postcss: {
