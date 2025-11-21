@@ -49,7 +49,7 @@ uploads/
 *.md
 !README.md
 
-# Development tools (but keep vite.config.ts - it's needed!)
+# Development tools (but keep config files - they're needed!)
 .eslintrc.*
 .prettierrc.*
 
