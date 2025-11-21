@@ -9,7 +9,7 @@
       "destination": "/api/index"
     },
     {
-      "source": "/((?!assets|favicon|_next|.*\\..*).*)",
+      "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
