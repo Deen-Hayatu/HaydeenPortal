@@ -319,7 +319,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const { email } = req.body;
       
       if (!email || typeof email !== 'string') {
-        throw new ValidationError(new ZodError([{
+        throw new ValidationError("Validation error", [{
           path: ['email'],
           message: 'Valid email address is required',
           code: 'custom',
