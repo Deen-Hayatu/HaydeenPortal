@@ -1,28 +1,28 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
-import { fileURLToPath } from "url";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const root = path.resolve(__dirname, "..");
+// When vite build runs, we're in the client directory (due to "cd client" in build script)
+// So process.cwd() = client directory
+const clientDir = process.cwd();
+const projectRoot = path.resolve(clientDir, "..");
 
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      "@": path.resolve(__dirname, "src"),
-      "@shared": path.resolve(root, "shared"),
-      "@assets": path.resolve(root, "attached_assets"),
+      "@": path.resolve(clientDir, "src"),
+      "@shared": path.resolve(projectRoot, "shared"),
+      "@assets": path.resolve(projectRoot, "attached_assets"),
     },
   },
   css: {
     postcss: {
-      config: path.resolve(root, "postcss.config.js"),
+      config: path.resolve(projectRoot, "postcss.config.js"),
     },
   },
   build: {
-    outDir: path.resolve(root, "dist", "public"),
+    outDir: path.resolve(projectRoot, "dist", "public"),
     emptyOutDir: true,
   },
 });
