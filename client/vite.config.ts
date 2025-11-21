@@ -16,9 +16,13 @@ export default defineConfig({
       "@assets": path.resolve(root, "attached_assets"),
     },
   },
+  css: {
+    postcss: {
+      config: path.resolve(root, "postcss.config.js"),
+    },
+  },
   build: {
     outDir: path.resolve(root, "dist", "public"),
     emptyOutDir: true,
   },
 });
-
