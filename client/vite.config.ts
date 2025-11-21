@@ -11,6 +11,7 @@ const clientDir = __dirname;
 const projectRoot = path.resolve(clientDir, "..");
 
 export default defineConfig({
+  base: "/",
   plugins: [react()],
   resolve: {
     alias: [
