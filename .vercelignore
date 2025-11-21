@@ -49,13 +49,9 @@ uploads/
 *.md
 !README.md
 
-# Development tools
+# Development tools (but keep vite.config.ts - it's needed!)
 .eslintrc.*
 .prettierrc.*
-tsconfig.json
-vite.config.ts
-tailwind.config.ts
-postcss.config.js
 
 # Replit specific files
 .replit
