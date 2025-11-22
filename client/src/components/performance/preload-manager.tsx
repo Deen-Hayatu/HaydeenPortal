@@ -58,28 +58,8 @@ export default PreloadManager;
 // Critical resource preloader hook
 export const useCriticalResourcePreloader = () => {
   useEffect(() => {
-    // Preload critical CSS files
-    const criticalCSS = [
-      '/fonts/inter.woff2',
-      '/fonts/poppins.woff2',
-    ];
-
-    criticalCSS.forEach(resource => {
-      const link = document.createElement('link');
-      link.rel = 'preload';
-      
-      if (resource.includes('.woff')) {
-        link.as = 'font';
-        link.crossOrigin = 'anonymous';
-      } else if (resource.includes('.css')) {
-        link.as = 'style';
-      }
-      
-      link.href = resource;
-      document.head.appendChild(link);
-    });
-
-    // Prefetch next likely pages
+    // Only prefetch pages (not preload) - these are used for navigation
+    // Prefetch is better for pages that might be visited
     const prefetchPages = [
       '/solutions/agriconnect',
       '/solutions/ghehr',

@@ -59,13 +59,7 @@ function Router() {
         inLanguage="en"
       />
       
-      <PreloadManager
-        images={[
-          '/images/hero-bg.jpg',
-          '/images/agriconnect-hero.jpg',
-          '/images/logo.png'
-        ]}
-      />
+      {/* PreloadManager removed - images will load when needed */}
       
       <Header />
       <main id="main-content" className="flex-grow" tabIndex={-1}>
