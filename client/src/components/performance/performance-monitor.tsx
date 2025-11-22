@@ -112,16 +112,32 @@ export const PerformanceLogger = () => {
   const { warnings, hasWarnings } = usePerformanceBudget();
 
   useEffect(() => {
+    // Only log in development mode
     if (import.meta.env.DEV && Object.keys(metrics).length > 0) {
-      console.group('🚀 Performance Metrics');
-      Object.entries(metrics).forEach(([key, value]) => {
-        console.log(`${key}: ${Math.round(value)}${key.includes('shift') ? '' : 'ms'}`);
+      // Filter out invalid metrics (e.g., extremely large values that indicate errors)
+      const validMetrics = Object.entries(metrics).filter(([key, value]) => {
+        if (value === undefined || value === null) return false;
+        // Reject metrics that are clearly wrong (e.g., > 1 hour = 3600000ms)
+        if (typeof value === 'number' && value > 3600000) return false;
+        return true;
       });
-      console.groupEnd();
 
-      if (hasWarnings) {
+      if (validMetrics.length > 0) {
+        console.group('🚀 Performance Metrics');
+        validMetrics.forEach(([key, value]) => {
+          console.log(`${key}: ${Math.round(value as number)}${key.includes('shift') ? '' : 'ms'}`);
+        });
+        console.groupEnd();
+      }
+
+      // Only show warnings for valid metrics
+      const validWarnings = Object.entries(warnings).filter(([key, data]) => {
+        return data.actual <= 3600000; // Reject if > 1 hour
+      });
+
+      if (validWarnings.length > 0) {
         console.group('⚠️ Performance Budget Exceeded');
-        Object.entries(warnings).forEach(([key, data]) => {
+        validWarnings.forEach(([key, data]) => {
           console.warn(`${key}: ${Math.round(data.actual)}ms (budget: ${data.budget}ms, exceeded by: ${Math.round(data.exceeded)}ms)`);
         });
         console.groupEnd();
