@@ -43,6 +43,11 @@ export async function registerRoutes(app: Express): Promise<Server> {
 
   // API Routes - all prefixed with /api
   
+  // Health check endpoint
+  app.get("/api/health", (req, res) => {
+    res.json({ status: 'healthy', timestamp: new Date().toISOString() });
+  });
+  
   // Blog routes
   app.get("/api/blog", async (req, res, next) => {
     try {
