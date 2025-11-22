@@ -57,7 +57,7 @@ npm install
 npm run build:all
 
 # 3. Start with PM2
-pm2 start ecosystem.config.js
+pm2 start ecosystem.config.cjs
 
 # 4. Save PM2 config
 pm2 save
