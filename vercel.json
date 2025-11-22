@@ -3,13 +3,47 @@
   "buildCommand": "npm run build",
   "outputDirectory": "dist/public",
   "installCommand": "npm install",
+  "cleanUrls": false,
+  "trailingSlash": false,
   "rewrites": [
     {
       "source": "/api/(.*)",
       "destination": "/api/index"
     },
     {
-      "source": "/((?!api|_next|.*\\..*).*)",
+      "source": "/about",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/solutions/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/products",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/careers",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/blog/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/technology/:path*",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/apply",
+      "destination": "/index.html"
+    },
+    {
+      "source": "/mvp-documentation",
       "destination": "/index.html"
     }
   ],
