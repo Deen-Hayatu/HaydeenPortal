@@ -67,12 +67,7 @@ app.use((req, res, next) => {
   next();
 });
 
-// Static file caching
-app.use(express.static('public', { 
-  maxAge: process.env.NODE_ENV === 'production' ? '1y' : '1h',
-  immutable: process.env.NODE_ENV === 'production'
-}));
-
+// Body parsing middleware (static files are served by serveStatic function)
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: false, limit: '10mb' }));
 
