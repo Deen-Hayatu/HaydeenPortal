@@ -86,23 +86,49 @@ mkdir -p logs
 # Check if PM2 is installed
 if ! command -v pm2 &> /dev/null; then
     echo ""
-    echo -e "${YELLOW}⚠️  PM2 is not installed. Installing globally...${NC}"
-    npm install -g pm2
+    echo -e "${YELLOW}⚠️  PM2 is not installed. Installing...${NC}"
+    
+    # Try to install globally first
+    if npm install -g pm2 2>/dev/null; then
+        echo -e "${GREEN}✅ PM2 installed globally${NC}"
+    else
+        echo -e "${YELLOW}⚠️  Global install failed (permission issue). Trying with sudo...${NC}"
+        if sudo npm install -g pm2; then
+            echo -e "${GREEN}✅ PM2 installed globally with sudo${NC}"
+        else
+            echo -e "${YELLOW}⚠️  Installing PM2 locally instead...${NC}"
+            npm install --save-dev pm2
+            echo -e "${GREEN}✅ PM2 installed locally${NC}"
+            echo -e "${YELLOW}⚠️  Note: You'll need to use 'npx pm2' or './node_modules/.bin/pm2' instead of 'pm2'${NC}"
+        fi
+    fi
+fi
+
+# Determine PM2 command (global or local)
+if command -v pm2 &> /dev/null; then
+    PM2_CMD="pm2"
+elif [ -f "./node_modules/.bin/pm2" ]; then
+    PM2_CMD="./node_modules/.bin/pm2"
+elif [ -f "./node_modules/pm2/bin/pm2" ]; then
+    PM2_CMD="./node_modules/pm2/bin/pm2"
+else
+    echo -e "${RED}❌ PM2 not found. Please install manually: npm install -g pm2${NC}"
+    exit 1
 fi
 
 # Stop existing PM2 process if running
 echo ""
 echo "🛑 Stopping existing process (if any)..."
-pm2 stop haydeen-portal 2>/dev/null || true
-pm2 delete haydeen-portal 2>/dev/null || true
+$PM2_CMD stop haydeen-portal 2>/dev/null || true
+$PM2_CMD delete haydeen-portal 2>/dev/null || true
 
 # Start with PM2
 echo ""
 echo "🚀 Starting application with PM2..."
-pm2 start ecosystem.config.js
+$PM2_CMD start ecosystem.config.js
 
 # Save PM2 configuration
-pm2 save
+$PM2_CMD save
 
 echo ""
 echo -e "${GREEN}✅ Deployment complete!${NC}"
