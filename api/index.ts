@@ -53,10 +53,17 @@ app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 // Register API routes (only if config is valid)
 try {
   registerRoutes(app);
-} catch (error) {
-  // If routes fail to register (e.g., missing DATABASE_URL), 
-  // still allow the app to serve static files
-  logger.error("Failed to register routes:", error);
+} catch (error: unknown) {
+  // Narrow unknown -> Error and handle non-Error values
+  if (error instanceof Error) {
+    logger.error("Failed to register routes:", error);
+  } else {
+    // Log a safe string representation for non-Error values
+    logger.error("Failed to register routes: (non-Error) " + String(error));
+  }
+
+  // If routes fail to register (e.g., missing DATABASE_URL),
+  // still allow the app to serve static files by returning 503 for API calls
   app.get('/api/*', (req, res) => {
     res.status(503).json({
       success: false,
