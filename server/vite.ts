@@ -68,8 +68,11 @@ export async function setupVite(app: Express, server: Server) {
 }
 
 export function serveStatic(app: Express) {
-  // Resolve path relative to dist/ directory (where server bundle is)
-  const distPath = path.resolve(import.meta.dirname, "..", "public");
+  // Resolve path relative to project root
+  // import.meta.dirname in bundled code points to dist/, so we need to go up and into public
+  // But actually, the public folder is at dist/public (same level as dist/index.js)
+  // So from dist/index.js, we need dist/public
+  const distPath = path.resolve(process.cwd(), "dist", "public");
 
   if (!fs.existsSync(distPath)) {
     throw new Error(
