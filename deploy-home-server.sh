@@ -125,7 +125,7 @@ $PM2_CMD delete haydeen-portal 2>/dev/null || true
 # Start with PM2
 echo ""
 echo "🚀 Starting application with PM2..."
-$PM2_CMD start ecosystem.config.js
+$PM2_CMD start ecosystem.config.cjs
 
 # Save PM2 configuration
 $PM2_CMD save
