@@ -24,17 +24,25 @@ export const usePerformanceMonitor = () => {
           switch (entry.entryType) {
             case 'paint':
               if (entry.name === 'first-contentful-paint') {
-                setMetrics(prev => ({
-                  ...prev,
-                  firstContentfulPaint: entry.startTime
-                }));
+                // Validate the value is reasonable (reject if > 1 hour = 3600000ms)
+                const fcp = entry.startTime;
+                if (fcp > 0 && fcp < 3600000) {
+                  setMetrics(prev => ({
+                    ...prev,
+                    firstContentfulPaint: fcp
+                  }));
+                }
               }
               break;
             case 'largest-contentful-paint':
-              setMetrics(prev => ({
-                ...prev,
-                largestContentfulPaint: entry.startTime
-              }));
+              const lcp = entry.startTime;
+              // Validate the value is reasonable
+              if (lcp > 0 && lcp < 3600000) {
+                setMetrics(prev => ({
+                  ...prev,
+                  largestContentfulPaint: lcp
+                }));
+              }
               break;
             case 'layout-shift':
               if (!(entry as any).hadRecentInput) {
@@ -62,10 +70,14 @@ export const usePerformanceMonitor = () => {
       setIsLoading(false);
       const navigationTiming = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
       if (navigationTiming) {
-        setMetrics(prev => ({
-          ...prev,
-          timeToInteractive: navigationTiming.domInteractive - navigationTiming.fetchStart
-        }));
+        const tti = navigationTiming.domInteractive - navigationTiming.fetchStart;
+        // Validate the value is reasonable (reject if > 1 hour = 3600000ms)
+        if (tti > 0 && tti < 3600000) {
+          setMetrics(prev => ({
+            ...prev,
+            timeToInteractive: tti
+          }));
+        }
       }
     });
 
