@@ -69,27 +69,43 @@ export async function setupVite(app: Express, server: Server) {
 
 export function serveStatic(app: Express) {
   // Resolve path relative to project root
-  // import.meta.dirname in bundled code points to dist/, so we need to go up and into public
-  // But actually, the public folder is at dist/public (same level as dist/index.js)
-  // So from dist/index.js, we need dist/public
-  const distPath = path.resolve(process.cwd(), "dist", "public");
+  // Use process.cwd() for reliable path resolution in bundled code
+  const staticDir = path.resolve(process.cwd(), "dist", "public");
 
-  if (!fs.existsSync(distPath)) {
+  if (!fs.existsSync(staticDir)) {
     throw new Error(
-      `Could not find the build directory: ${distPath}, make sure to build the client first`,
+      `Could not find the build directory: ${staticDir}, make sure to build the client first`,
     );
   }
 
-  app.use(express.static(distPath));
-
-  // fall through to index.html if the file doesn't exist
-  // BUT exclude /api routes - they should return JSON, not HTML
-  app.use((req, res, next) => {
-    // Skip API routes - they should be handled by API routes registered earlier
-    if (req.path.startsWith("/api")) {
-      return next();
+  // Serve static files (CSS/JS/images) with proper MIME types and caching
+  app.use(express.static(staticDir, {
+    maxAge: process.env.NODE_ENV === 'production' ? '1y' : '1h',
+    immutable: process.env.NODE_ENV === 'production',
+    setHeaders: (res, filePath) => {
+      // Ensure proper MIME types (Express does this automatically, but we can override if needed)
+      if (filePath.endsWith(".map")) {
+        res.setHeader("Cache-Control", "no-cache");
+      }
     }
-    // For all other routes, serve index.html for SPA routing
-    res.sendFile(path.resolve(distPath, "index.html"));
+  }));
+
+  // SPA fallback: only serve index.html for GET requests that are:
+  // - Not API calls (/api/*)
+  // - Have no file extension (not static assets)
+  // - Are GET requests
+  app.get("*", (req, res, next) => {
+    const hasExtension = path.extname(req.path) !== "";
+    
+    // Skip if:
+    // - Not a GET request
+    // - Is an API route
+    // - Has a file extension (is a static asset)
+    if (req.method !== "GET" || req.path.startsWith("/api") || hasExtension) {
+      return next(); // Let 404 or other handlers run
+    }
+    
+    // Serve index.html for SPA routing
+    return res.sendFile(path.join(staticDir, "index.html"));
   });
 }
