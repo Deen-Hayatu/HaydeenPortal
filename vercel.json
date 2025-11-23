@@ -1,8 +1,13 @@
 {
   "version": 2,
   "buildCommand": "npm run build:all",
-  "outputDirectory": "dist/public",
   "installCommand": "npm install",
+  "functions": {
+    "api/index.js": {
+      "maxDuration": 30
+    }
+  },
+  "outputDirectory": "dist/public",
   "cleanUrls": false,
   "trailingSlash": false,
   "rewrites": [
