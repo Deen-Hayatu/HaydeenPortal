@@ -13,8 +13,8 @@ build/
 *.local
 
 # Built API bundle (generated during Vercel build)
-api/bundled.js
-api/bundled.js.map
+api/index.js
+api/index.js.map
 
 # Environment variables
 .env
