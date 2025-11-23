@@ -12,9 +12,9 @@ dist/
 build/
 *.local
 
-# Built API bundle (generated during Vercel build)
-api/index.js
-api/index.js.map
+# Built API dependencies (copied during Vercel build)
+api/_server/
+api/_shared/
 
 # Environment variables
 .env
