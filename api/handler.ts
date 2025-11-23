@@ -50,30 +50,35 @@ app.use((req, res, next) => {
 app.use(express.json({ limit: '10mb' }));
 app.use(express.urlencoded({ extended: true, limit: '10mb' }));
 
-// Register API routes (only if config is valid)
-try {
-  registerRoutes(app);
-} catch (error: unknown) {
-  // Narrow unknown -> Error and handle non-Error values
-  if (error instanceof Error) {
-    logger.error("Failed to register routes:", error);
-  } else {
-    // Log a safe string representation for non-Error values
-    logger.error("Failed to register routes: (non-Error) " + String(error));
-  }
+// Initialize routes once at module load time
+let routesInitialized = false;
+const initPromise = (async () => {
+  try {
+    await registerRoutes(app);
+    routesInitialized = true;
+    logger.info("Routes registered successfully");
+  } catch (error: unknown) {
+    // Narrow unknown -> Error and handle non-Error values
+    if (error instanceof Error) {
+      logger.error("Failed to register routes:", error);
+    } else {
+      // Log a safe string representation for non-Error values
+      logger.error("Failed to register routes: (non-Error) " + String(error));
+    }
 
-  // If routes fail to register (e.g., missing DATABASE_URL),
-  // still allow the app to serve static files by returning 503 for API calls
-  app.get('/api/*', (req, res) => {
-    res.status(503).json({
-      success: false,
-      error: {
-        message: 'Service temporarily unavailable. Please check environment variables.',
-        code: 'CONFIG_ERROR'
-      }
+    // If routes fail to register (e.g., missing DATABASE_URL),
+    // still allow the app to serve static files by returning 503 for API calls
+    app.get('/api/*', (req, res) => {
+      res.status(503).json({
+        success: false,
+        error: {
+          message: 'Service temporarily unavailable. Please check environment variables.',
+          code: 'CONFIG_ERROR'
+        }
+      });
     });
-  });
-}
+  }
+})();
 
 // Health check endpoint
 app.get('/api/health', (req, res) => {
@@ -97,6 +102,9 @@ app.use((err: any, req: Request, res: Response, next: NextFunction) => {
 
 // Vercel serverless function handler
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // Wait for routes to be initialized on first request
+  await initPromise;
+
   // Convert Vercel request/response to Express format
   return new Promise((resolve, reject) => {
     app(req as any, res as any, (err: any) => {
