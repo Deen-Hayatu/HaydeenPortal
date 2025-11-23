@@ -2,9 +2,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 import express, { type Request, Response, NextFunction } from "express";
 import rateLimit from "express-rate-limit";
-import { registerRoutes } from "../server/routes.js";
-import { getConfig } from "../server/config.js";
-import { logger } from "../server/utils/logger.js";
+import { registerRoutes } from "../server/routes";
+import { getConfig } from "../server/config";
+import { logger } from "../server/utils/logger";
 
 const app = express();
 
