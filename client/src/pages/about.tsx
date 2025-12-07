@@ -2,6 +2,7 @@ import { Link } from "wouter";
 import { Check, ShieldCheck } from "lucide-react";
 import OptimizedImage from "@/components/ui/optimized-image";
 import founderProfessionalPhoto from "../assets/founder-professional-photo.jpg";
+import founderStoryImage from "../assets/founder-story-image.jpg";
 
 const operatingPrinciples = [
   {
@@ -109,7 +110,7 @@ const About = () => {
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
               <OptimizedImage 
-                src={founderProfessionalPhoto} 
+                src={founderStoryImage} 
                 alt="Mohammad Deen Hayatu, Founder of Haydeen Technologies" 
                 className="w-full h-full object-cover"
                 priority={true}
