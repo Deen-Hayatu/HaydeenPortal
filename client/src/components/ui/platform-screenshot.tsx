@@ -1,4 +1,5 @@
 import React from 'react';
+// Import images - Vite will process these during build
 import ghehrScreenshotWebP from '../../assets/ghehr-screenshot.webp';
 import ghehrScreenshotFallback from '../../assets/ghehr-screenshot.png';
 
@@ -70,15 +71,22 @@ const PlatformScreenshot = ({ platform, className = '' }: PlatformScreenshotProp
       
       case 'ghehr':
         return (
-          <div className="bg-white rounded-lg shadow-lg overflow-hidden">
-            <picture className="block w-full">
-              <source srcSet={ghehrScreenshotWebP} type="image/webp" />
+          <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full">
+            <picture className="block w-full h-full">
+              <source srcSet={String(ghehrScreenshotWebP)} type="image/webp" />
               <img 
-                src={ghehrScreenshotFallback} 
+                src={String(ghehrScreenshotFallback)} 
                 alt="GhEHR Patient Management System - Electronic Health Record platform for Ghana" 
                 className="w-full h-auto object-contain"
                 loading="lazy"
                 decoding="async"
+                width={1024}
+                height={1024}
+                onError={(e) => {
+                  console.error('Failed to load GhEHR screenshot:', e);
+                  console.log('WebP path:', ghehrScreenshotWebP);
+                  console.log('Fallback path:', ghehrScreenshotFallback);
+                }}
               />
             </picture>
           </div>
