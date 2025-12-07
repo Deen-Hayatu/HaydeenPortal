@@ -5,6 +5,7 @@ import HeadTags from "@/components/seo/head-tags";
 import ghehrLogo from "@assets/GhEHR logo_1752832735160.png";
 import CountdownTimer from "@/components/ui/countdown-timer";
 import BetaSignupForm from "@/components/ui/beta-signup-form";
+import PlatformScreenshot from "@/components/ui/platform-screenshot";
 
 const GhEHR = () => {
   return (
@@ -57,10 +58,9 @@ const GhEHR = () => {
               </div>
             </div>
             <div className="relative">
-              <img 
-                src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                alt="Healthcare professional using GhEHR system" 
-                className="rounded-lg shadow-xl"
+              <PlatformScreenshot 
+                platform="ghehr" 
+                className="rounded-lg shadow-xl w-full max-w-lg mx-auto"
               />
             </div>
           </div>
