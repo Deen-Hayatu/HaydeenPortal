@@ -1,7 +1,7 @@
 import React from 'react';
-// Import images - Vite will process these during build
-import ghehrScreenshotWebP from '../../assets/ghehr-screenshot.webp';
-import ghehrScreenshotFallback from '../../assets/ghehr-screenshot.png';
+// Use public folder for images - more reliable for static assets
+const ghehrScreenshotWebP = '/images/ghehr-screenshot.webp';
+const ghehrScreenshotFallback = '/images/ghehr-screenshot.png';
 
 interface PlatformScreenshotProps {
   platform: 'agriconnect' | 'ghehr' | 'ecovendghana';
