@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Check } from "lucide-react";
+import OptimizedImage from "@/components/ui/optimized-image";
 
 const FeaturedCaseStudy = () => {
   const benefits = [
@@ -37,10 +38,12 @@ const FeaturedCaseStudy = () => {
           </div>
           
           <div className="rounded-xl overflow-hidden shadow-xl">
-            <img 
+            <OptimizedImage 
               src="https://images.unsplash.com/photo-1580281820385-d04e2e4e9b36?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
               alt="Farmers in Ghana using the AgriConnect platform" 
-              className="w-full h-full object-cover"
+              className="w-full h-full"
+              width={800}
+              height={600}
             />
           </div>
         </div>

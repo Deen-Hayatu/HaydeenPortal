@@ -76,6 +76,21 @@
   /* Performance optimizations */
   img {
     @apply transition-opacity duration-300;
+    /* Prevent layout shift */
+    height: auto;
+    max-width: 100%;
+  }
+  
+  /* Optimize image loading */
+  img[loading="lazy"] {
+    content-visibility: auto;
+  }
+  
+  /* Improve font rendering */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
   }
 
   img[loading="lazy"] {

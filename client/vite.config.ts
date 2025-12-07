@@ -45,5 +45,44 @@ export default defineConfig({
   build: {
     outDir: path.resolve(projectRoot, "dist", "public"),
     emptyOutDir: true,
+    // Performance optimizations
+    minify: "esbuild",
+    sourcemap: false, // Disable in production for better performance
+    rollupOptions: {
+      output: {
+        // Code splitting for better caching
+        manualChunks: {
+          // Vendor chunks
+          'react-vendor': ['react', 'react-dom'],
+          'router-vendor': ['wouter'],
+          'ui-vendor': ['framer-motion'],
+          'form-vendor': ['react-hook-form', '@hookform/resolvers', 'zod'],
+          // Feature chunks
+          'solutions': [
+            './src/pages/solutions/index.tsx',
+            './src/pages/solutions/agriconnect.tsx',
+            './src/pages/solutions/ghehr.tsx',
+          ],
+        },
+        // Optimize chunk file names
+        chunkFileNames: 'assets/js/[name]-[hash].js',
+        entryFileNames: 'assets/js/[name]-[hash].js',
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) {
+            return 'assets/css/[name]-[hash][extname]';
+          }
+          if (/\.(png|jpe?g|svg|gif|webp)$/.test(assetInfo.name || '')) {
+            return 'assets/images/[name]-[hash][extname]';
+          }
+          return 'assets/[name]-[hash][extname]';
+        },
+      },
+    },
+    // Chunk size warnings
+    chunkSizeWarningLimit: 1000,
+  },
+  // Performance optimizations
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'wouter', 'framer-motion'],
   },
 });

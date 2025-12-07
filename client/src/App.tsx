@@ -11,7 +11,7 @@ import SkipToMain from "@/components/accessibility/skip-to-main";
 import ErrorBoundary from "@/components/ui/error-boundary";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/schema-markup";
 import PreloadManager, { useCriticalResourcePreloader } from "@/components/performance/preload-manager";
-import { PerformanceLogger } from "@/components/performance/performance-monitor";
+import { PerformanceMonitor } from "@/components/performance/performance-monitor";
 import Home from "@/pages/home";
 import About from "@/pages/about";
 import Solutions from "@/pages/solutions/index";
@@ -91,7 +91,7 @@ function App() {
         <QueryClientProvider client={queryClient}>
           <TooltipProvider>
             <GoogleAnalytics />
-            {import.meta.env.DEV && <PerformanceLogger />}
+            <PerformanceMonitor />
             <Toaster />
             <Router />
           </TooltipProvider>
