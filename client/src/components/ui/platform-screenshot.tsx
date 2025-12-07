@@ -1,7 +1,4 @@
-import React from 'react';
-// Use public folder for images - more reliable for static assets
-const ghehrScreenshotWebP = '/images/ghehr-screenshot.webp';
-const ghehrScreenshotFallback = '/images/ghehr-screenshot.png';
+import ghehrScreenshotPng from '@assets/ghehr-screenshot.webp';
 
 interface PlatformScreenshotProps {
   platform: 'agriconnect' | 'ghehr' | 'ecovendghana';
@@ -72,17 +69,12 @@ const PlatformScreenshot = ({ platform, className = '' }: PlatformScreenshotProp
       case 'ghehr':
         return (
           <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full">
-            <picture>
-              <source srcSet={ghehrScreenshotWebP} type="image/webp" />
-              <img 
-                src={ghehrScreenshotFallback} 
-                alt="GhEHR Patient Management System - Electronic Health Record platform for Ghana" 
-                className="w-full h-auto"
-                loading="lazy"
-                decoding="async"
-                style={{ display: 'block', width: '100%', height: 'auto' }}
-              />
-            </picture>
+            <img 
+              src={ghehrScreenshotPng} 
+              alt="GhEHR Patient Management System - Electronic Health Record platform for Ghana" 
+              className="w-full h-auto"
+              style={{ display: 'block', width: '100%', height: 'auto' }}
+            />
           </div>
         );
       
