@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 import path from "path";
 import { fileURLToPath } from "url";
+import tailwindcss from "tailwindcss";
+import autoprefixer from "autoprefixer";
 
 // Get absolute paths that work in both local and Vercel environments
 const __filename = fileURLToPath(import.meta.url);
@@ -12,6 +14,7 @@ const projectRoot = path.resolve(clientDir, "..");
 
 export default defineConfig({
   base: "/",
+  root: clientDir,
   plugins: [react()],
   resolve: {
     alias: [
@@ -31,7 +34,12 @@ export default defineConfig({
   },
   css: {
     postcss: {
-      config: path.resolve(projectRoot, "postcss.config.js"),
+      plugins: [
+        tailwindcss({
+          config: path.resolve(projectRoot, "tailwind.config.ts"),
+        }),
+        autoprefixer(),
+      ],
     },
   },
   build: {

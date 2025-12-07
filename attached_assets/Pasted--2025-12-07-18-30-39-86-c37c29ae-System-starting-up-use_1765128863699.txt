@@ -1,0 +1,158 @@
+
+2025-12-07 18:30:39.86
+c37c29ae
+System
+starting up user application
+2025-12-07 18:30:39.86
+c37c29ae
+System
+metasidecar: loaded enterprise status from environment is_enterprise=false
+
+2025-12-07 18:30:39.86
+c37c29ae
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-12-07 18:30:41.62
+c37c29ae
+User
+}
+2025-12-07 18:30:41.62
+c37c29ae
+User
+at ModuleJob._link (node:internal/modules/esm/module_job:130:49) {
+2025-12-07 18:30:41.62
+c37c29ae
+User
+at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+2025-12-07 18:30:41.62
+c37c29ae
+User
+at packageResolve (node:internal/modules/esm/resolve:873:9)
+2025-12-07 18:30:41.62
+c37c29ae
+User
+at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:642:12)
+2025-12-07 18:30:41.62
+c37c29ae
+User
+throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2025-12-07 18:30:41.62
+c37c29ae
+User
+code: 'ERR_MODULE_NOT_FOUND'
+2025-12-07 18:30:41.62
+c37c29ae
+User
+at #cachedDefaultResolve (node:internal/modules/esm/loader:591:25)
+2025-12-07 18:30:41.62
+c37c29ae
+User
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@replit/vite-plugin-runtime-error-modal' imported from /home/runner/workspace/dist/index.js
+2025-12-07 18:30:41.62
+c37c29ae
+User
+node:internal/modules/esm/resolve:873
+2025-12-07 18:30:41.62
+c37c29ae
+User
+^
+2025-12-07 18:30:41.63
+c37c29ae
+System
+command finished with error [npm run start]: exit status 1
+2025-12-07 18:30:42.86
+332308ac
+System
+starting up user application
+2025-12-07 18:30:43.21
+332308ac
+System
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-12-07 18:30:46.52
+332308ac
+User
+> NODE_ENV=production node dist/index.js
+2025-12-07 18:30:46.52
+332308ac
+User
+> rest-express@1.0.0 start
+2025-12-07 18:30:46.82
+c37c29ae
+User
+> NODE_ENV=production node dist/index.js
+2025-12-07 18:30:46.82
+c37c29ae
+User
+> rest-express@1.0.0 start
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at moduleResolve (node:internal/modules/esm/resolve:946:18)
+2025-12-07 18:30:46.90
+c37c29ae
+User
+}
+2025-12-07 18:30:46.90
+c37c29ae
+User
+node:internal/modules/esm/resolve:873
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at defaultResolve (node:internal/modules/esm/resolve:1188:11)
+2025-12-07 18:30:46.90
+c37c29ae
+User
+throw new ERR_MODULE_NOT_FOUND(packageName, fileURLToPath(base), null);
+2025-12-07 18:30:46.90
+c37c29ae
+User
+code: 'ERR_MODULE_NOT_FOUND'
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at ModuleLoader.getModuleJobForImport (node:internal/modules/esm/loader:236:38)
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at #cachedDefaultResolve (node:internal/modules/esm/loader:591:25)
+2025-12-07 18:30:46.90
+c37c29ae
+User
+Error [ERR_MODULE_NOT_FOUND]: Cannot find package '@replit/vite-plugin-runtime-error-modal' imported from /home/runner/workspace/dist/index.js
+2025-12-07 18:30:46.90
+c37c29ae
+User
+^
+2025-12-07 18:30:46.90
+c37c29ae
+User
+Node.js v20.19.3
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at ModuleJob._link (node:internal/modules/esm/module_job:130:49) {
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at ModuleLoader.defaultResolve (node:internal/modules/esm/loader:642:12)
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at packageResolve (node:internal/modules/esm/resolve:873:9)
+2025-12-07 18:30:46.90
+c37c29ae
+User
+at ModuleLoader.resolve (node:internal/modules/esm/loader:574:38)
+2025-12-07 18:30:46.91
+c37c29ae
+System
+command finished with error [npm run start]: exit status 1
+2025-12-07 18:30:48.72
+332308ac
+User
+5:30:48 PM [express] serving on port 5000
+2025-12-07 18:30:51.77
+c37c29ae
+User
+> rest-express@1.0.0 start
