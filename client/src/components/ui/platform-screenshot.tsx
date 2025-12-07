@@ -72,21 +72,15 @@ const PlatformScreenshot = ({ platform, className = '' }: PlatformScreenshotProp
       case 'ghehr':
         return (
           <div className="bg-white rounded-lg shadow-lg overflow-hidden w-full">
-            <picture className="block w-full h-full">
-              <source srcSet={String(ghehrScreenshotWebP)} type="image/webp" />
+            <picture>
+              <source srcSet={ghehrScreenshotWebP} type="image/webp" />
               <img 
-                src={String(ghehrScreenshotFallback)} 
+                src={ghehrScreenshotFallback} 
                 alt="GhEHR Patient Management System - Electronic Health Record platform for Ghana" 
-                className="w-full h-auto object-contain"
+                className="w-full h-auto"
                 loading="lazy"
                 decoding="async"
-                width={1024}
-                height={1024}
-                onError={(e) => {
-                  console.error('Failed to load GhEHR screenshot:', e);
-                  console.log('WebP path:', ghehrScreenshotWebP);
-                  console.log('Fallback path:', ghehrScreenshotFallback);
-                }}
+                style={{ display: 'block', width: '100%', height: 'auto' }}
               />
             </picture>
           </div>
