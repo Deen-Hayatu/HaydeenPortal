@@ -16,7 +16,7 @@
       "destination": "/api/index"
     },
     {
-      "source": "/((?!assets/).*)",
+      "source": "/((?!api|_next|_vercel|.*\\..*).*)",
       "destination": "/index.html"
     }
   ],
