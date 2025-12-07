@@ -1,7 +1,6 @@
 import React from 'react';
-import OptimizedImage from './optimized-image';
-import ghehrScreenshotWebP from '@/assets/ghehr-screenshot.webp';
-import ghehrScreenshotFallback from '@/assets/ghehr-screenshot.png';
+import ghehrScreenshotWebP from '../../assets/ghehr-screenshot.webp';
+import ghehrScreenshotFallback from '../../assets/ghehr-screenshot.png';
 
 interface PlatformScreenshotProps {
   platform: 'agriconnect' | 'ghehr' | 'ecovendghana';
