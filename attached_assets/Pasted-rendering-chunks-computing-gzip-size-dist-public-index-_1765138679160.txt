@@ -1,0 +1,46 @@
+rendering chunks...
+
+computing gzip size...
+
+../dist/public/index.html                                          5.47 kB │ gzip:   1.61 kB
+
+../dist/public/assets/new-haydeen-logo-BsnNHNAx.png              115.80 kB
+
+../dist/public/assets/founder-professional-photo-DK3HRU1E.jpg    144.70 kB
+
+../dist/public/assets/mpcghana-screenshot-9ILBiARm.png           177.62 kB
+
+../dist/public/assets/GhEHR logo_1752832735160-CTGup6BS.png    1,045.62 kB
+
+../dist/public/assets/index-CDtL3MkN.css                           7.72 kB │ gzip:   2.35 kB
+
+../dist/public/assets/index-BVE1sKBW.js                          882.18 kB │ gzip: 248.31 kB
+
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+
+✓ built in 5.44s
+
+2025-12-07T20:11:29Z info: Pushing pid1 binary layer...
+2025-12-07T20:11:31Z info: Pushing Repl layer...
+2025-12-07T20:11:31Z info: Pushing hosting layer...
+2025-12-07T20:11:31Z info: Created pid1 binary layer
+2025-12-07T20:11:31Z info: Retrieved cached nix layer
+2025-12-07T20:11:32Z info: Created hosting layer
+2025-12-07T20:11:52Z info: Created Repl layer
+2025-12-07T20:11:54Z info: Pushed image manifest
+2025-12-07T20:11:55Z info: Pushed soci index manifest
+2025-12-07T20:11:58Z info: Creating Autoscale service
+2025-12-07T20:12:30Z info: Waiting for service to be ready
+> rest-express@1.0.0 start
+metasidecar: loaded enterprise status from environment is_enterprise=false
+[2025-12-07T20:12:27.986Z] [INFO] Database connection established successfully
+starting up user application
+> NODE_ENV=production node dist/index.js
+[2025-12-07T20:12:27.412Z] [INFO] Configuration validated successfully
+8:12:27 PM [express] serving on port 5000
+forwarding local port 5000 to external port 80 (mapped as 1104)
+2025-12-07T20:12:32Z info: Deployment successful
