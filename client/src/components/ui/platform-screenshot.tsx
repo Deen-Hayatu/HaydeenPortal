@@ -74,11 +74,12 @@ const PlatformScreenshot = ({ platform, className = '' }: PlatformScreenshotProp
           <div className="bg-white rounded-lg shadow-lg overflow-hidden">
             <picture className="block w-full">
               <source srcSet={ghehrScreenshotWebP} type="image/webp" />
-              <OptimizedImage 
+              <img 
                 src={ghehrScreenshotFallback} 
                 alt="GhEHR Patient Management System - Electronic Health Record platform for Ghana" 
-                className="w-full h-auto"
-                priority={false}
+                className="w-full h-auto object-contain"
+                loading="lazy"
+                decoding="async"
               />
             </picture>
           </div>
