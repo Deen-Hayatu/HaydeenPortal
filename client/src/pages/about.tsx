@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Check, ShieldCheck } from "lucide-react";
+import OptimizedImage from "@/components/ui/optimized-image";
 import founderProfessionalPhoto from "../assets/founder-professional-photo.jpg";
 
 const operatingPrinciples = [
@@ -107,10 +108,11 @@ const About = () => {
               </p>
             </div>
             <div className="rounded-xl overflow-hidden shadow-lg">
-              <img 
+              <OptimizedImage 
                 src={founderProfessionalPhoto} 
                 alt="Mohammad Deen Hayatu, Founder of Haydeen Technologies" 
                 className="w-full h-full object-cover"
+                priority={true}
               />
             </div>
           </div>
@@ -405,38 +407,49 @@ const About = () => {
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="text-center md:text-left">
                 <div className="mb-6 rounded-full overflow-hidden w-64 h-64 mx-auto md:mx-0">
-                  <img 
+                  <OptimizedImage 
                     src={founderProfessionalPhoto} 
                     alt="Mohammad Deen Hayatu, Founder of Haydeen Technologies" 
                     className="w-full h-full object-cover"
+                    priority={true}
+                    width={256}
+                    height={256}
                   />
                 </div>
               </div>
               <div>
                 <h3 className="text-3xl font-bold text-[#0A3D62] mb-2">Mohammad Deen Hayatu</h3>
-                <p className="text-[#27AE60] font-medium text-xl mb-6">Founder & Lead Developer</p>
-                <p className="text-gray-600 mb-6">
-                  Mohammad Deen Hayatu is a passionate full-stack developer and entrepreneur from Effiduasi, Ghana. With deep understanding of West Africa's agricultural challenges and technological opportunities, he founded Haydeen Technologies to bridge critical gaps in the region's industries.
+                <p className="text-[#27AE60] font-medium text-xl mb-6">Founder, Full-Stack Developer & AI Engineer</p>
+                <p className="text-gray-600 mb-4">
+                  Mohammad Deen Hayatu is a full-stack developer, AI engineer, and entrepreneur from Effiduasi, Ghana. Drawing on his background in biomedical research and deep knowledge of West African realities, he founded Haydeen Technologies to build practical, high-impact digital tools for the region.
                 </p>
                 <p className="text-gray-600 mb-6">
-                  As the sole developer behind AgriConnect and other innovative solutions, Mohammad combines technical expertise with local market knowledge to create software that truly serves the needs of West African businesses and communities.
+                  He is the sole developer behind AgriConnect and several healthcare and business platforms, combining modern web development with AI and retrieval-augmented generation (RAG) to create software that works reliably in real-world African contexts.
                 </p>
-                <div className="space-y-3">
-                  <div className="flex items-start">
-                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-600">Full-stack development expertise</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-600">Deep understanding of West African markets</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-600">Committed to solving real-world problems</span>
-                  </div>
-                  <div className="flex items-start">
-                    <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
-                    <span className="text-gray-600">Building scalable technology solutions</span>
+                
+                <div className="mb-6">
+                  <h4 className="text-xl font-bold text-[#0A3D62] mb-4">What he brings to Haydeen Technologies</h4>
+                  <div className="space-y-3">
+                    <div className="flex items-start">
+                      <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600">Full-stack development (frontend, backend, cloud)</span>
+                    </div>
+                    <div className="flex items-start">
+                      <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600">AI & RAG-powered systems for search and decision support</span>
+                    </div>
+                    <div className="flex items-start">
+                      <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600">Strong data and analytics mindset</span>
+                    </div>
+                    <div className="flex items-start">
+                      <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600">Deep understanding of West African markets and infrastructure</span>
+                    </div>
+                    <div className="flex items-start">
+                      <Check className="h-5 w-5 text-[#27AE60] mr-2 flex-shrink-0 mt-0.5" />
+                      <span className="text-gray-600">Commitment to solving real problems with scalable, robust tools</span>
+                    </div>
                   </div>
                 </div>
               </div>
