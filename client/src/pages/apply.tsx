@@ -220,7 +220,7 @@ const JobApplication = () => {
                           id="email"
                           type="email"
                           {...form.register("email")}
-                          placeholder="your.email@example.com"
+                          placeholder="your.email@domain.com"
                         />
                         {form.formState.errors.email && (
                           <p className="text-sm text-red-600">{form.formState.errors.email.message}</p>

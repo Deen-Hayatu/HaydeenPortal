@@ -118,7 +118,7 @@ export default function BetaSignupForm({ defaultPlatform, className = "" }: Beta
               <FormItem>
                 <FormLabel>Your Name *</FormLabel>
                 <FormControl>
-                  <Input placeholder="John Doe" {...field} />
+                  <Input placeholder="Enter your full name" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -132,7 +132,7 @@ export default function BetaSignupForm({ defaultPlatform, className = "" }: Beta
               <FormItem>
                 <FormLabel>Email Address *</FormLabel>
                 <FormControl>
-                  <Input type="email" placeholder="john@example.com" {...field} />
+                  <Input type="email" placeholder="your.email@domain.com" {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>

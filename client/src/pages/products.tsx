@@ -94,7 +94,7 @@ const Products = () => {
             <p className="text-xl md:text-2xl mb-8 opacity-90">
               Innovative software solutions designed specifically for Ghana and West Africa
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 items-center">
               <EnhancedCTAButton variant="primary" size="lg" href="#products">
                 View Products
               </EnhancedCTAButton>
@@ -194,7 +194,7 @@ const Products = () => {
                     </div>
 
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-3 items-center">
                       {product.liveDemo && (
                         <EnhancedCTAButton 
                           variant="primary" 
@@ -238,7 +238,7 @@ const Products = () => {
             <p className="text-lg text-muted-foreground mb-8">
               Schedule a personalized demo to see how our solutions can transform your business operations in Ghana.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 items-center">
               <EnhancedCTAButton variant="primary" size="lg" href="/contact">
                 Schedule Demo
               </EnhancedCTAButton>

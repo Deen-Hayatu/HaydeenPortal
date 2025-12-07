@@ -213,7 +213,7 @@ const Contact = () => {
                           <FormLabel>Your Name</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="John Doe" 
+                              placeholder="Enter your full name" 
                               {...field} 
                               className="bg-white"
                             />
@@ -231,7 +231,7 @@ const Contact = () => {
                           <FormLabel>Email Address</FormLabel>
                           <FormControl>
                             <Input 
-                              placeholder="john@example.com" 
+                              placeholder="your.email@domain.com" 
                               type="email" 
                               autoComplete="email"
                               {...field} 

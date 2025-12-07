@@ -40,7 +40,7 @@ const About = () => {
             <p className="text-lg opacity-80">
               Our founder saw farmers struggling to find buyers and healthcare workers managing records on paper. So we're building technology to change that—helping farmers get better prices and healthcare workers serve more patients.
             </p>
-              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm uppercase tracking-[0.3em] text-white/80">
+              <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 text-sm uppercase tracking-[0.3em] text-white/80 flex-wrap">
                 <span className="inline-flex items-center gap-2 bg-white/10 px-4 py-2 rounded-full">
                   <span className="w-2 h-2 rounded-full bg-[#FCD116] animate-pulse" />
                   Pre-seed Ghanaian founders
@@ -453,7 +453,7 @@ const About = () => {
             <p className="text-xl mb-8 opacity-90">
               Whether you're a farmer looking for better prices, a healthcare worker needing modern tools, or a business wanting to grow—we're here to help. Get in touch today.
             </p>
-            <div className="flex flex-wrap justify-center gap-4">
+            <div className="flex flex-wrap justify-center gap-4 items-center">
               <Link href="/contact" className="btn btn-primary">
                 Contact Us
               </Link>

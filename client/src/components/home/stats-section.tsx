@@ -89,7 +89,7 @@ const StatsSection = () => {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="mt-16"
           >
-            <div className="bg-gradient-to-r from-[#0A3D62] to-[#3C6382] rounded-2xl px-8 py-10 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8">
+            <div className="bg-gradient-to-r from-[#0A3D62] to-[#3C6382] rounded-2xl px-8 py-10 text-white flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 flex-wrap">
               <div className="max-w-xl">
                 <h3 className="text-2xl font-bold mb-2">
                   Operational readiness isn’t an afterthought
